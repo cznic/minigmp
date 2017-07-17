@@ -358,7 +358,17 @@ func lib() {
 		return
 	}
 
-	asts, src := build(
+	ast, src := build(
+		defines,
+		[][]string{
+			{filepath.Join(repo, "mini-gmp.h")},
+		},
+		[]ccgo.Option{
+			ccgo.Library(),
+		},
+		cc.IncludePaths([]string{repo}),
+	)
+	_, src = build(
 		defines,
 		[][]string{
 			{filepath.Join(repo, "mini-gmp.c")},
@@ -372,7 +382,7 @@ func lib() {
 
 	var b bytes.Buffer
 	fmt.Fprintf(&b, prologue, strings.TrimSpace(tidyComments(header(filepath.Join(repo, "mini-gmp.c")))))
-	macros(&b, asts[0])
+	macros(&b, ast[0])
 	b.Write(src)
 	b2, err := format.Source(re.ReplaceAll(b.Bytes(), []byte(" panic(crt.GoString(_msg)) ")))
 	if err != nil {

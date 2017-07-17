@@ -69,114 +69,8 @@ func ftrace(s string, args ...interface{}) {
 }
 
 const (
-	XBUFSIZ                    = 8192
-	XCHAR_BIT                  = 8
-	XCHAR_MAX                  = 127
-	XCHAR_MIN                  = -128
-	XEOF                       = -1
-	XEXIT_FAILURE              = 1
-	XEXIT_SUCCESS              = 0
-	XGMP_PRIME_MASK            = 3379140316
-	XGMP_PRIME_PRODUCT         = 3234846615
-	XINT_MAX                   = 2147483647
-	XINT_MIN                   = 2147483648
-	XLLONG_MAX                 = 9223372036854775807
-	XLLONG_MIN                 = -9223372036854775808
-	XLONG_MAX                  = 9223372036854775807
-	XLONG_MIN                  = -9223372036854775808
-	XP_tmpdir                  = "/tmp"
-	XRAND_MAX                  = 2147483647
-	XSCHAR_MAX                 = 127
-	XSCHAR_MIN                 = -128
-	XSEEK_CUR                  = 1
-	XSEEK_END                  = 2
-	XSEEK_SET                  = 0
-	XSHRT_MAX                  = 32767
-	XSHRT_MIN                  = -32768
-	XUCHAR_MAX                 = 255
-	XUINT_MAX                  = 4294967295
-	XULLONG_MAX                = 18446744073709551615
-	XULONG_MAX                 = 18446744073709551615
-	XUSHRT_MAX                 = 65535
-	X_BITS_TYPES_H             = 1
-	X_CTYPE_H                  = 1
-	X_G_BUFSIZ                 = 8192
-	X_G_HAVE_MMAP              = 1
-	X_G_HAVE_MREMAP            = 1
-	X_G_HAVE_ST_BLKSIZE        = 0
-	X_G_IO_IO_FILE_VERSION     = 131073
-	X_G_config_h               = 1
-	X_G_va_list                = 0
-	X_IOFBF                    = 0
-	X_IOLBF                    = 1
-	X_IONBF                    = 2
-	X_IOS_APPEND               = 8
-	X_IOS_ATEND                = 4
-	X_IOS_BIN                  = 128
-	X_IOS_INPUT                = 1
-	X_IOS_NOCREATE             = 32
-	X_IOS_NOREPLACE            = 64
-	X_IOS_OUTPUT               = 2
-	X_IOS_TRUNC                = 16
-	X_IO_BAD_SEEN              = 16384
-	X_IO_BOOLALPHA             = 65536
-	X_IO_BUFSIZ                = 8192
-	X_IO_CURRENTLY_PUTTING     = 2048
-	X_IO_DEC                   = 16
-	X_IO_DELETE_DONT_CLOSE     = 64
-	X_IO_DONT_CLOSE            = 32768
-	X_IO_EOF_SEEN              = 16
-	X_IO_ERR_SEEN              = 32
-	X_IO_FIXED                 = 4096
-	X_IO_FLAGS2_MMAP           = 1
-	X_IO_FLAGS2_NOTCANCEL      = 2
-	X_IO_FLAGS2_USER_WBUF      = 8
-	X_IO_HAVE_ST_BLKSIZE       = 0
-	X_IO_HEX                   = 64
-	X_IO_INTERNAL              = 8
-	X_IO_IN_BACKUP             = 256
-	X_IO_IS_APPENDING          = 4096
-	X_IO_IS_FILEBUF            = 8192
-	X_IO_LEFT                  = 2
-	X_IO_LINE_BUF              = 512
-	X_IO_LINKED                = 128
-	X_IO_MAGIC                 = 4222418944
-	X_IO_MAGIC_MASK            = 4294901760
-	X_IO_NO_READS              = 4
-	X_IO_NO_WRITES             = 8
-	X_IO_OCT                   = 32
-	X_IO_RIGHT                 = 4
-	X_IO_SCIENTIFIC            = 2048
-	X_IO_SHOWBASE              = 128
-	X_IO_SHOWPOINT             = 256
-	X_IO_SHOWPOS               = 1024
-	X_IO_SKIPWS                = 1
-	X_IO_STDIO                 = 16384
-	X_IO_TIED_PUT_GET          = 1024
-	X_IO_UNBUFFERED            = 2
-	X_IO_UNIFIED_JUMPTABLES    = 1
-	X_IO_UNITBUF               = 8192
-	X_IO_UPPERCASE             = 512
-	X_IO_USER_BUF              = 1
-	X_IO_USER_LOCK             = 32768
-	X_IO_file_flags            = 0
-	X_IO_fpos64_t              = 0
-	X_IO_fpos_t                = 0
-	X_IO_iconv_t               = 0
-	X_IO_off64_t               = 0
-	X_IO_off_t                 = 0
-	X_IO_pid_t                 = 0
-	X_IO_size_t                = 0
-	X_IO_ssize_t               = 0
-	X_IO_uid_t                 = 0
-	X_IO_va_list               = 0
-	X_IO_wint_t                = 0
 	X_LP64                     = 1
-	X_OLD_STDIO_MAGIC          = 4206624768
 	X_STDC_PREDEF_H            = 1
-	X_STDIO_H                  = 1
-	X_STDLIB_H                 = 1
-	X_STRING_H                 = 1
 	X__ATOMIC_ACQUIRE          = 2
 	X__ATOMIC_ACQ_REL          = 4
 	X__ATOMIC_CONSUME          = 1
@@ -210,7 +104,6 @@ const (
 	X__DECIMAL_BID_FORMAT__    = 1
 	X__DECIMAL_DIG__           = 21
 	X__DEC_EVAL_METHOD__       = 2
-	X__FILE_defined            = 1
 	X__FINITE_MATH_ONLY__      = 0
 	X__FLOAT_WORD_ORDER__      = 1234
 	X__FLT_DECIMAL_DIG__       = 9
@@ -274,7 +167,6 @@ const (
 	X__PIE__                   = 2
 	X__PRAGMA_REDEFINE_EXTNAME = 1
 	X__PTRDIFF_MAX__           = 9223372036854775807
-	X__S32_TYPE                = 0
 	X__SCHAR_MAX__             = 127
 	X__SEG_FS                  = 1
 	X__SEG_GS                  = 1
@@ -297,7 +189,6 @@ const (
 	X__SIZEOF_WCHAR_T__        = 4
 	X__SIZEOF_WINT_T__         = 4
 	X__SIZE_MAX__              = 18446744073709551615
-	X__SLONG32_TYPE            = 0
 	X__SSE2_MATH__             = 1
 	X__SSE2__                  = 1
 	X__SSE_MATH__              = 1
@@ -331,8 +222,6 @@ const (
 	X__WCHAR_TYPE__            = 0
 	X__WINT_MAX__              = 4294967295
 	X__WINT_MIN__              = 0
-	X____FILE_defined          = 1
-	X____mbstate_t_defined     = 1
 	X__amd64                   = 1
 	X__amd64__                 = 1
 	X__code_model_small__      = 1
@@ -341,10 +230,8 @@ const (
 	X__inline                  = 0
 	X__k8                      = 1
 	X__k8__                    = 1
-	X__ldiv_t_defined          = 1
 	X__linux                   = 1
 	X__linux__                 = 1
-	X__lldiv_t_defined         = 1
 	X__pic__                   = 2
 	X__pie__                   = 2
 	X__restrict                = 0
@@ -353,107 +240,9 @@ const (
 	X__volatile                = 0
 	X__x86_64                  = 1
 	X__x86_64__                = 1
-	Xfgetpos                   = 0
-	Xfopen                     = 0
-	Xfreopen                   = 0
-	Xfscanf                    = 0
-	Xfseeko                    = 0
-	Xfsetpos                   = 0
-	Xftello                    = 0
-	Xmkstemp                   = 0
-	Xscanf                     = 0
-	Xsscanf                    = 0
-	Xtmpfile                   = 0
-	Xvfscanf                   = 0
-	Xvscanf                    = 0
-	Xvsscanf                   = 0
-	XGMP_DIV_CEIL              = 1
-	XGMP_DIV_FLOOR             = 0
-	XGMP_DIV_TRUNC             = 2
-	X_ISalnum                  = 8
-	X_ISalpha                  = 1024
-	X_ISblank                  = 1
-	X_IScntrl                  = 2
-	X_ISdigit                  = 2048
-	X_ISgraph                  = 32768
-	X_ISlower                  = 512
-	X_ISprint                  = 16384
-	X_ISpunct                  = 4
-	X_ISspace                  = 8192
-	X_ISupper                  = 256
-	X_ISxdigit                 = 4096
-	X__codecvt_error           = 2
-	X__codecvt_noconv          = 3
-	X__codecvt_ok              = 0
-	X__codecvt_partial         = 1
 )
 
 var Xstderr unsafe.Pointer
-
-var Xfoobar int32
-
-var Xmp_bits_per_limb int32
-
-func init() {
-	Xmp_bits_per_limb = int32(64)
-}
-
-func Xmp_get_memory_functions(tls *crt.TLS, _alloc_func *func(*crt.TLS, uint64) unsafe.Pointer, _realloc_func *func(*crt.TLS, unsafe.Pointer, uint64, uint64) unsafe.Pointer, _free_func *func(*crt.TLS, unsafe.Pointer, uint64)) {
-	if _alloc_func != nil {
-		*_alloc_func = _gmp_allocate_func
-	}
-	if _realloc_func != nil {
-		*_realloc_func = _gmp_reallocate_func
-	}
-	if _free_func != nil {
-		*_free_func = _gmp_free_func
-	}
-}
-
-var _gmp_allocate_func func(*crt.TLS, uint64) unsafe.Pointer
-
-func init() {
-	_gmp_allocate_func = _gmp_default_alloc
-}
-
-func _gmp_default_alloc(tls *crt.TLS, _size uint64) (r0 unsafe.Pointer) {
-	var _p unsafe.Pointer
-
-	_p = crt.Xmalloc(tls, _size)
-	if _p == nil {
-		_gmp_die(tls, str(0))
-	}
-	return _p
-}
-
-// C comment
-//  /* Memory allocation and other helper functions. */
-func _gmp_die(tls *crt.TLS, _msg *int8) { panic(crt.GoString(_msg)) }
-
-var _gmp_reallocate_func func(*crt.TLS, unsafe.Pointer, uint64, uint64) unsafe.Pointer
-
-func init() {
-	_gmp_reallocate_func = _gmp_default_realloc
-}
-
-func _gmp_default_realloc(tls *crt.TLS, _old unsafe.Pointer, _old_size uint64, _new_size uint64) (r0 unsafe.Pointer) {
-	var _p unsafe.Pointer
-	_p = crt.Xrealloc(tls, _old, _new_size)
-	if _p == nil {
-		_gmp_die(tls, str(49))
-	}
-	return _p
-}
-
-var _gmp_free_func func(*crt.TLS, unsafe.Pointer, uint64)
-
-func init() {
-	_gmp_free_func = _gmp_default_free
-}
-
-func _gmp_default_free(tls *crt.TLS, _p unsafe.Pointer, _size uint64) {
-	crt.Xfree(tls, _p)
-}
 
 func Xmp_set_memory_functions(tls *crt.TLS, _alloc_func func(*crt.TLS, uint64) unsafe.Pointer, _realloc_func func(*crt.TLS, unsafe.Pointer, uint64, uint64) unsafe.Pointer, _free_func func(*crt.TLS, unsafe.Pointer, uint64)) {
 	if _alloc_func == nil {
@@ -473,6 +262,69 @@ func Xmp_set_memory_functions(tls *crt.TLS, _alloc_func func(*crt.TLS, uint64) u
 	bug20530(_gmp_free_func)
 }
 
+func _gmp_default_alloc(tls *crt.TLS, _size uint64) (r0 unsafe.Pointer) {
+	var _p unsafe.Pointer
+
+	_p = crt.Xmalloc(tls, _size)
+	if _p == nil {
+		_gmp_die(tls, str(0))
+	}
+	return _p
+}
+
+// C comment
+//  /* Memory allocation and other helper functions. */
+func _gmp_die(tls *crt.TLS, _msg *int8) { panic(crt.GoString(_msg)) }
+
+func _gmp_default_realloc(tls *crt.TLS, _old unsafe.Pointer, _old_size uint64, _new_size uint64) (r0 unsafe.Pointer) {
+	var _p unsafe.Pointer
+	_p = crt.Xrealloc(tls, _old, _new_size)
+	if _p == nil {
+		_gmp_die(tls, str(49))
+	}
+	return _p
+}
+
+func _gmp_default_free(tls *crt.TLS, _p unsafe.Pointer, _size uint64) {
+	crt.Xfree(tls, _p)
+}
+
+var _gmp_allocate_func func(*crt.TLS, uint64) unsafe.Pointer
+
+func init() {
+	_gmp_allocate_func = _gmp_default_alloc
+}
+
+var _gmp_reallocate_func func(*crt.TLS, unsafe.Pointer, uint64, uint64) unsafe.Pointer
+
+func init() {
+	_gmp_reallocate_func = _gmp_default_realloc
+}
+
+var _gmp_free_func func(*crt.TLS, unsafe.Pointer, uint64)
+
+func init() {
+	_gmp_free_func = _gmp_default_free
+}
+
+func Xmp_get_memory_functions(tls *crt.TLS, _alloc_func *func(*crt.TLS, uint64) unsafe.Pointer, _realloc_func *func(*crt.TLS, unsafe.Pointer, uint64, uint64) unsafe.Pointer, _free_func *func(*crt.TLS, unsafe.Pointer, uint64)) {
+	if _alloc_func != nil {
+		*_alloc_func = _gmp_allocate_func
+	}
+	if _realloc_func != nil {
+		*_realloc_func = _gmp_reallocate_func
+	}
+	if _free_func != nil {
+		*_free_func = _gmp_free_func
+	}
+}
+
+var Xmp_bits_per_limb int32
+
+func init() {
+	Xmp_bits_per_limb = int32(64)
+}
+
 func Xmpn_copyi(tls *crt.TLS, _d *uint64, _s *uint64, _n int64) {
 	var _i int64
 	_i = 0
@@ -490,6 +342,14 @@ func Xmpn_copyd(tls *crt.TLS, _d *uint64, _s *uint64, _n int64) {
 _0:
 	if preInc1(&_n, -1) >= (0) {
 		*elem0(_d, uintptr(_n)) = *elem0(_s, uintptr(_n))
+		goto _0
+	}
+}
+
+func Xmpn_zero(tls *crt.TLS, _rp *uint64, _n int64) {
+_0:
+	if preInc1(&_n, -1) >= (0) {
+		*elem0(_rp, uintptr(_n)) = 0
 		goto _0
 	}
 }
@@ -523,14 +383,6 @@ _0:
 		goto _0
 	}
 	return _n
-}
-
-func Xmpn_zero(tls *crt.TLS, _rp *uint64, _n int64) {
-_0:
-	if preInc1(&_n, -1) >= (0) {
-		*elem0(_rp, uintptr(_n)) = 0
-		goto _0
-	}
 }
 
 func Xmpn_add_1(tls *crt.TLS, _rp *uint64, _ap *uint64, _n int64, _b uint64) (r0 uint64) {
@@ -752,126 +604,429 @@ func Xmpn_sqr(tls *crt.TLS, _rp *uint64, _ap *uint64, _n int64) {
 	Xmpn_mul(tls, _rp, _ap, _n, _ap, _n)
 }
 
-func Xmpn_lshift(tls *crt.TLS, _rp *uint64, _up *uint64, _n int64, _cnt uint32) (r0 uint64) {
-	var _tnc uint32
-	var _high_limb, _low_limb, _retval uint64
+func Xmpn_perfect_square_p(tls *crt.TLS, _p *uint64, _n int64) (r0 int32) {
+	var _t [1]Xmpz_srcptr
+	return Xmpz_root(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer(Xmpz_roinit_n(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), _p, _n))), uint64(2))
 
-	*(*uintptr)(unsafe.Pointer(&_up)) += 8 * uintptr(_n)
-	*(*uintptr)(unsafe.Pointer(&_rp)) += 8 * uintptr(_n)
-	_tnc = uint32(uint64(64) - uint64(_cnt))
-	_low_limb = *preInc0(&_up, -8)
-	_retval = _low_limb >> uint(int32(_tnc))
-	_high_limb = _low_limb << uint(int32(_cnt))
-_0:
-	if preInc1(&_n, -1) != (0) {
-		_low_limb = *preInc0(&_up, -8)
-		*preInc0(&_rp, -8) = _high_limb | (_low_limb >> uint(int32(_tnc)))
-		_high_limb = _low_limb << uint(int32(_cnt))
-		goto _0
-	}
-	*preInc0(&_rp, -8) = _high_limb
-	return _retval
+	_ = _t
+	panic(0)
 }
 
-func Xmpn_rshift(tls *crt.TLS, _rp *uint64, _up *uint64, _n int64, _cnt uint32) (r0 uint64) {
-	var _tnc uint32
-	var _high_limb, _low_limb, _retval uint64
+func Xmpz_root(tls *crt.TLS, _x *[1]Xmpz_srcptr, _y *[1]Xmpz_srcptr, _z uint64) (r0 int32) {
+	var _res int32
+	var _r [1]Xmpz_srcptr
+	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_r)))))
+	Xmpz_rootrem(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), _z)
+	_res = bool2int(((*Xmpz_srcptr)(unsafe.Pointer(&_r)).X_mp_size) == int32(0))
+	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_r)))))
+	return _res
 
-	_tnc = uint32(uint64(64) - uint64(_cnt))
-	_high_limb = *postInc0(&_up, 8)
-	_retval = _high_limb << uint(int32(_tnc))
-	_low_limb = _high_limb >> uint(int32(_cnt))
-_0:
-	if preInc1(&_n, -1) != (0) {
-		_high_limb = *postInc0(&_up, 8)
-		*postInc0(&_rp, 8) = _low_limb | (_high_limb << uint(int32(_tnc)))
-		_low_limb = _high_limb >> uint(int32(_cnt))
-		goto _0
-	}
-	*_rp = _low_limb
-	return _retval
+	_ = _r
+	panic(0)
 }
 
-func Xmpn_scan1(tls *crt.TLS, _ptr *uint64, _bit uint64) (r0 uint64) {
-	var _i int64
-	_i = int64(_bit / uint64(64))
-	return _mpn_common_scan(tls, (*elem0(_ptr, uintptr(_i)))&(uint64(18446744073709551615)<<uint(int32(_bit%uint64(64)))), _i, _ptr, _i, 0)
+// C comment
+//  /* MPZ interface */
+func Xmpz_init(tls *crt.TLS, _r *[1]Xmpz_srcptr) {
+	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc = int32(0)
+	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d = &_mpz_initØ00dummy_limbØ001
 }
 
-func _mpn_common_scan(tls *crt.TLS, _limb uint64, _i int64, _up *uint64, _un int64, _ux uint64) (r0 uint64) {
-	var _cnt, _2___ctz_c, _3___clz_c uint32
-	var _2___ctz_x, _3___clz_x uint64
+var _mpz_initØ00dummy_limbØ001 uint64
 
-_0:
-	if _limb != (0) {
-		goto _1
+func init() {
+	_mpz_initØ00dummy_limbØ001 = uint64(49568)
+}
+
+// C comment
+//  /* x=trunc(y^(1/z)), r=y-x^z */
+func Xmpz_rootrem(tls *crt.TLS, _x *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _y *[1]Xmpz_srcptr, _z uint64) {
+	var _sgn int32
+	var _t, _u, _3_v [1]Xmpz_srcptr
+	_sgn = bool2int(((*Xmpz_srcptr)(unsafe.Pointer(_y)).X_mp_size) < int32(0))
+	if ((^_z) & uint64(_sgn)) != (0) {
+		_gmp_die(tls, str(96))
 	}
-	_i += 1
-	if _i == _un {
-		return func() uint64 {
-			if _ux == (0) {
-				return uint64(18446744073709551615)
-			}
-			return (uint64(_un) * uint64(64))
-		}()
+	if _z == (0) {
+		_gmp_die(tls, str(144))
 	}
-	_limb = _ux ^ (*elem0(_up, uintptr(_i)))
-	goto _0
-_1:
-	_2___ctz_x = _limb
-	_2___ctz_c = 0
-	_3___clz_x = _2___ctz_x & (-_2___ctz_x)
-	_3___clz_c = 0
+	if Xmpz_cmpabs_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), uint64(1)) > int32(0) {
+		goto _2
+	}
+	if _x != nil {
+		Xmpz_set(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))))
+	}
+	if _r != nil {
+		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+	}
+	return
+_2:
+	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))))
+	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	Xmpz_setbit(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (Xmpz_sizeinbase(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), int32(2))/_z)+uint64(1))
+	if _z != uint64(2) {
+		goto _5
+	}
+_6:
+	Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	Xmpz_tdiv_q(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))))
+	Xmpz_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))))
+	Xmpz_tdiv_q_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), uint64(1))
+	if Xmpz_cmpabs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u))))) < int32(0) {
+		goto _6
+	}
+	goto _7
+_5:
+	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_3_v)))))
+	if _sgn != 0 {
+		Xmpz_neg(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	}
+_8:
+	Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	Xmpz_pow_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))), _z-uint64(1))
+	Xmpz_tdiv_q(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	Xmpz_mul_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_3_v)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))), _z-uint64(1))
+	Xmpz_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_3_v)))))
+	Xmpz_tdiv_q_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), _z)
+	if Xmpz_cmpabs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u))))) < int32(0) {
+		goto _8
+	}
+	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_3_v)))))
 _7:
-	if (_3___clz_x & uint64(18374686479671623680)) != (0) {
+	if _r != nil {
+		Xmpz_pow_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))), _z)
+		Xmpz_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	}
+	if _x != nil {
+		Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))))
+	}
+	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))))
+	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	_ = _t
+	_ = _u
+	_ = _3_v
+}
+
+func Xmpz_cmpabs_ui(tls *crt.TLS, _u *[1]Xmpz_srcptr, _v uint64) (r0 int32) {
+	if func() int32 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+		}
+		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
+	}() > int32(1) {
+		return int32(1)
+	}
+	return bool2int(Xmpz_get_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u))))) > _v) - bool2int(Xmpz_get_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u))))) < _v)
+}
+
+func Xmpz_get_ui(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 uint64) {
+	return func() uint64 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) == int32(0) {
+			return (0)
+		}
+		return (*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, 0))
+	}()
+}
+
+func Xmpz_set(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x *[1]Xmpz_srcptr) {
+	var _1_n int64
+	var _1_rp *uint64
+	if (*Xmpz_srcptr)(unsafe.Pointer(_r)) != (*Xmpz_srcptr)(unsafe.Pointer(_x)) {
+		_1_n = int64(func() int32 {
+			if ((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_size) >= int32(0) {
+				return ((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_size)
+			}
+			return (-((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_size))
+		}())
+		_1_rp = func() *uint64 {
+			if _1_n > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
+				return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _1_n)
+			}
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+		}()
+		Xmpn_copyi(tls, _1_rp, (*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_d, _1_n)
+		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = (*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_size
+	}
+}
+
+func _mpz_realloc(tls *crt.TLS, _r *[1]Xmpz_srcptr, _size int64) (r0 *uint64) {
+	_size = func() int64 {
+		if _size > int64(1) {
+			return _size
+		}
+		return int64(1)
+	}()
+	if ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) != 0 {
+		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d = _gmp_xrealloc_limbs(tls, (*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d, _size)
+		goto _3
+	}
+	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d = _gmp_xalloc_limbs(tls, _size)
+_3:
+	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc = int32(_size)
+	if int64(func() int32 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size) >= int32(0) {
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size)
+		}
+		return (-((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size))
+	}()) > _size {
+		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+	}
+	return (*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d
+}
+
+func _gmp_xrealloc_limbs(tls *crt.TLS, _old *uint64, _size int64) (r0 *uint64) {
+	return (*uint64)(_gmp_reallocate_func(tls, unsafe.Pointer(_old), 0, uint64(_size)*uint64(8)))
+}
+
+func _gmp_xalloc_limbs(tls *crt.TLS, _size int64) (r0 *uint64) {
+	return (*uint64)(_gmp_allocate_func(tls, uint64(_size)*uint64(8)))
+}
+
+func Xmpz_setbit(tls *crt.TLS, _d *[1]Xmpz_srcptr, _bit_index uint64) {
+	if Xmpz_tstbit(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), _bit_index) != 0 {
+		goto _0
+	}
+	if ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size) >= int32(0) {
+		_mpz_abs_add_bit(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), _bit_index)
+		goto _2
+	}
+	_mpz_abs_sub_bit(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), _bit_index)
+_2:
+_0:
+}
+
+func Xmpz_tstbit(tls *crt.TLS, _d *[1]Xmpz_srcptr, _bit_index uint64) (r0 int32) {
+	var _bit int32
+	var _limb_index, _ds, _dn int64
+	var _shift uint32
+	var _w uint64
+	_ds = int64((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size)
+	_dn = func() int64 {
+		if _ds >= (0) {
+			return _ds
+		}
+		return (-_ds)
+	}()
+	_limb_index = int64(_bit_index / uint64(64))
+	if _limb_index >= _dn {
+		return bool2int(_ds < (0))
+	}
+	_shift = uint32(_bit_index % uint64(64))
+	_w = *elem0((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_d, uintptr(_limb_index))
+	_bit = int32((_w >> uint(int32(_shift))) & uint64(1))
+	if _ds >= (0) {
+		goto _3
+	}
+	if (_shift > (0)) && ((_w << uint(int32(uint64(64)-uint64(_shift)))) > (0)) {
+		return _bit ^ int32(1)
+	}
+_5:
+	if preInc1(&_limb_index, -1) < (0) {
+		goto _7
+	}
+	if (*elem0((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_d, uintptr(_limb_index))) > (0) {
+		return _bit ^ int32(1)
+	}
+	goto _5
+_7:
+_3:
+	return _bit
+}
+
+func _mpz_abs_add_bit(tls *crt.TLS, _d *[1]Xmpz_srcptr, _bit_index uint64) {
+	var _dn, _limb_index, _1_i int64
+	var _bit, _2_cy uint64
+	var _dp *uint64
+	_dn = int64(func() int32 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size) >= int32(0) {
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size)
+		}
+		return (-((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size))
+	}())
+	_limb_index = int64(_bit_index / uint64(64))
+	_bit = uint64(1) << uint(int32(_bit_index%uint64(64)))
+	if _limb_index < _dn {
+		goto _2
+	}
+	_dp = func() *uint64 {
+		if (_limb_index + int64(1)) > int64((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_alloc) {
+			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), _limb_index+int64(1))
+		}
+		return ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_d)
+	}()
+	*elem0(_dp, uintptr(_limb_index)) = _bit
+	_1_i = _dn
+_5:
+	if _1_i >= _limb_index {
+		goto _8
+	}
+	*elem0(_dp, uintptr(_1_i)) = 0
+	_1_i += 1
+	goto _5
+_8:
+	_dn = _limb_index + int64(1)
+	goto _9
+_2:
+	_dp = (*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_d
+	_2_cy = Xmpn_add_1(tls, (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_dp))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limb_index)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_dp))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limb_index)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), _dn-_limb_index, _bit)
+	if _2_cy > (0) {
+		_dp = func() *uint64 {
+			if (_dn + int64(1)) > int64((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_alloc) {
+				return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), _dn+int64(1))
+			}
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_d)
+		}()
+		*elem0(_dp, uintptr(postInc1(&_dn, 1))) = _2_cy
+	}
+_9:
+	(*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size = int32(func() int64 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size) < int32(0) {
+			return (-_dn)
+		}
+		return _dn
+	}())
+}
+
+func _mpz_abs_sub_bit(tls *crt.TLS, _d *[1]Xmpz_srcptr, _bit_index uint64) {
+	var _dn, _limb_index int64
+	var _bit, _1___cy uint64
+	var _dp *uint64
+	_dn = int64(func() int32 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size) >= int32(0) {
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size)
+		}
+		return (-((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size))
+	}())
+	_dp = (*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_d
+	_limb_index = int64(_bit_index / uint64(64))
+	_bit = uint64(1) << uint(int32(_bit_index%uint64(64)))
+
+	_1___cy = Xmpn_sub_1(tls, (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_dp))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limb_index)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_dp))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limb_index)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), _dn-_limb_index, _bit)
+
+	_dn = _mpn_normalized_size(tls, _dp, _dn)
+	(*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size = int32(func() int64 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size) < int32(0) {
+			return (-_dn)
+		}
+		return _dn
+	}())
+	_ = _1___cy
+}
+
+func Xmpz_sizeinbase(tls *crt.TLS, _u *[1]Xmpz_srcptr, _base int32) (r0 uint64) {
+	var _un int64
+	var _bits, _ndigits uint64
+	var _up, _tp *uint64
+	var _bi Tgmp_div_inverse
+
+	_un = int64(func() int32 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+		}
+		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
+	}())
+	if _un == (0) {
+		return uint64(1)
+	}
+	_up = (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d
+	_bits = (uint64(_un-int64(1)) * uint64(64)) + _mpn_limb_size_in_base_2(tls, *elem0(_up, uintptr(_un-int64(1))))
+	switch _base {
+	case int32(2):
+		goto _4
+	case int32(4):
+		goto _5
+	case int32(8):
+		goto _6
+	case int32(16):
+		goto _7
+	case int32(32):
+		goto _8
+	default:
+		goto _9
+	}
+
+_4:
+	return _bits
+
+_5:
+	return (_bits + uint64(1)) / uint64(2)
+
+_6:
+	return (_bits + uint64(2)) / uint64(3)
+
+_7:
+	return (_bits + uint64(3)) / uint64(4)
+
+_8:
+	return (_bits + uint64(4)) / uint64(5)
+
+_9:
+	_tp = _gmp_xalloc_limbs(tls, _un)
+	Xmpn_copyi(tls, _tp, _up, _un)
+	_mpn_div_qr_1_invert(tls, &_bi, uint64(_base))
+	_ndigits = 0
+_10:
+	_ndigits += 1
+	_mpn_div_qr_1_preinv(tls, _tp, _tp, _un, &_bi)
+	_un -= int64(bool2int((*elem0(_tp, uintptr(_un-int64(1)))) == (0)))
+	if _un > (0) {
 		goto _10
 	}
-	_3___clz_x <<= 8
-	_3___clz_c += uint32(8)
-	goto _7
-_10:
-	if (_3___clz_x & uint64(9223372036854775808)) != (0) {
-		goto _14
-	}
-	_3___clz_x <<= 1
-	_3___clz_c += 1
-	goto _10
-_14:
-	_2___ctz_c = _3___clz_c
-	_cnt = uint32(uint64(63) - uint64(_2___ctz_c))
-	return (uint64(_i) * uint64(64)) + uint64(_cnt)
+	_gmp_free_func(tls, unsafe.Pointer(_tp), 0)
+	return _ndigits
 }
 
-func Xmpn_scan0(tls *crt.TLS, _ptr *uint64, _bit uint64) (r0 uint64) {
-	var _i int64
-	_i = int64(_bit / uint64(64))
-	return _mpn_common_scan(tls, (^(*elem0(_ptr, uintptr(_i))))&(uint64(18446744073709551615)<<uint(int32(_bit%uint64(64)))), _i, _ptr, _i, uint64(18446744073709551615))
-}
+func _mpn_limb_size_in_base_2(tls *crt.TLS, _u uint64) (r0 uint64) {
+	var _shift, _1___clz_c uint32
+	var _1___clz_x uint64
 
-func Xmpn_com(tls *crt.TLS, _rp *uint64, _up *uint64, _n int64) {
-_0:
-	if preInc1(&_n, -1) >= (0) {
-		*postInc0(&_rp, 8) = ^(*postInc0(&_up, 8))
-		goto _0
-	}
-}
-
-func Xmpn_neg(tls *crt.TLS, _rp *uint64, _up *uint64, _n int64) (r0 uint64) {
-_0:
-	if (*_up) != (0) {
-		goto _1
-	}
-	*_rp = 0
-	if preInc1(&_n, -1) == 0 {
-		return 0
-	}
-	*(*uintptr)(unsafe.Pointer(&_up)) += uintptr(8)
-	*(*uintptr)(unsafe.Pointer(&_rp)) += uintptr(8)
-	goto _0
+	_1___clz_x = _u
+	_1___clz_c = 0
 _1:
-	*_rp = -(*_up)
-	Xmpn_com(tls, preInc0(&_rp, 8), preInc0(&_up, 8), preInc1(&_n, -1))
-	return uint64(1)
+	if (_1___clz_x & uint64(18374686479671623680)) != (0) {
+		goto _4
+	}
+	_1___clz_x <<= 8
+	_1___clz_c += uint32(8)
+	goto _1
+_4:
+	if (_1___clz_x & uint64(9223372036854775808)) != (0) {
+		goto _8
+	}
+	_1___clz_x <<= 1
+	_1___clz_c += 1
+	goto _4
+_8:
+	_shift = _1___clz_c
+	return uint64(64) - uint64(_shift)
+}
+
+func _mpn_div_qr_1_invert(tls *crt.TLS, _inv *Tgmp_div_inverse, _d uint64) {
+	var _shift, _1___clz_c uint32
+	var _1___clz_x uint64
+
+	_1___clz_x = _d
+	_1___clz_c = 0
+_1:
+	if (_1___clz_x & uint64(18374686479671623680)) != (0) {
+		goto _4
+	}
+	_1___clz_x <<= 8
+	_1___clz_c += uint32(8)
+	goto _1
+_4:
+	if (_1___clz_x & uint64(9223372036854775808)) != (0) {
+		goto _8
+	}
+	_1___clz_x <<= 1
+	_1___clz_c += 1
+	goto _4
+_8:
+	_shift = _1___clz_c
+	_inv.Xshift = _shift
+	_inv.Xd1 = _d << uint(int32(_shift))
+	_inv.Xdi = Xmpn_invert_3by2(tls, _inv.Xd1, 0)
 }
 
 // C comment
@@ -956,211 +1111,6 @@ _5:
 	return _m
 }
 
-func Xmpn_get_str(tls *crt.TLS, _sp *uint8, _base int32, _up *uint64, _un int64) (r0 uint64) {
-	var _bits uint32
-	var _1_info Tmpn_base_info
-
-	_bits = _mpn_base_power_of_two_p(tls, uint32(_base))
-	if _bits != 0 {
-		return _mpn_get_str_bits(tls, _sp, _bits, _up, _un)
-	}
-	_mpn_get_base_info(tls, &_1_info, uint64(_base))
-	return _mpn_get_str_other(tls, _sp, _base, &_1_info, _up, _un)
-}
-
-// C comment
-//  /* MPN base conversion. */
-func _mpn_base_power_of_two_p(tls *crt.TLS, _b uint32) (r0 uint32) {
-	switch _b {
-	case uint32(2):
-		goto _1
-	case uint32(4):
-		goto _2
-	case uint32(8):
-		goto _3
-	case uint32(16):
-		goto _4
-	case uint32(32):
-		goto _5
-	case uint32(64):
-		goto _6
-	case uint32(128):
-		goto _7
-	case uint32(256):
-		goto _8
-	default:
-		goto _9
-	}
-
-_1:
-	return uint32(1)
-
-_2:
-	return uint32(2)
-
-_3:
-	return uint32(3)
-
-_4:
-	return uint32(4)
-
-_5:
-	return uint32(5)
-
-_6:
-	return uint32(6)
-
-_7:
-	return uint32(7)
-
-_8:
-	return uint32(8)
-
-_9:
-	return 0
-}
-
-func _mpn_get_str_bits(tls *crt.TLS, _sp *uint8, _bits uint32, _up *uint64, _un int64) (r0 uint64) {
-	var _i int64
-	var _shift uint32
-	var _sn, _j uint64
-	var _mask, _1_digit uint8
-	_sn = ((((uint64(_un-int64(1)) * uint64(64)) + _mpn_limb_size_in_base_2(tls, *elem0(_up, uintptr(_un-int64(1))))) + uint64(_bits)) - uint64(1)) / uint64(_bits)
-	_mask = uint8((uint32(1) << uint(int32(_bits))) - uint32(1))
-	*func() *uint32 { *func() *uint64 { _i = 0; return &_j }() = _sn; return &_shift }() = 0
-_0:
-	if postInc2(&_j, uint64(18446744073709551615)) <= (0) {
-		goto _3
-	}
-	_1_digit = uint8((*elem0(_up, uintptr(_i))) >> uint(int32(_shift)))
-	_shift += _bits
-	if (uint64(_shift) >= uint64(64)) && (preInc1(&_i, 1) < _un) {
-		{
-			p := &_shift
-			*p = uint32(uint64(*p) - uint64(64))
-		}
-		{
-			p := &_1_digit
-			*p = uint8(uint64(*p) | ((*elem0(_up, uintptr(_i))) << uint(int32(_bits-_shift))))
-		}
-	}
-	*elem3(_sp, uintptr(_j)) = uint8(int32(_1_digit) & int32(_mask))
-	goto _0
-_3:
-	return _sn
-}
-
-func _mpn_limb_size_in_base_2(tls *crt.TLS, _u uint64) (r0 uint64) {
-	var _shift, _1___clz_c uint32
-	var _1___clz_x uint64
-
-	_1___clz_x = _u
-	_1___clz_c = 0
-_1:
-	if (_1___clz_x & uint64(18374686479671623680)) != (0) {
-		goto _4
-	}
-	_1___clz_x <<= 8
-	_1___clz_c += uint32(8)
-	goto _1
-_4:
-	if (_1___clz_x & uint64(9223372036854775808)) != (0) {
-		goto _8
-	}
-	_1___clz_x <<= 1
-	_1___clz_c += 1
-	goto _4
-_8:
-	_shift = _1___clz_c
-	return uint64(64) - uint64(_shift)
-}
-
-func _mpn_get_base_info(tls *crt.TLS, _info *Tmpn_base_info, _b uint64) {
-	var _exp uint32
-	var _m, _p uint64
-	_m = uint64(18446744073709551615) / _b
-	*func() *uint64 { _exp = uint32(1); return &_p }() = _b
-_0:
-	if _p > _m {
-		goto _3
-	}
-	_p *= _b
-	_exp += 1
-	goto _0
-_3:
-	_info.Xexp = _exp
-	_info.Xbb = _p
-}
-
-func _mpn_get_str_other(tls *crt.TLS, _sp *uint8, _base int32, _info *Tmpn_base_info, _up *uint64, _un int64) (r0 uint64) {
-	var _sn, _i, _2_w, _2_done uint64
-	var _3_t uint8
-	var _binv, _1_bbinv Tgmp_div_inverse
-	_mpn_div_qr_1_invert(tls, &_binv, uint64(_base))
-	_sn = 0
-	if _un <= int64(1) {
-		goto _0
-	}
-	_mpn_div_qr_1_invert(tls, &_1_bbinv, _info.Xbb)
-_1:
-	_2_w = _mpn_div_qr_1_preinv(tls, _up, _up, _un, &_1_bbinv)
-	_un -= int64(bool2int((*elem0(_up, uintptr(_un-int64(1)))) == (0)))
-	_2_done = _mpn_limb_get_str(tls, (*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(_sp))+uintptr(_sn))), _2_w, &_binv)
-	_sn += _2_done
-_2:
-	if _2_done >= uint64(_info.Xexp) {
-		goto _5
-	}
-	*elem3(_sp, uintptr(postInc2(&_sn, uint64(1)))) = 0
-	_2_done += 1
-	goto _2
-_5:
-	if _un > int64(1) {
-		goto _1
-	}
-_0:
-	_sn += _mpn_limb_get_str(tls, (*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(_sp))+uintptr(_sn))), *elem0(_up, 0), &_binv)
-	_i = 0
-_6:
-	if ((uint64(2) * _i) + uint64(1)) >= _sn {
-		goto _9
-	}
-	_3_t = *elem3(_sp, uintptr(_i))
-	*elem3(_sp, uintptr(_i)) = *elem3(_sp, uintptr((_sn-_i)-uint64(1)))
-	*elem3(_sp, uintptr((_sn-_i)-uint64(1))) = _3_t
-	_i += 1
-	goto _6
-_9:
-	return _sn
-}
-
-func _mpn_div_qr_1_invert(tls *crt.TLS, _inv *Tgmp_div_inverse, _d uint64) {
-	var _shift, _1___clz_c uint32
-	var _1___clz_x uint64
-
-	_1___clz_x = _d
-	_1___clz_c = 0
-_1:
-	if (_1___clz_x & uint64(18374686479671623680)) != (0) {
-		goto _4
-	}
-	_1___clz_x <<= 8
-	_1___clz_c += uint32(8)
-	goto _1
-_4:
-	if (_1___clz_x & uint64(9223372036854775808)) != (0) {
-		goto _8
-	}
-	_1___clz_x <<= 1
-	_1___clz_c += 1
-	goto _4
-_8:
-	_shift = _1___clz_c
-	_inv.Xshift = _shift
-	_inv.Xd1 = _d << uint(int32(_shift))
-	_inv.Xdi = Xmpn_invert_3by2(tls, _inv.Xd1, 0)
-}
-
 // C comment
 //  /* Not matching current public gmp interface, rather corresponding to
 //     the sbpi1_div_* functions. */
@@ -1224,642 +1174,25 @@ _3:
 	return _r >> uint(int32(_inv.Xshift))
 }
 
-func _gmp_xalloc_limbs(tls *crt.TLS, _size int64) (r0 *uint64) {
-	return (*uint64)(_gmp_allocate_func(tls, uint64(_size)*uint64(8)))
-}
+func Xmpn_lshift(tls *crt.TLS, _rp *uint64, _up *uint64, _n int64, _cnt uint32) (r0 uint64) {
+	var _tnc uint32
+	var _high_limb, _low_limb, _retval uint64
 
-// C comment
-//  /* We generate digits from the least significant end, and reverse at
-//     the end. */
-func _mpn_limb_get_str(tls *crt.TLS, _sp *uint8, _w uint64, _binv *Tgmp_div_inverse) (r0 uint64) {
-	var _i int64
-	var _3___ul, _3___vl, _3___uh, _3___vh uint32
-	var _1_h, _1_l, _1_r, _2__qh, _2__ql, _2__r, _2__mask, _3___x0, _3___x1, _3___x2, _3___x3, _3___u, _3___v, _4___x uint64
-	_i = 0
+	*(*uintptr)(unsafe.Pointer(&_up)) += 8 * uintptr(_n)
+	*(*uintptr)(unsafe.Pointer(&_rp)) += 8 * uintptr(_n)
+	_tnc = uint32(uint64(64) - uint64(_cnt))
+	_low_limb = *preInc0(&_up, -8)
+	_retval = _low_limb >> uint(int32(_tnc))
+	_high_limb = _low_limb << uint(int32(_cnt))
 _0:
-	if _w <= (0) {
-		goto _3
-	}
-	_1_h = _w >> uint(int32(uint64(64)-uint64(_binv.Xshift)))
-	_1_l = _w << uint(int32(_binv.Xshift))
-	_3___u = _1_h
-	_3___v = _binv.Xdi
-	_3___ul = uint32(_3___u & uint64(4294967295))
-	_3___uh = uint32(_3___u >> 32)
-	_3___vl = uint32(_3___v & uint64(4294967295))
-	_3___vh = uint32(_3___v >> 32)
-	_3___x0 = uint64(_3___ul) * uint64(_3___vl)
-	_3___x1 = uint64(_3___ul) * uint64(_3___vh)
-	_3___x2 = uint64(_3___uh) * uint64(_3___vl)
-	_3___x3 = uint64(_3___uh) * uint64(_3___vh)
-	_3___x1 += _3___x0 >> 32
-	_3___x1 += _3___x2
-	if _3___x1 < _3___x2 {
-		_3___x3 += uint64(4294967296)
-	}
-	_2__qh = _3___x3 + (_3___x1 >> 32)
-	_2__ql = (_3___x1 << 32) + (_3___x0 & uint64(4294967295))
-	_4___x = _2__ql + _1_l
-	_2__qh = (_2__qh + (_1_h + uint64(1))) + uint64(bool2int(_4___x < _2__ql))
-	_2__ql = _4___x
-	_2__r = _1_l - (_2__qh * _binv.Xd1)
-	_2__mask = -uint64(bool2int(_2__r > _2__ql))
-	_2__qh += _2__mask
-	_2__r += _2__mask & _binv.Xd1
-	if _2__r >= _binv.Xd1 {
-		_2__r -= _binv.Xd1
-		_2__qh += 1
-	}
-	_1_r = _2__r
-	_w = _2__qh
-
-	_1_r >>= uint(int32(_binv.Xshift))
-	*elem3(_sp, uintptr(_i)) = uint8(_1_r)
-	_i += 1
-	goto _0
-_3:
-	return uint64(_i)
-}
-
-func Xmpn_set_str(tls *crt.TLS, _rp *uint64, _sp *uint8, _sn uint64, _base int32) (r0 int64) {
-	var _bits uint32
-	var _1_info Tmpn_base_info
-	if _sn == (0) {
-		return 0
-	}
-	_bits = _mpn_base_power_of_two_p(tls, uint32(_base))
-	if _bits != 0 {
-		return _mpn_set_str_bits(tls, _rp, _sp, _sn, _bits)
-	}
-	_mpn_get_base_info(tls, &_1_info, uint64(_base))
-	return _mpn_set_str_other(tls, _rp, _sp, _sn, uint64(_base), &_1_info)
-}
-
-func _mpn_set_str_bits(tls *crt.TLS, _rp *uint64, _sp *uint8, _sn uint64, _bits uint32) (r0 int64) {
-	var _rn int64
-	var _shift uint32
-	var _j uint64
-	*func() *uint32 { *func() *int64 { _j = _sn; return &_rn }() = 0; return &_shift }() = 0
-_0:
-	if postInc2(&_j, uint64(18446744073709551615)) <= (0) {
-		goto _3
-	}
-	if _shift == (0) {
-		*elem0(_rp, uintptr(postInc1(&_rn, 1))) = uint64(*elem3(_sp, uintptr(_j)))
-		_shift += _bits
-		goto _5
-	}
-	*elem0(_rp, uintptr(_rn-int64(1))) |= uint64(*elem3(_sp, uintptr(_j))) << uint(int32(_shift))
-	_shift += _bits
-	if uint64(_shift) < uint64(64) {
-		goto _6
-	}
-	{
-		p := &_shift
-		*p = uint32(uint64(*p) - uint64(64))
-	}
-	if _shift > (0) {
-		*elem0(_rp, uintptr(postInc1(&_rn, 1))) = uint64(*elem3(_sp, uintptr(_j))) >> uint(int32(_bits-_shift))
-	}
-_6:
-_5:
-	goto _0
-_3:
-	_rn = _mpn_normalized_size(tls, _rp, _rn)
-	return _rn
-}
-
-// C comment
-//  /* Result is usually normalized, except for all-zero input, in which
-//     case a single zero limb is written at *RP, and 1 is returned. */
-func _mpn_set_str_other(tls *crt.TLS, _rp *uint64, _sp *uint8, _sn uint64, _b uint64, _info *Tmpn_base_info) (r0 int64) {
-	var _rn int64
-	var _k uint32
-	var _w, _j, _1_cy uint64
-
-	_k = uint32(uint64(1) + ((_sn - uint64(1)) % uint64(_info.Xexp)))
-	_j = 0
-	_w = uint64(*elem3(_sp, uintptr(postInc2(&_j, uint64(1)))))
-_0:
-	if preInc4(&_k, uint32(4294967295)) != (0) {
-		_w = (_w * _b) + uint64(*elem3(_sp, uintptr(postInc2(&_j, uint64(1)))))
+	if preInc1(&_n, -1) != (0) {
+		_low_limb = *preInc0(&_up, -8)
+		*preInc0(&_rp, -8) = _high_limb | (_low_limb >> uint(int32(_tnc)))
+		_high_limb = _low_limb << uint(int32(_cnt))
 		goto _0
 	}
-	*elem0(_rp, 0) = _w
-	_rn = int64(1)
-_2:
-	if _j >= _sn {
-		goto _5
-	}
-	_w = uint64(*elem3(_sp, uintptr(postInc2(&_j, uint64(1)))))
-	_k = uint32(1)
-_6:
-	if _k >= _info.Xexp {
-		goto _9
-	}
-	_w = (_w * _b) + uint64(*elem3(_sp, uintptr(postInc2(&_j, uint64(1)))))
-	_k += 1
-	goto _6
-_9:
-	_1_cy = Xmpn_mul_1(tls, _rp, _rp, _rn, _info.Xbb)
-	_1_cy += Xmpn_add_1(tls, _rp, _rp, _rn, _w)
-	if _1_cy > (0) {
-		*elem0(_rp, uintptr(postInc1(&_rn, 1))) = _1_cy
-	}
-	goto _2
-_5:
-	return _rn
-}
-
-// C comment
-//  /* MPZ interface */
-func Xmpz_init(tls *crt.TLS, _r *[1]Xmpz_srcptr) {
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc = int32(0)
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d = &_mpz_initØ00dummy_limbØ001
-}
-
-var _mpz_initØ00dummy_limbØ001 uint64
-
-func init() {
-	_mpz_initØ00dummy_limbØ001 = uint64(49568)
-}
-
-// C comment
-//  /* The utility of this function is a bit limited, since many functions
-//     assigns the result variable using mpz_swap. */
-func Xmpz_init2(tls *crt.TLS, _r *[1]Xmpz_srcptr, _bits uint64) {
-	var _rn int64
-	_bits -= uint64(bool2int(_bits != (0)))
-	_rn = int64(uint64(1) + (_bits / uint64(64)))
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc = int32(_rn)
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d = _gmp_xalloc_limbs(tls, _rn)
-}
-
-func Xmpz_clear(tls *crt.TLS, _r *[1]Xmpz_srcptr) {
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) != 0 {
-		_gmp_free_func(tls, unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d), 0)
-	}
-}
-
-// C comment
-//  /* MPZ assignment and basic conversions. */
-func Xmpz_set_si(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x int64) {
-	if _x >= (0) {
-		Xmpz_set_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), uint64(_x))
-		goto _1
-	}
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(-1)
-	*elem0(func() *uint64 {
-		if int32(1) > ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), int64(1))
-		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
-	}(), 0) = -(uint64(_x+int64(1)) - uint64(1))
-_1:
-}
-
-func Xmpz_set_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x uint64) {
-	if _x > (0) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(1)
-		*elem0(func() *uint64 {
-			if int32(1) > ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-				return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), int64(1))
-			}
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
-		}(), 0) = _x
-		goto _3
-	}
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
-_3:
-}
-
-func _mpz_realloc(tls *crt.TLS, _r *[1]Xmpz_srcptr, _size int64) (r0 *uint64) {
-	_size = func() int64 {
-		if _size > int64(1) {
-			return _size
-		}
-		return int64(1)
-	}()
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) != 0 {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d = _gmp_xrealloc_limbs(tls, (*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d, _size)
-		goto _3
-	}
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d = _gmp_xalloc_limbs(tls, _size)
-_3:
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc = int32(_size)
-	if int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size)
-		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size))
-	}()) > _size {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
-	}
-	return (*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d
-}
-
-func _gmp_xrealloc_limbs(tls *crt.TLS, _old *uint64, _size int64) (r0 *uint64) {
-	return (*uint64)(_gmp_reallocate_func(tls, unsafe.Pointer(_old), 0, uint64(_size)*uint64(8)))
-}
-
-func Xmpz_set(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x *[1]Xmpz_srcptr) {
-	var _1_n int64
-	var _1_rp *uint64
-	if (*Xmpz_srcptr)(unsafe.Pointer(_r)) != (*Xmpz_srcptr)(unsafe.Pointer(_x)) {
-		_1_n = int64(func() int32 {
-			if ((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_size) >= int32(0) {
-				return ((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_size)
-			}
-			return (-((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_size))
-		}())
-		_1_rp = func() *uint64 {
-			if _1_n > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-				return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _1_n)
-			}
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
-		}()
-		Xmpn_copyi(tls, _1_rp, (*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_d, _1_n)
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = (*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_size
-	}
-}
-
-func Xmpz_init_set_si(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x int64) {
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
-	Xmpz_set_si(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _x)
-}
-
-func Xmpz_init_set_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x uint64) {
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
-	Xmpz_set_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _x)
-}
-
-func Xmpz_init_set(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x *[1]Xmpz_srcptr) {
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
-	Xmpz_set(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))))
-}
-
-func Xmpz_fits_slong_p(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 int32) {
-	var _us int64
-	_us = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-	if _us == int64(1) {
-		return bool2int((*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, 0)) < uint64(9223372036854775808))
-	}
-	if _us == int64(-1) {
-		return bool2int((*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, 0)) <= uint64(9223372036854775808))
-	}
-	return bool2int(_us == (0))
-}
-
-func Xmpz_fits_ulong_p(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 int32) {
-	var _us int64
-	_us = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-	return bool2int(_us == int64(bool2int(_us > (0))))
-}
-
-func Xmpz_get_si(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 int64) {
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) < int32(0) {
-		return int64(-1) - int64(((*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, 0))-uint64(1))&uint64(9223372036854775807))
-	}
-	return int64(Xmpz_get_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u))))) & uint64(9223372036854775807))
-}
-
-func Xmpz_get_ui(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 uint64) {
-	return func() uint64 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) == int32(0) {
-			return (0)
-		}
-		return (*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, 0))
-	}()
-}
-
-func Xmpz_size(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 uint64) {
-	return uint64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
-	}())
-}
-
-func Xmpz_getlimbn(tls *crt.TLS, _u *[1]Xmpz_srcptr, _n int64) (r0 uint64) {
-	if (_n >= (0)) && (_n < int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
-	}())) {
-		return *elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, uintptr(_n))
-	}
-	return 0
-}
-
-func Xmpz_realloc2(tls *crt.TLS, _x *[1]Xmpz_srcptr, _n uint64) {
-	_mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), int64(uint64(1)+((_n-uint64(bool2int(_n != (0))))/uint64(64))))
-}
-
-func Xmpz_limbs_read(tls *crt.TLS, _x *Xmpz_srcptr) (r0 *uint64) {
-	return _x.X_mp_d
-}
-
-func Xmpz_limbs_modify(tls *crt.TLS, _x *[1]Xmpz_srcptr, _n int64) (r0 *uint64) {
-	return func() *uint64 {
-		if _n > int64((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), _n)
-		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_d)
-	}()
-}
-
-func Xmpz_limbs_write(tls *crt.TLS, _x *[1]Xmpz_srcptr, _n int64) (r0 *uint64) {
-	return Xmpz_limbs_modify(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), _n)
-}
-
-func Xmpz_limbs_finish(tls *crt.TLS, _x *[1]Xmpz_srcptr, _xs int64) {
-	var _xn int64
-	_xn = _mpn_normalized_size(tls, (*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_d, func() int64 {
-		if _xs >= (0) {
-			return _xs
-		}
-		return (-_xs)
-	}())
-	(*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_size = int32(func() int64 {
-		if _xs < (0) {
-			return (-_xn)
-		}
-		return _xn
-	}())
-}
-
-func Xmpz_roinit_n(tls *crt.TLS, _x *[1]Xmpz_srcptr, _xp *uint64, _xs int64) (r0 *Xmpz_srcptr) {
-	(*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_alloc = int32(0)
-	(*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_d = _xp
-	Xmpz_limbs_finish(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), _xs)
-	return (*Xmpz_srcptr)(unsafe.Pointer(_x))
-}
-
-// C comment
-//  /* Conversions and comparison to double. */
-func Xmpz_set_d(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x float64) {
-	var _sign int32
-	var _rn, _i int64
-	var _f uint64
-	var _B, _Bi float64
-	var _rp *uint64
-	if (_x != _x) || (_x == (_x * (0.5))) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
-		return
-	}
-	_sign = bool2int(_x < float64(0))
-	if _sign != 0 {
-		_x = -_x
-	}
-	if _x < float64(1) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
-		return
-	}
-	_B = 1.8446744073709552e+19
-	_Bi = float64(1) / _B
-	_rn = int64(1)
-_4:
-	if _x < _B {
-		goto _7
-	}
-	_x *= _Bi
-	_rn += 1
-	goto _4
-_7:
-	_rp = func() *uint64 {
-		if _rn > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _rn)
-		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
-	}()
-	_f = uint64(_x)
-	_x -= float64(_f)
-
-	_i = _rn - int64(1)
-	*elem0(_rp, uintptr(_i)) = _f
-_10:
-	if preInc1(&_i, -1) >= (0) {
-		_x = _B * _x
-		_f = uint64(_x)
-		_x -= float64(_f)
-
-		*elem0(_rp, uintptr(_i)) = _f
-		goto _10
-	}
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(func() int64 {
-		if _sign != 0 {
-			return (-_rn)
-		}
-		return _rn
-	}())
-}
-
-func Xmpz_init_set_d(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x float64) {
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
-	Xmpz_set_d(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _x)
-}
-
-func Xmpz_get_d(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 float64) {
-	var _un int64
-	var _x, _B float64
-	_B = 1.8446744073709552e+19
-	_un = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
-	}())
-	if _un == (0) {
-		return float64(0)
-	}
-	_x = float64(*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, uintptr(preInc1(&_un, -1))))
-_3:
-	if _un > (0) {
-		_x = (_B * _x) + float64(*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, uintptr(preInc1(&_un, -1))))
-		goto _3
-	}
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) < int32(0) {
-		_x = -_x
-	}
-	return _x
-}
-
-func Xmpz_cmpabs_d(tls *crt.TLS, _x *[1]Xmpz_srcptr, _d float64) (r0 int32) {
-	var _xn, _i int64
-	var _2_f, _2_xl uint64
-	var _B, _Bi float64
-	_xn = int64((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_size)
-	_d = func() float64 {
-		if _d >= (0) {
-			return _d
-		}
-		return (-_d)
-	}()
-	if _xn == (0) {
-		goto _2
-	}
-	_xn = func() int64 {
-		if _xn >= (0) {
-			return _xn
-		}
-		return (-_xn)
-	}()
-	_B = 1.8446744073709552e+19
-	_Bi = float64(1) / _B
-	_i = int64(1)
-_5:
-	if _i >= _xn {
-		goto _8
-	}
-	_d *= _Bi
-	_i += 1
-	goto _5
-_8:
-	if _d >= _B {
-		return int32(-1)
-	}
-	_i = _xn
-_10:
-	if postInc1(&_i, -1) <= (0) {
-		goto _13
-	}
-	_2_f = uint64(_d)
-	_2_xl = *elem0((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_d, uintptr(_i))
-	if _2_xl > _2_f {
-		return int32(1)
-	}
-	if _2_xl < _2_f {
-		return int32(-1)
-	}
-	_d = _B * (_d - float64(_2_f))
-	goto _10
-_13:
-_2:
-	return -bool2int(_d > float64(0))
-}
-
-func Xmpz_cmp_d(tls *crt.TLS, _x *[1]Xmpz_srcptr, _d float64) (r0 int32) {
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_size) >= int32(0) {
-		goto _0
-	}
-	if _d >= float64(0) {
-		return int32(-1)
-	}
-	return -Xmpz_cmpabs_d(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), _d)
-
-_0:
-	if _d < float64(0) {
-		return int32(1)
-	}
-	return Xmpz_cmpabs_d(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), _d)
-}
-
-// C comment
-//  /* MPZ comparisons and the like. */
-func Xmpz_sgn(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 int32) {
-	return bool2int(((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) > int32(0)) - bool2int(((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) < int32(0))
-}
-
-func Xmpz_cmp_si(tls *crt.TLS, _u *[1]Xmpz_srcptr, _v int64) (r0 int32) {
-	var _usize int64
-	_usize = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-	if _usize < int64(-1) {
-		return int32(-1)
-	}
-	if _v >= (0) {
-		return Xmpz_cmp_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), uint64(_v))
-	}
-	if _usize >= (0) {
-		return int32(1)
-	}
-	return bool2int((-(uint64(_v+int64(1)) - uint64(1))) > (*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, 0))) - bool2int((-(uint64(_v+int64(1)) - uint64(1))) < (*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, 0)))
-}
-
-func Xmpz_cmp_ui(tls *crt.TLS, _u *[1]Xmpz_srcptr, _v uint64) (r0 int32) {
-	var _usize int64
-	_usize = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-	if _usize > int64(1) {
-		return int32(1)
-	}
-	if _usize < (0) {
-		return int32(-1)
-	}
-	return bool2int(Xmpz_get_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u))))) > _v) - bool2int(Xmpz_get_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u))))) < _v)
-}
-
-func Xmpz_cmp(tls *crt.TLS, _a *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr) (r0 int32) {
-	var _asize, _bsize int64
-	_asize = int64((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size)
-	_bsize = int64((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size)
-	if _asize != _bsize {
-		return func() int32 {
-			if _asize < _bsize {
-				return int32(-1)
-			}
-			return int32(1)
-		}()
-	}
-	if _asize >= (0) {
-		return Xmpn_cmp(tls, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, (*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_d, _asize)
-	}
-	return Xmpn_cmp(tls, (*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_d, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, -_asize)
-}
-
-func Xmpz_cmpabs_ui(tls *crt.TLS, _u *[1]Xmpz_srcptr, _v uint64) (r0 int32) {
-	if func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
-	}() > int32(1) {
-		return int32(1)
-	}
-	return bool2int(Xmpz_get_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u))))) > _v) - bool2int(Xmpz_get_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u))))) < _v)
-}
-
-func Xmpz_cmpabs(tls *crt.TLS, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) (r0 int32) {
-	return _mpn_cmp4(tls, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
-	}()), (*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_d, int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size)
-		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size))
-	}()))
-}
-
-func _mpn_cmp4(tls *crt.TLS, _ap *uint64, _an int64, _bp *uint64, _bn int64) (r0 int32) {
-	if _an != _bn {
-		return func() int32 {
-			if _an < _bn {
-				return int32(-1)
-			}
-			return int32(1)
-		}()
-	}
-	return Xmpn_cmp(tls, _ap, _bp, _an)
-}
-
-func Xmpz_abs(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr) {
-	Xmpz_set(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))))
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size)
-		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size))
-	}()
-}
-
-func Xmpz_neg(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr) {
-	Xmpz_set(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))))
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = -((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size)
+	*preInc0(&_rp, -8) = _high_limb
+	return _retval
 }
 
 func Xmpz_swap(tls *crt.TLS, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) {
@@ -1876,406 +1209,8 @@ func Xmpz_swap(tls *crt.TLS, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) {
 	(*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_d = _3___mp_ptr_swap__tmp
 }
 
-func Xmpz_add_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b uint64) {
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) >= int32(0) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(_mpz_abs_add_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), _b))
-		goto _1
-	}
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(-_mpz_abs_sub_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), _b))
-_1:
-}
-
-// C comment
-//  /* Adds to the absolute value. Returns new size, but doesn't store it. */
-func _mpz_abs_add_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b uint64) (r0 int64) {
-	var _an int64
-	var _cy uint64
-	var _rp *uint64
-	_an = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size)
-		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size))
-	}())
-	if _an == (0) {
-		*elem0(func() *uint64 {
-			if int32(1) > ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-				return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), int64(1))
-			}
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
-		}(), 0) = _b
-		return int64(bool2int(_b > (0)))
-	}
-	_rp = func() *uint64 {
-		if (_an + int64(1)) > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _an+int64(1))
-		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
-	}()
-	_cy = Xmpn_add_1(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, _an, _b)
-	*elem0(_rp, uintptr(_an)) = _cy
-	{
-		p := &_an
-		*p = int64(uint64(*p) + _cy)
-	}
-	return _an
-}
-
-// C comment
-//  /* Subtract from the absolute value. Returns new size, (or -1 on underflow),
-//     but doesn't store it. */
-func _mpz_abs_sub_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b uint64) (r0 int64) {
-	var _an int64
-	var _4___cy uint64
-	var _rp *uint64
-	_an = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size)
-		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size))
-	}())
-	if _an == (0) {
-		*elem0(func() *uint64 {
-			if int32(1) > ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-				return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), int64(1))
-			}
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
-		}(), 0) = _b
-		return int64(-bool2int(_b > (0)))
-	}
-	_rp = func() *uint64 {
-		if _an > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _an)
-		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
-	}()
-	if (_an == int64(1)) && ((*elem0((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, 0)) < _b) {
-		*elem0(_rp, 0) = _b - (*elem0((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, 0))
-		return int64(-1)
-	}
-	_4___cy = Xmpn_sub_1(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, _an, _b)
-	return _mpn_normalized_size(tls, _rp, _an)
-
-	_ = _4___cy
-	panic(0)
-}
-
-func Xmpz_sub_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b uint64) {
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) < int32(0) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(-_mpz_abs_add_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), _b))
-		goto _1
-	}
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(_mpz_abs_sub_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), _b))
-_1:
-}
-
-func Xmpz_ui_sub(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a uint64, _b *[1]Xmpz_srcptr) {
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size) < int32(0) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(_mpz_abs_add_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))), _a))
-		goto _1
-	}
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(-_mpz_abs_sub_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))), _a))
-_1:
-}
-
-func Xmpz_add(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr) {
-	var _rn int64
-	if (((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) ^ ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size)) >= int32(0) {
-		_rn = _mpz_abs_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))))
-		goto _1
-	}
-	_rn = _mpz_abs_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))))
-_1:
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(func() int64 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) >= int32(0) {
-			return _rn
-		}
-		return (-_rn)
-	}())
-}
-
-func _mpz_abs_add(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr) (r0 int64) {
-	var _2_abc, _2_def, _2_ghi int32
-	var _an, _bn, _3___mp_size_t_swap__tmp int64
-	var _cy uint64
-	var _rp *uint64
-	var _2___mpz_srcptr_swap__tmp *Xmpz_srcptr
-	_an = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size)
-		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size))
-	}())
-	_bn = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size)
-		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size))
-	}())
-	if _an >= _bn {
-		goto _4
-	}
-	_2___mpz_srcptr_swap__tmp = (*Xmpz_srcptr)(unsafe.Pointer(_a))
-	_2_abc = int32(111)
-	_a = (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b))))
-	_2_def = int32(222)
-	_b = (*[1]Xmpz_srcptr)(unsafe.Pointer(_2___mpz_srcptr_swap__tmp))
-	_2_ghi = int32(333)
-	_3___mp_size_t_swap__tmp = _an
-	_an = _bn
-	_bn = _3___mp_size_t_swap__tmp
-_4:
-	_rp = func() *uint64 {
-		if (_an + int64(1)) > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _an+int64(1))
-		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
-	}()
-	_cy = Xmpn_add(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, _an, (*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_d, _bn)
-	*elem0(_rp, uintptr(_an)) = _cy
-	return int64(uint64(_an) + _cy)
-
-	_ = _2_abc
-	_ = _2_def
-	_ = _2_ghi
-	panic(0)
-}
-
-func _mpz_abs_sub(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr) (r0 int64) {
-	var _cmp int32
-	var _an, _bn int64
-	var _2___cy, _4___cy uint64
-	var _rp *uint64
-	_an = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size)
-		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size))
-	}())
-	_bn = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size)
-		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size))
-	}())
-	_cmp = _mpn_cmp4(tls, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, _an, (*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_d, _bn)
-	if _cmp <= int32(0) {
-		goto _4
-	}
-	_rp = func() *uint64 {
-		if _an > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _an)
-		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
-	}()
-	_2___cy = Xmpn_sub(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, _an, (*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_d, _bn)
-	return _mpn_normalized_size(tls, _rp, _an)
-
-_4:
-	if _cmp >= int32(0) {
-		goto _9
-	}
-	_rp = func() *uint64 {
-		if _bn > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _bn)
-		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
-	}()
-	_4___cy = Xmpn_sub(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_d, _bn, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, _an)
-	return -_mpn_normalized_size(tls, _rp, _bn)
-
-_9:
-	return 0
-
-	_ = _2___cy
-	_ = _4___cy
-	panic(0)
-}
-
-func Xmpz_sub(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr) {
-	var _rn int64
-	if (((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) ^ ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size)) >= int32(0) {
-		_rn = _mpz_abs_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))))
-		goto _1
-	}
-	_rn = _mpz_abs_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))))
-_1:
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(func() int64 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) >= int32(0) {
-			return _rn
-		}
-		return (-_rn)
-	}())
-}
-
-// C comment
-//  /* MPZ multiplication */
-func Xmpz_mul_si(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v int64) {
-	if _v < (0) {
-		Xmpz_mul_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), -(uint64(_v+int64(1)) - uint64(1)))
-		Xmpz_neg(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
-		goto _1
-	}
-	Xmpz_mul_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), uint64(_v))
-_1:
-}
-
-func Xmpz_mul_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v uint64) {
-	var _un, _us int64
-	var _cy uint64
-	var _tp *uint64
-	_us = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-	if (_us == (0)) || (_v == (0)) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
-		return
-	}
-	_un = func() int64 {
-		if _us >= (0) {
-			return _us
-		}
-		return (-_us)
-	}()
-	_tp = func() *uint64 {
-		if (_un + int64(1)) > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _un+int64(1))
-		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
-	}()
-	_cy = Xmpn_mul_1(tls, _tp, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un, _v)
-	*elem0(_tp, uintptr(_un)) = _cy
-	_un += int64(bool2int(_cy > (0)))
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(func() int64 {
-		if _us < (0) {
-			return (-_un)
-		}
-		return _un
-	}())
-}
-
-func Xmpz_mul(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) {
-	var _sign int32
-	var _un, _vn, _rn int64
-	var _tp *uint64
-	var _t [1]Xmpz_srcptr
-	_un = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-	_vn = int64((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size)
-	if (_un == (0)) || (_vn == (0)) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
-		return
-	}
-	_sign = bool2int((_un ^ _vn) < (0))
-	_un = func() int64 {
-		if _un >= (0) {
-			return _un
-		}
-		return (-_un)
-	}()
-	_vn = func() int64 {
-		if _vn >= (0) {
-			return _vn
-		}
-		return (-_vn)
-	}()
-	Xmpz_init2(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), uint64(_un+_vn)*uint64(64))
-	_tp = (*Xmpz_srcptr)(unsafe.Pointer(&_t)).X_mp_d
-	if _un >= _vn {
-		Xmpn_mul(tls, _tp, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un, (*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_d, _vn)
-		goto _7
-	}
-	Xmpn_mul(tls, _tp, (*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_d, _vn, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un)
-_7:
-	_rn = _un + _vn
-	_rn -= int64(bool2int((*elem0(_tp, uintptr(_rn-int64(1)))) == (0)))
-	(*Xmpz_srcptr)(unsafe.Pointer(&_t)).X_mp_size = int32(func() int64 {
-		if _sign != 0 {
-			return (-_rn)
-		}
-		return _rn
-	}())
-	Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	_ = _t
-}
-
-func Xmpz_mul_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _bits uint64) {
-	var _un, _rn, _limbs int64
-	var _shift uint32
-	var _2_cy uint64
-	var _rp *uint64
-	_un = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
-	}())
-	if _un == (0) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
-		return
-	}
-	_limbs = int64(_bits / uint64(64))
-	_shift = uint32(_bits % uint64(64))
-	_rn = (_un + _limbs) + int64(bool2int(_shift > (0)))
-	_rp = func() *uint64 {
-		if _rn > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _rn)
-		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
-	}()
-	if _shift > (0) {
-		_2_cy = Xmpn_lshift(tls, (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_rp))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limbs)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un, _shift)
-		*elem0(_rp, uintptr(_rn-int64(1))) = _2_cy
-		_rn -= int64(bool2int(_2_cy == (0)))
-		goto _6
-	}
-	Xmpn_copyd(tls, (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_rp))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limbs)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un)
-_6:
-	Xmpn_zero(tls, _rp, _limbs)
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(func() int64 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) < int32(0) {
-			return (-_rn)
-		}
-		return _rn
-	}())
-}
-
-func Xmpz_addmul_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v uint64) {
-	var _t [1]Xmpz_srcptr
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_mul_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _v)
-	Xmpz_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	_ = _t
-}
-
-func Xmpz_submul_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v uint64) {
-	var _t [1]Xmpz_srcptr
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_mul_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _v)
-	Xmpz_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	_ = _t
-}
-
-func Xmpz_addmul(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) {
-	var _t [1]Xmpz_srcptr
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_mul(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_v)))))
-	Xmpz_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	_ = _t
-}
-
-func Xmpz_submul(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) {
-	var _t [1]Xmpz_srcptr
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_mul(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_v)))))
-	Xmpz_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	_ = _t
-}
-
-func Xmpz_cdiv_qr(tls *crt.TLS, _q *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
-	_mpz_div_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(1))
+func Xmpz_tdiv_q(tls *crt.TLS, _q *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
+	_mpz_div_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(2))
 }
 
 // C comment
@@ -2287,7 +1222,7 @@ func _mpz_div_qr(tls *crt.TLS, _q *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _n *[1]Xm
 	_ns = int64((*Xmpz_srcptr)(unsafe.Pointer(_n)).X_mp_size)
 	_ds = int64((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size)
 	if _ds == (0) {
-		_gmp_die(tls, str(96))
+		_gmp_die(tls, str(170))
 	}
 	if _ns != (0) {
 		goto _1
@@ -2410,6 +1345,197 @@ _37:
 	_ = _6_tq
 	_ = _6_tr
 	panic(0)
+}
+
+func Xmpz_sub(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr) {
+	var _rn int64
+	if (((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) ^ ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size)) >= int32(0) {
+		_rn = _mpz_abs_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))))
+		goto _1
+	}
+	_rn = _mpz_abs_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))))
+_1:
+	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(func() int64 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) >= int32(0) {
+			return _rn
+		}
+		return (-_rn)
+	}())
+}
+
+func _mpz_abs_sub(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr) (r0 int64) {
+	var _cmp int32
+	var _an, _bn int64
+	var _2___cy, _4___cy uint64
+	var _rp *uint64
+	_an = int64(func() int32 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) >= int32(0) {
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size)
+		}
+		return (-((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size))
+	}())
+	_bn = int64(func() int32 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size) >= int32(0) {
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size)
+		}
+		return (-((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size))
+	}())
+	_cmp = _mpn_cmp4(tls, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, _an, (*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_d, _bn)
+	if _cmp <= int32(0) {
+		goto _4
+	}
+	_rp = func() *uint64 {
+		if _an > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
+			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _an)
+		}
+		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+	}()
+	_2___cy = Xmpn_sub(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, _an, (*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_d, _bn)
+	return _mpn_normalized_size(tls, _rp, _an)
+
+_4:
+	if _cmp >= int32(0) {
+		goto _9
+	}
+	_rp = func() *uint64 {
+		if _bn > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
+			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _bn)
+		}
+		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+	}()
+	_4___cy = Xmpn_sub(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_d, _bn, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, _an)
+	return -_mpn_normalized_size(tls, _rp, _bn)
+
+_9:
+	return 0
+
+	_ = _2___cy
+	_ = _4___cy
+	panic(0)
+}
+
+func _mpn_cmp4(tls *crt.TLS, _ap *uint64, _an int64, _bp *uint64, _bn int64) (r0 int32) {
+	if _an != _bn {
+		return func() int32 {
+			if _an < _bn {
+				return int32(-1)
+			}
+			return int32(1)
+		}()
+	}
+	return Xmpn_cmp(tls, _ap, _bp, _an)
+}
+
+func _mpz_abs_add(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr) (r0 int64) {
+	var _2_abc, _2_def, _2_ghi int32
+	var _an, _bn, _3___mp_size_t_swap__tmp int64
+	var _cy uint64
+	var _rp *uint64
+	var _2___mpz_srcptr_swap__tmp *Xmpz_srcptr
+	_an = int64(func() int32 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) >= int32(0) {
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size)
+		}
+		return (-((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size))
+	}())
+	_bn = int64(func() int32 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size) >= int32(0) {
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size)
+		}
+		return (-((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size))
+	}())
+	if _an >= _bn {
+		goto _4
+	}
+	_2___mpz_srcptr_swap__tmp = (*Xmpz_srcptr)(unsafe.Pointer(_a))
+	_2_abc = int32(111)
+	_a = (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b))))
+	_2_def = int32(222)
+	_b = (*[1]Xmpz_srcptr)(unsafe.Pointer(_2___mpz_srcptr_swap__tmp))
+	_2_ghi = int32(333)
+	_3___mp_size_t_swap__tmp = _an
+	_an = _bn
+	_bn = _3___mp_size_t_swap__tmp
+_4:
+	_rp = func() *uint64 {
+		if (_an + int64(1)) > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
+			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _an+int64(1))
+		}
+		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+	}()
+	_cy = Xmpn_add(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, _an, (*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_d, _bn)
+	*elem0(_rp, uintptr(_an)) = _cy
+	return int64(uint64(_an) + _cy)
+
+	_ = _2_abc
+	_ = _2_def
+	_ = _2_ghi
+	panic(0)
+}
+
+func Xmpz_set_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x uint64) {
+	if _x > (0) {
+		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(1)
+		*elem0(func() *uint64 {
+			if int32(1) > ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
+				return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), int64(1))
+			}
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+		}(), 0) = _x
+		goto _3
+	}
+	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+_3:
+}
+
+func Xmpz_add(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr) {
+	var _rn int64
+	if (((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) ^ ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size)) >= int32(0) {
+		_rn = _mpz_abs_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))))
+		goto _1
+	}
+	_rn = _mpz_abs_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))))
+_1:
+	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(func() int64 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) >= int32(0) {
+			return _rn
+		}
+		return (-_rn)
+	}())
+}
+
+// C comment
+//  /* MPZ assignment and basic conversions. */
+func Xmpz_set_si(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x int64) {
+	if _x >= (0) {
+		Xmpz_set_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), uint64(_x))
+		goto _1
+	}
+	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(-1)
+	*elem0(func() *uint64 {
+		if int32(1) > ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
+			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), int64(1))
+		}
+		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+	}(), 0) = -(uint64(_x+int64(1)) - uint64(1))
+_1:
+}
+
+func Xmpz_init_set(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x *[1]Xmpz_srcptr) {
+	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
+	Xmpz_set(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))))
+}
+
+// C comment
+//  /* The utility of this function is a bit limited, since many functions
+//     assigns the result variable using mpz_swap. */
+func Xmpz_init2(tls *crt.TLS, _r *[1]Xmpz_srcptr, _bits uint64) {
+	var _rn int64
+	_bits -= uint64(bool2int(_bits != (0)))
+	_rn = int64(uint64(1) + (_bits / uint64(64)))
+	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc = int32(_rn)
+	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d = _gmp_xalloc_limbs(tls, _rn)
 }
 
 func _mpn_div_qr(tls *crt.TLS, _qp *uint64, _np *uint64, _nn int64, _dp *uint64, _dn int64) {
@@ -2739,49 +1865,126 @@ _3:
 	*elem0(_np, uintptr(_dn-int64(1))) = _n1
 }
 
-func Xmpz_fdiv_qr(tls *crt.TLS, _q *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
-	_mpz_div_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(0))
+func Xmpn_rshift(tls *crt.TLS, _rp *uint64, _up *uint64, _n int64, _cnt uint32) (r0 uint64) {
+	var _tnc uint32
+	var _high_limb, _low_limb, _retval uint64
+
+	_tnc = uint32(uint64(64) - uint64(_cnt))
+	_high_limb = *postInc0(&_up, 8)
+	_retval = _high_limb << uint(int32(_tnc))
+	_low_limb = _high_limb >> uint(int32(_cnt))
+_0:
+	if preInc1(&_n, -1) != (0) {
+		_high_limb = *postInc0(&_up, 8)
+		*postInc0(&_rp, 8) = _low_limb | (_high_limb << uint(int32(_tnc)))
+		_low_limb = _high_limb >> uint(int32(_cnt))
+		goto _0
+	}
+	*_rp = _low_limb
+	return _retval
 }
 
-func Xmpz_tdiv_qr(tls *crt.TLS, _q *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
-	_mpz_div_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(2))
+func Xmpz_sub_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b uint64) {
+	if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) < int32(0) {
+		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(-_mpz_abs_add_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), _b))
+		goto _1
+	}
+	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(_mpz_abs_sub_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), _b))
+_1:
 }
 
-func Xmpz_cdiv_q(tls *crt.TLS, _q *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
-	_mpz_div_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(1))
-}
-
-func Xmpz_fdiv_q(tls *crt.TLS, _q *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
-	_mpz_div_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(0))
-}
-
-func Xmpz_tdiv_q(tls *crt.TLS, _q *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
-	_mpz_div_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(2))
-}
-
-func Xmpz_cdiv_r(tls *crt.TLS, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
-	_mpz_div_qr(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(1))
-}
-
-func Xmpz_fdiv_r(tls *crt.TLS, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
-	_mpz_div_qr(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(0))
-}
-
-func Xmpz_tdiv_r(tls *crt.TLS, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
-	_mpz_div_qr(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(2))
-}
-
-func Xmpz_mod(tls *crt.TLS, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
-	_mpz_div_qr(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size) >= int32(0) {
-			return int32(0)
+// C comment
+//  /* Adds to the absolute value. Returns new size, but doesn't store it. */
+func _mpz_abs_add_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b uint64) (r0 int64) {
+	var _an int64
+	var _cy uint64
+	var _rp *uint64
+	_an = int64(func() int32 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) >= int32(0) {
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size)
 		}
-		return int32(1)
+		return (-((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size))
 	}())
+	if _an == (0) {
+		*elem0(func() *uint64 {
+			if int32(1) > ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
+				return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), int64(1))
+			}
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+		}(), 0) = _b
+		return int64(bool2int(_b > (0)))
+	}
+	_rp = func() *uint64 {
+		if (_an + int64(1)) > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
+			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _an+int64(1))
+		}
+		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+	}()
+	_cy = Xmpn_add_1(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, _an, _b)
+	*elem0(_rp, uintptr(_an)) = _cy
+	{
+		p := &_an
+		*p = int64(uint64(*p) + _cy)
+	}
+	return _an
 }
 
-func Xmpz_cdiv_q_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _cnt uint64) {
-	_mpz_div_q_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _cnt, int32(1))
+// C comment
+//  /* Subtract from the absolute value. Returns new size, (or -1 on underflow),
+//     but doesn't store it. */
+func _mpz_abs_sub_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b uint64) (r0 int64) {
+	var _an int64
+	var _4___cy uint64
+	var _rp *uint64
+	_an = int64(func() int32 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) >= int32(0) {
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size)
+		}
+		return (-((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size))
+	}())
+	if _an == (0) {
+		*elem0(func() *uint64 {
+			if int32(1) > ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
+				return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), int64(1))
+			}
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+		}(), 0) = _b
+		return int64(-bool2int(_b > (0)))
+	}
+	_rp = func() *uint64 {
+		if _an > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
+			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _an)
+		}
+		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+	}()
+	if (_an == int64(1)) && ((*elem0((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, 0)) < _b) {
+		*elem0(_rp, 0) = _b - (*elem0((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, 0))
+		return int64(-1)
+	}
+	_4___cy = Xmpn_sub_1(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, _an, _b)
+	return _mpn_normalized_size(tls, _rp, _an)
+
+	_ = _4___cy
+	panic(0)
+}
+
+func Xmpz_add_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b uint64) {
+	if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) >= int32(0) {
+		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(_mpz_abs_add_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), _b))
+		goto _1
+	}
+	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(-_mpz_abs_sub_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), _b))
+_1:
+}
+
+func Xmpz_clear(tls *crt.TLS, _r *[1]Xmpz_srcptr) {
+	if ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) != 0 {
+		_gmp_free_func(tls, unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d), 0)
+	}
+}
+
+func Xmpz_tdiv_q_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _cnt uint64) {
+	_mpz_div_q_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _cnt, int32(2))
 }
 
 func _mpz_div_q_2exp(tls *crt.TLS, _q *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _bit_index uint64, _mode int32) {
@@ -2839,137 +2042,128 @@ _10:
 	}
 }
 
-func Xmpz_fdiv_q_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _cnt uint64) {
-	_mpz_div_q_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _cnt, int32(0))
+func Xmpz_neg(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr) {
+	Xmpz_set(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))))
+	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = -((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size)
 }
 
-func Xmpz_tdiv_q_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _cnt uint64) {
-	_mpz_div_q_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _cnt, int32(2))
+func Xmpz_cmpabs(tls *crt.TLS, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) (r0 int32) {
+	return _mpn_cmp4(tls, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, int64(func() int32 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+		}
+		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
+	}()), (*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_d, int64(func() int32 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size) >= int32(0) {
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size)
+		}
+		return (-((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size))
+	}()))
 }
 
-func Xmpz_cdiv_r_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _cnt uint64) {
-	_mpz_div_r_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _cnt, int32(1))
+func Xmpz_pow_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr, _e uint64) {
+	var _bit uint64
+	var _tr [1]Xmpz_srcptr
+	Xmpz_init_set_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), uint64(1))
+	_bit = uint64(9223372036854775808)
+_0:
+	Xmpz_mul(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))))
+	if (_e & _bit) != 0 {
+		Xmpz_mul(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))))
+	}
+	_bit >>= 1
+	if _bit > (0) {
+		goto _0
+	}
+	Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))))
+	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))))
+	_ = _tr
 }
 
-func _mpz_div_r_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _bit_index uint64, _mode int32) {
-	var _us, _un, _rn, _3_i int64
-	var _mask, _4___cy uint64
-	var _rp *uint64
-	_us = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-	if (_us == (0)) || (_bit_index == (0)) {
+func Xmpz_init_set_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x uint64) {
+	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
+	Xmpz_set_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _x)
+}
+
+func Xmpz_mul(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) {
+	var _sign int32
+	var _un, _vn, _rn int64
+	var _tp *uint64
+	var _t [1]Xmpz_srcptr
+	_un = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+	_vn = int64((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size)
+	if (_un == (0)) || (_vn == (0)) {
 		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
 		return
 	}
-	_rn = int64(((_bit_index + uint64(64)) - uint64(1)) / uint64(64))
-
-	_rp = func() *uint64 {
-		if _rn > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _rn)
+	_sign = bool2int((_un ^ _vn) < (0))
+	_un = func() int64 {
+		if _un >= (0) {
+			return _un
 		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+		return (-_un)
 	}()
+	_vn = func() int64 {
+		if _vn >= (0) {
+			return _vn
+		}
+		return (-_vn)
+	}()
+	Xmpz_init2(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), uint64(_un+_vn)*uint64(64))
+	_tp = (*Xmpz_srcptr)(unsafe.Pointer(&_t)).X_mp_d
+	if _un >= _vn {
+		Xmpn_mul(tls, _tp, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un, (*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_d, _vn)
+		goto _7
+	}
+	Xmpn_mul(tls, _tp, (*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_d, _vn, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un)
+_7:
+	_rn = _un + _vn
+	_rn -= int64(bool2int((*elem0(_tp, uintptr(_rn-int64(1)))) == (0)))
+	(*Xmpz_srcptr)(unsafe.Pointer(&_t)).X_mp_size = int32(func() int64 {
+		if _sign != 0 {
+			return (-_rn)
+		}
+		return _rn
+	}())
+	Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	_ = _t
+}
+
+func Xmpz_mul_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v uint64) {
+	var _un, _us int64
+	var _cy uint64
+	var _tp *uint64
+	_us = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+	if (_us == (0)) || (_v == (0)) {
+		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+		return
+	}
 	_un = func() int64 {
 		if _us >= (0) {
 			return _us
 		}
 		return (-_us)
 	}()
-	_mask = uint64(18446744073709551615) >> uint(int32((uint64(_rn)*uint64(64))-_bit_index))
-	if _rn <= _un {
-		goto _6
-	}
-	if _mode != func() int32 {
-		if _us > (0) {
-			return int32(1)
+	_tp = func() *uint64 {
+		if (_un + int64(1)) > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
+			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _un+int64(1))
 		}
-		return int32(0)
-	}() {
-		goto _9
-	}
-	_4___cy = uint64(bool2int(Xmpn_neg(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un) == 0))
-
-	_3_i = _un
-_11:
-	if _3_i >= (_rn - int64(1)) {
-		goto _14
-	}
-	*elem0(_rp, uintptr(_3_i)) = uint64(18446744073709551615)
-	_3_i += 1
-	goto _11
-_14:
-	*elem0(_rp, uintptr(_rn-int64(1))) = _mask
-	_us = -_us
-	goto _15
-_9:
-	if (*Xmpz_srcptr)(unsafe.Pointer(_r)) != (*Xmpz_srcptr)(unsafe.Pointer(_u)) {
-		Xmpn_copyi(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un)
-	}
-	_rn = _un
-_15:
-	goto _17
-_6:
-	if (*Xmpz_srcptr)(unsafe.Pointer(_r)) != (*Xmpz_srcptr)(unsafe.Pointer(_u)) {
-		Xmpn_copyi(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _rn-int64(1))
-	}
-	*elem0(_rp, uintptr(_rn-int64(1))) = (*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, uintptr(_rn-int64(1)))) & _mask
-	if _mode == func() int32 {
-		if _us > (0) {
-			return int32(1)
-		}
-		return int32(0)
-	}() {
-		Xmpn_neg(tls, _rp, _rp, _rn)
-		*elem0(_rp, uintptr(_rn-int64(1))) &= _mask
-		_us = -_us
-	}
-_17:
-	_rn = _mpn_normalized_size(tls, _rp, _rn)
+		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+	}()
+	_cy = Xmpn_mul_1(tls, _tp, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un, _v)
+	*elem0(_tp, uintptr(_un)) = _cy
+	_un += int64(bool2int(_cy > (0)))
 	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(func() int64 {
 		if _us < (0) {
-			return (-_rn)
+			return (-_un)
 		}
-		return _rn
+		return _un
 	}())
-	_ = _4___cy
 }
 
-func Xmpz_fdiv_r_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _cnt uint64) {
-	_mpz_div_r_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _cnt, int32(0))
-}
-
-func Xmpz_tdiv_r_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _cnt uint64) {
-	_mpz_div_r_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _cnt, int32(2))
-}
-
-func Xmpz_divexact(tls *crt.TLS, _q *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
-	var _1___cy uint64
-	_1___cy = uint64(_mpz_div_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(2)))
-
-	_ = _1___cy
-}
-
-func Xmpz_divisible_p(tls *crt.TLS, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) (r0 int32) {
-	return bool2int(_mpz_div_qr(tls, nil, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(2)) == int32(0))
-}
-
-func Xmpz_congruent_p(tls *crt.TLS, _a *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr, _m *[1]Xmpz_srcptr) (r0 int32) {
-	var _res int32
-	var _t [1]Xmpz_srcptr
-	if Xmpz_sgn(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_m))))) == int32(0) {
-		return bool2int(Xmpz_cmp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b))))) == int32(0))
-	}
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))))
-	_res = Xmpz_divisible_p(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_m)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	return _res
-
-	_ = _t
-	panic(0)
-}
-
-func Xmpz_cdiv_qr_ui(tls *crt.TLS, _q *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d uint64) (r0 uint64) {
-	return _mpz_div_qr_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), _d, int32(1))
+func Xmpz_tdiv_q_ui(tls *crt.TLS, _q *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d uint64) (r0 uint64) {
+	return _mpz_div_qr_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), _d, int32(2))
 }
 
 func _mpz_div_qr_ui(tls *crt.TLS, _q *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d uint64, _mode int32) (r0 uint64) {
@@ -3099,6 +2293,866 @@ _0:
 	return _mpn_div_qr_1_preinv(tls, _qp, _np, _nn, &_6_inv)
 }
 
+func Xmpz_roinit_n(tls *crt.TLS, _x *[1]Xmpz_srcptr, _xp *uint64, _xs int64) (r0 *Xmpz_srcptr) {
+	(*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_alloc = int32(0)
+	(*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_d = _xp
+	Xmpz_limbs_finish(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), _xs)
+	return (*Xmpz_srcptr)(unsafe.Pointer(_x))
+}
+
+func Xmpz_limbs_finish(tls *crt.TLS, _x *[1]Xmpz_srcptr, _xs int64) {
+	var _xn int64
+	_xn = _mpn_normalized_size(tls, (*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_d, func() int64 {
+		if _xs >= (0) {
+			return _xs
+		}
+		return (-_xs)
+	}())
+	(*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_size = int32(func() int64 {
+		if _xs < (0) {
+			return (-_xn)
+		}
+		return _xn
+	}())
+}
+
+func Xmpn_sqrtrem(tls *crt.TLS, _sp *uint64, _rp *uint64, _p *uint64, _n int64) (r0 int64) {
+	var _res int64
+	var _s, _r, _u [1]Xmpz_srcptr
+
+	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_r)))))
+	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s)))))
+	Xmpz_rootrem(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer(Xmpz_roinit_n(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))), _p, _n))), uint64(2))
+
+	Xmpn_copyd(tls, _sp, (*Xmpz_srcptr)(unsafe.Pointer(&_s)).X_mp_d, int64((*Xmpz_srcptr)(unsafe.Pointer(&_s)).X_mp_size))
+	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s)))))
+	_res = int64((*Xmpz_srcptr)(unsafe.Pointer(&_r)).X_mp_size)
+	if _rp != nil {
+		Xmpn_copyd(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(&_r)).X_mp_d, _res)
+	}
+	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_r)))))
+	return _res
+
+	_ = _s
+	_ = _r
+	_ = _u
+	panic(0)
+}
+
+func Xmpn_scan0(tls *crt.TLS, _ptr *uint64, _bit uint64) (r0 uint64) {
+	var _i int64
+	_i = int64(_bit / uint64(64))
+	return _mpn_common_scan(tls, (^(*elem0(_ptr, uintptr(_i))))&(uint64(18446744073709551615)<<uint(int32(_bit%uint64(64)))), _i, _ptr, _i, uint64(18446744073709551615))
+}
+
+func _mpn_common_scan(tls *crt.TLS, _limb uint64, _i int64, _up *uint64, _un int64, _ux uint64) (r0 uint64) {
+	var _cnt, _2___ctz_c, _3___clz_c uint32
+	var _2___ctz_x, _3___clz_x uint64
+
+_0:
+	if _limb != (0) {
+		goto _1
+	}
+	_i += 1
+	if _i == _un {
+		return func() uint64 {
+			if _ux == (0) {
+				return uint64(18446744073709551615)
+			}
+			return (uint64(_un) * uint64(64))
+		}()
+	}
+	_limb = _ux ^ (*elem0(_up, uintptr(_i)))
+	goto _0
+_1:
+	_2___ctz_x = _limb
+	_2___ctz_c = 0
+	_3___clz_x = _2___ctz_x & (-_2___ctz_x)
+	_3___clz_c = 0
+_7:
+	if (_3___clz_x & uint64(18374686479671623680)) != (0) {
+		goto _10
+	}
+	_3___clz_x <<= 8
+	_3___clz_c += uint32(8)
+	goto _7
+_10:
+	if (_3___clz_x & uint64(9223372036854775808)) != (0) {
+		goto _14
+	}
+	_3___clz_x <<= 1
+	_3___clz_c += 1
+	goto _10
+_14:
+	_2___ctz_c = _3___clz_c
+	_cnt = uint32(uint64(63) - uint64(_2___ctz_c))
+	return (uint64(_i) * uint64(64)) + uint64(_cnt)
+}
+
+func Xmpn_scan1(tls *crt.TLS, _ptr *uint64, _bit uint64) (r0 uint64) {
+	var _i int64
+	_i = int64(_bit / uint64(64))
+	return _mpn_common_scan(tls, (*elem0(_ptr, uintptr(_i)))&(uint64(18446744073709551615)<<uint(int32(_bit%uint64(64)))), _i, _ptr, _i, 0)
+}
+
+func Xmpn_com(tls *crt.TLS, _rp *uint64, _up *uint64, _n int64) {
+_0:
+	if preInc1(&_n, -1) >= (0) {
+		*postInc0(&_rp, 8) = ^(*postInc0(&_up, 8))
+		goto _0
+	}
+}
+
+func Xmpn_neg(tls *crt.TLS, _rp *uint64, _up *uint64, _n int64) (r0 uint64) {
+_0:
+	if (*_up) != (0) {
+		goto _1
+	}
+	*_rp = 0
+	if preInc1(&_n, -1) == 0 {
+		return 0
+	}
+	*(*uintptr)(unsafe.Pointer(&_up)) += uintptr(8)
+	*(*uintptr)(unsafe.Pointer(&_rp)) += uintptr(8)
+	goto _0
+_1:
+	*_rp = -(*_up)
+	Xmpn_com(tls, preInc0(&_rp, 8), preInc0(&_up, 8), preInc1(&_n, -1))
+	return uint64(1)
+}
+
+func Xmpn_popcount(tls *crt.TLS, _p *uint64, _n int64) (r0 uint64) {
+	var _i int64
+	var _c uint64
+	*func() *int64 { _c = 0; return &_i }() = 0
+_0:
+	if _i >= _n {
+		goto _3
+	}
+	_c += uint64(_gmp_popcount_limb(tls, *elem0(_p, uintptr(_i))))
+	_i += 1
+	goto _0
+_3:
+	return _c
+}
+
+func _gmp_popcount_limb(tls *crt.TLS, _x uint64) (r0 uint32) {
+	var _c, _1_w uint32
+	_c = 0
+_0:
+	if _x <= (0) {
+		goto _3
+	}
+	_1_w = uint32(((_x >> 1) & uint64(21845)) + (_x & uint64(21845)))
+	_1_w = ((_1_w >> 2) & uint32(13107)) + (_1_w & uint32(13107))
+	_1_w = ((_1_w >> 4) & uint32(3855)) + (_1_w & uint32(3855))
+	_1_w = (_1_w >> 8) + (_1_w & uint32(255))
+	_c += _1_w
+	_x >>= 16
+	goto _0
+_3:
+	return _c
+}
+
+func Xmpn_get_str(tls *crt.TLS, _sp *uint8, _base int32, _up *uint64, _un int64) (r0 uint64) {
+	var _bits uint32
+	var _1_info Tmpn_base_info
+
+	_bits = _mpn_base_power_of_two_p(tls, uint32(_base))
+	if _bits != 0 {
+		return _mpn_get_str_bits(tls, _sp, _bits, _up, _un)
+	}
+	_mpn_get_base_info(tls, &_1_info, uint64(_base))
+	return _mpn_get_str_other(tls, _sp, _base, &_1_info, _up, _un)
+}
+
+// C comment
+//  /* MPN base conversion. */
+func _mpn_base_power_of_two_p(tls *crt.TLS, _b uint32) (r0 uint32) {
+	switch _b {
+	case uint32(2):
+		goto _1
+	case uint32(4):
+		goto _2
+	case uint32(8):
+		goto _3
+	case uint32(16):
+		goto _4
+	case uint32(32):
+		goto _5
+	case uint32(64):
+		goto _6
+	case uint32(128):
+		goto _7
+	case uint32(256):
+		goto _8
+	default:
+		goto _9
+	}
+
+_1:
+	return uint32(1)
+
+_2:
+	return uint32(2)
+
+_3:
+	return uint32(3)
+
+_4:
+	return uint32(4)
+
+_5:
+	return uint32(5)
+
+_6:
+	return uint32(6)
+
+_7:
+	return uint32(7)
+
+_8:
+	return uint32(8)
+
+_9:
+	return 0
+}
+
+func _mpn_get_str_bits(tls *crt.TLS, _sp *uint8, _bits uint32, _up *uint64, _un int64) (r0 uint64) {
+	var _i int64
+	var _shift uint32
+	var _sn, _j uint64
+	var _mask, _1_digit uint8
+	_sn = ((((uint64(_un-int64(1)) * uint64(64)) + _mpn_limb_size_in_base_2(tls, *elem0(_up, uintptr(_un-int64(1))))) + uint64(_bits)) - uint64(1)) / uint64(_bits)
+	_mask = uint8((uint32(1) << uint(int32(_bits))) - uint32(1))
+	*func() *uint32 { *func() *uint64 { _i = 0; return &_j }() = _sn; return &_shift }() = 0
+_0:
+	if postInc2(&_j, uint64(18446744073709551615)) <= (0) {
+		goto _3
+	}
+	_1_digit = uint8((*elem0(_up, uintptr(_i))) >> uint(int32(_shift)))
+	_shift += _bits
+	if (uint64(_shift) >= uint64(64)) && (preInc1(&_i, 1) < _un) {
+		{
+			p := &_shift
+			*p = uint32(uint64(*p) - uint64(64))
+		}
+		{
+			p := &_1_digit
+			*p = uint8(uint64(*p) | ((*elem0(_up, uintptr(_i))) << uint(int32(_bits-_shift))))
+		}
+	}
+	*elem3(_sp, uintptr(_j)) = uint8(int32(_1_digit) & int32(_mask))
+	goto _0
+_3:
+	return _sn
+}
+
+func _mpn_get_base_info(tls *crt.TLS, _info *Tmpn_base_info, _b uint64) {
+	var _exp uint32
+	var _m, _p uint64
+	_m = uint64(18446744073709551615) / _b
+	*func() *uint64 { _exp = uint32(1); return &_p }() = _b
+_0:
+	if _p > _m {
+		goto _3
+	}
+	_p *= _b
+	_exp += 1
+	goto _0
+_3:
+	_info.Xexp = _exp
+	_info.Xbb = _p
+}
+
+func _mpn_get_str_other(tls *crt.TLS, _sp *uint8, _base int32, _info *Tmpn_base_info, _up *uint64, _un int64) (r0 uint64) {
+	var _sn, _i, _2_w, _2_done uint64
+	var _3_t uint8
+	var _binv, _1_bbinv Tgmp_div_inverse
+	_mpn_div_qr_1_invert(tls, &_binv, uint64(_base))
+	_sn = 0
+	if _un <= int64(1) {
+		goto _0
+	}
+	_mpn_div_qr_1_invert(tls, &_1_bbinv, _info.Xbb)
+_1:
+	_2_w = _mpn_div_qr_1_preinv(tls, _up, _up, _un, &_1_bbinv)
+	_un -= int64(bool2int((*elem0(_up, uintptr(_un-int64(1)))) == (0)))
+	_2_done = _mpn_limb_get_str(tls, (*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(_sp))+uintptr(_sn))), _2_w, &_binv)
+	_sn += _2_done
+_2:
+	if _2_done >= uint64(_info.Xexp) {
+		goto _5
+	}
+	*elem3(_sp, uintptr(postInc2(&_sn, uint64(1)))) = 0
+	_2_done += 1
+	goto _2
+_5:
+	if _un > int64(1) {
+		goto _1
+	}
+_0:
+	_sn += _mpn_limb_get_str(tls, (*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(_sp))+uintptr(_sn))), *elem0(_up, 0), &_binv)
+	_i = 0
+_6:
+	if ((uint64(2) * _i) + uint64(1)) >= _sn {
+		goto _9
+	}
+	_3_t = *elem3(_sp, uintptr(_i))
+	*elem3(_sp, uintptr(_i)) = *elem3(_sp, uintptr((_sn-_i)-uint64(1)))
+	*elem3(_sp, uintptr((_sn-_i)-uint64(1))) = _3_t
+	_i += 1
+	goto _6
+_9:
+	return _sn
+}
+
+// C comment
+//  /* We generate digits from the least significant end, and reverse at
+//     the end. */
+func _mpn_limb_get_str(tls *crt.TLS, _sp *uint8, _w uint64, _binv *Tgmp_div_inverse) (r0 uint64) {
+	var _i int64
+	var _3___ul, _3___vl, _3___uh, _3___vh uint32
+	var _1_h, _1_l, _1_r, _2__qh, _2__ql, _2__r, _2__mask, _3___x0, _3___x1, _3___x2, _3___x3, _3___u, _3___v, _4___x uint64
+	_i = 0
+_0:
+	if _w <= (0) {
+		goto _3
+	}
+	_1_h = _w >> uint(int32(uint64(64)-uint64(_binv.Xshift)))
+	_1_l = _w << uint(int32(_binv.Xshift))
+	_3___u = _1_h
+	_3___v = _binv.Xdi
+	_3___ul = uint32(_3___u & uint64(4294967295))
+	_3___uh = uint32(_3___u >> 32)
+	_3___vl = uint32(_3___v & uint64(4294967295))
+	_3___vh = uint32(_3___v >> 32)
+	_3___x0 = uint64(_3___ul) * uint64(_3___vl)
+	_3___x1 = uint64(_3___ul) * uint64(_3___vh)
+	_3___x2 = uint64(_3___uh) * uint64(_3___vl)
+	_3___x3 = uint64(_3___uh) * uint64(_3___vh)
+	_3___x1 += _3___x0 >> 32
+	_3___x1 += _3___x2
+	if _3___x1 < _3___x2 {
+		_3___x3 += uint64(4294967296)
+	}
+	_2__qh = _3___x3 + (_3___x1 >> 32)
+	_2__ql = (_3___x1 << 32) + (_3___x0 & uint64(4294967295))
+	_4___x = _2__ql + _1_l
+	_2__qh = (_2__qh + (_1_h + uint64(1))) + uint64(bool2int(_4___x < _2__ql))
+	_2__ql = _4___x
+	_2__r = _1_l - (_2__qh * _binv.Xd1)
+	_2__mask = -uint64(bool2int(_2__r > _2__ql))
+	_2__qh += _2__mask
+	_2__r += _2__mask & _binv.Xd1
+	if _2__r >= _binv.Xd1 {
+		_2__r -= _binv.Xd1
+		_2__qh += 1
+	}
+	_1_r = _2__r
+	_w = _2__qh
+
+	_1_r >>= uint(int32(_binv.Xshift))
+	*elem3(_sp, uintptr(_i)) = uint8(_1_r)
+	_i += 1
+	goto _0
+_3:
+	return uint64(_i)
+}
+
+func Xmpn_set_str(tls *crt.TLS, _rp *uint64, _sp *uint8, _sn uint64, _base int32) (r0 int64) {
+	var _bits uint32
+	var _1_info Tmpn_base_info
+	if _sn == (0) {
+		return 0
+	}
+	_bits = _mpn_base_power_of_two_p(tls, uint32(_base))
+	if _bits != 0 {
+		return _mpn_set_str_bits(tls, _rp, _sp, _sn, _bits)
+	}
+	_mpn_get_base_info(tls, &_1_info, uint64(_base))
+	return _mpn_set_str_other(tls, _rp, _sp, _sn, uint64(_base), &_1_info)
+}
+
+func _mpn_set_str_bits(tls *crt.TLS, _rp *uint64, _sp *uint8, _sn uint64, _bits uint32) (r0 int64) {
+	var _rn int64
+	var _shift uint32
+	var _j uint64
+	*func() *uint32 { *func() *int64 { _j = _sn; return &_rn }() = 0; return &_shift }() = 0
+_0:
+	if postInc2(&_j, uint64(18446744073709551615)) <= (0) {
+		goto _3
+	}
+	if _shift == (0) {
+		*elem0(_rp, uintptr(postInc1(&_rn, 1))) = uint64(*elem3(_sp, uintptr(_j)))
+		_shift += _bits
+		goto _5
+	}
+	*elem0(_rp, uintptr(_rn-int64(1))) |= uint64(*elem3(_sp, uintptr(_j))) << uint(int32(_shift))
+	_shift += _bits
+	if uint64(_shift) < uint64(64) {
+		goto _6
+	}
+	{
+		p := &_shift
+		*p = uint32(uint64(*p) - uint64(64))
+	}
+	if _shift > (0) {
+		*elem0(_rp, uintptr(postInc1(&_rn, 1))) = uint64(*elem3(_sp, uintptr(_j))) >> uint(int32(_bits-_shift))
+	}
+_6:
+_5:
+	goto _0
+_3:
+	_rn = _mpn_normalized_size(tls, _rp, _rn)
+	return _rn
+}
+
+// C comment
+//  /* Result is usually normalized, except for all-zero input, in which
+//     case a single zero limb is written at *RP, and 1 is returned. */
+func _mpn_set_str_other(tls *crt.TLS, _rp *uint64, _sp *uint8, _sn uint64, _b uint64, _info *Tmpn_base_info) (r0 int64) {
+	var _rn int64
+	var _k uint32
+	var _w, _j, _1_cy uint64
+
+	_k = uint32(uint64(1) + ((_sn - uint64(1)) % uint64(_info.Xexp)))
+	_j = 0
+	_w = uint64(*elem3(_sp, uintptr(postInc2(&_j, uint64(1)))))
+_0:
+	if preInc4(&_k, uint32(4294967295)) != (0) {
+		_w = (_w * _b) + uint64(*elem3(_sp, uintptr(postInc2(&_j, uint64(1)))))
+		goto _0
+	}
+	*elem0(_rp, 0) = _w
+	_rn = int64(1)
+_2:
+	if _j >= _sn {
+		goto _5
+	}
+	_w = uint64(*elem3(_sp, uintptr(postInc2(&_j, uint64(1)))))
+	_k = uint32(1)
+_6:
+	if _k >= _info.Xexp {
+		goto _9
+	}
+	_w = (_w * _b) + uint64(*elem3(_sp, uintptr(postInc2(&_j, uint64(1)))))
+	_k += 1
+	goto _6
+_9:
+	_1_cy = Xmpn_mul_1(tls, _rp, _rp, _rn, _info.Xbb)
+	_1_cy += Xmpn_add_1(tls, _rp, _rp, _rn, _w)
+	if _1_cy > (0) {
+		*elem0(_rp, uintptr(postInc1(&_rn, 1))) = _1_cy
+	}
+	goto _2
+_5:
+	return _rn
+}
+
+// C comment
+//  /* MPZ comparisons and the like. */
+func Xmpz_sgn(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 int32) {
+	return bool2int(((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) > int32(0)) - bool2int(((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) < int32(0))
+}
+
+func Xmpz_cmp_si(tls *crt.TLS, _u *[1]Xmpz_srcptr, _v int64) (r0 int32) {
+	var _usize int64
+	_usize = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+	if _usize < int64(-1) {
+		return int32(-1)
+	}
+	if _v >= (0) {
+		return Xmpz_cmp_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), uint64(_v))
+	}
+	if _usize >= (0) {
+		return int32(1)
+	}
+	return bool2int((-(uint64(_v+int64(1)) - uint64(1))) > (*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, 0))) - bool2int((-(uint64(_v+int64(1)) - uint64(1))) < (*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, 0)))
+}
+
+func Xmpz_cmp_ui(tls *crt.TLS, _u *[1]Xmpz_srcptr, _v uint64) (r0 int32) {
+	var _usize int64
+	_usize = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+	if _usize > int64(1) {
+		return int32(1)
+	}
+	if _usize < (0) {
+		return int32(-1)
+	}
+	return bool2int(Xmpz_get_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u))))) > _v) - bool2int(Xmpz_get_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u))))) < _v)
+}
+
+func Xmpz_cmp(tls *crt.TLS, _a *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr) (r0 int32) {
+	var _asize, _bsize int64
+	_asize = int64((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size)
+	_bsize = int64((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size)
+	if _asize != _bsize {
+		return func() int32 {
+			if _asize < _bsize {
+				return int32(-1)
+			}
+			return int32(1)
+		}()
+	}
+	if _asize >= (0) {
+		return Xmpn_cmp(tls, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, (*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_d, _asize)
+	}
+	return Xmpn_cmp(tls, (*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_d, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, -_asize)
+}
+
+func Xmpz_cmp_d(tls *crt.TLS, _x *[1]Xmpz_srcptr, _d float64) (r0 int32) {
+	if ((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_size) >= int32(0) {
+		goto _0
+	}
+	if _d >= float64(0) {
+		return int32(-1)
+	}
+	return -Xmpz_cmpabs_d(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), _d)
+
+_0:
+	if _d < float64(0) {
+		return int32(1)
+	}
+	return Xmpz_cmpabs_d(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), _d)
+}
+
+func Xmpz_cmpabs_d(tls *crt.TLS, _x *[1]Xmpz_srcptr, _d float64) (r0 int32) {
+	var _xn, _i int64
+	var _2_f, _2_xl uint64
+	var _B, _Bi float64
+	_xn = int64((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_size)
+	_d = func() float64 {
+		if _d >= (0) {
+			return _d
+		}
+		return (-_d)
+	}()
+	if _xn == (0) {
+		goto _2
+	}
+	_xn = func() int64 {
+		if _xn >= (0) {
+			return _xn
+		}
+		return (-_xn)
+	}()
+	_B = 1.8446744073709552e+19
+	_Bi = float64(1) / _B
+	_i = int64(1)
+_5:
+	if _i >= _xn {
+		goto _8
+	}
+	_d *= _Bi
+	_i += 1
+	goto _5
+_8:
+	if _d >= _B {
+		return int32(-1)
+	}
+	_i = _xn
+_10:
+	if postInc1(&_i, -1) <= (0) {
+		goto _13
+	}
+	_2_f = uint64(_d)
+	_2_xl = *elem0((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_d, uintptr(_i))
+	if _2_xl > _2_f {
+		return int32(1)
+	}
+	if _2_xl < _2_f {
+		return int32(-1)
+	}
+	_d = _B * (_d - float64(_2_f))
+	goto _10
+_13:
+_2:
+	return -bool2int(_d > float64(0))
+}
+
+func Xmpz_abs(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr) {
+	Xmpz_set(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))))
+	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = func() int32 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size) >= int32(0) {
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size)
+		}
+		return (-((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size))
+	}()
+}
+
+func Xmpz_ui_sub(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a uint64, _b *[1]Xmpz_srcptr) {
+	if ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size) < int32(0) {
+		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(_mpz_abs_add_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))), _a))
+		goto _1
+	}
+	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(-_mpz_abs_sub_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))), _a))
+_1:
+}
+
+// C comment
+//  /* MPZ multiplication */
+func Xmpz_mul_si(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v int64) {
+	if _v < (0) {
+		Xmpz_mul_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), -(uint64(_v+int64(1)) - uint64(1)))
+		Xmpz_neg(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
+		goto _1
+	}
+	Xmpz_mul_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), uint64(_v))
+_1:
+}
+
+func Xmpz_mul_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _bits uint64) {
+	var _un, _rn, _limbs int64
+	var _shift uint32
+	var _2_cy uint64
+	var _rp *uint64
+	_un = int64(func() int32 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+		}
+		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
+	}())
+	if _un == (0) {
+		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+		return
+	}
+	_limbs = int64(_bits / uint64(64))
+	_shift = uint32(_bits % uint64(64))
+	_rn = (_un + _limbs) + int64(bool2int(_shift > (0)))
+	_rp = func() *uint64 {
+		if _rn > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
+			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _rn)
+		}
+		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+	}()
+	if _shift > (0) {
+		_2_cy = Xmpn_lshift(tls, (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_rp))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limbs)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un, _shift)
+		*elem0(_rp, uintptr(_rn-int64(1))) = _2_cy
+		_rn -= int64(bool2int(_2_cy == (0)))
+		goto _6
+	}
+	Xmpn_copyd(tls, (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_rp))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limbs)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un)
+_6:
+	Xmpn_zero(tls, _rp, _limbs)
+	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(func() int64 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) < int32(0) {
+			return (-_rn)
+		}
+		return _rn
+	}())
+}
+
+func Xmpz_addmul_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v uint64) {
+	var _t [1]Xmpz_srcptr
+	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	Xmpz_mul_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _v)
+	Xmpz_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	_ = _t
+}
+
+func Xmpz_addmul(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) {
+	var _t [1]Xmpz_srcptr
+	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	Xmpz_mul(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_v)))))
+	Xmpz_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	_ = _t
+}
+
+func Xmpz_submul_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v uint64) {
+	var _t [1]Xmpz_srcptr
+	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	Xmpz_mul_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _v)
+	Xmpz_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	_ = _t
+}
+
+func Xmpz_submul(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) {
+	var _t [1]Xmpz_srcptr
+	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	Xmpz_mul(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_v)))))
+	Xmpz_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	_ = _t
+}
+
+func Xmpz_cdiv_qr(tls *crt.TLS, _q *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
+	_mpz_div_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(1))
+}
+
+func Xmpz_fdiv_qr(tls *crt.TLS, _q *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
+	_mpz_div_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(0))
+}
+
+func Xmpz_tdiv_qr(tls *crt.TLS, _q *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
+	_mpz_div_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(2))
+}
+
+func Xmpz_cdiv_q(tls *crt.TLS, _q *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
+	_mpz_div_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(1))
+}
+
+func Xmpz_fdiv_q(tls *crt.TLS, _q *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
+	_mpz_div_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(0))
+}
+
+func Xmpz_cdiv_r(tls *crt.TLS, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
+	_mpz_div_qr(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(1))
+}
+
+func Xmpz_fdiv_r(tls *crt.TLS, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
+	_mpz_div_qr(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(0))
+}
+
+func Xmpz_tdiv_r(tls *crt.TLS, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
+	_mpz_div_qr(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(2))
+}
+
+func Xmpz_cdiv_q_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _cnt uint64) {
+	_mpz_div_q_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _cnt, int32(1))
+}
+
+func Xmpz_fdiv_q_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _cnt uint64) {
+	_mpz_div_q_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _cnt, int32(0))
+}
+
+func Xmpz_cdiv_r_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _cnt uint64) {
+	_mpz_div_r_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _cnt, int32(1))
+}
+
+func _mpz_div_r_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _bit_index uint64, _mode int32) {
+	var _us, _un, _rn, _3_i int64
+	var _mask, _4___cy uint64
+	var _rp *uint64
+	_us = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+	if (_us == (0)) || (_bit_index == (0)) {
+		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+		return
+	}
+	_rn = int64(((_bit_index + uint64(64)) - uint64(1)) / uint64(64))
+
+	_rp = func() *uint64 {
+		if _rn > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
+			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _rn)
+		}
+		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+	}()
+	_un = func() int64 {
+		if _us >= (0) {
+			return _us
+		}
+		return (-_us)
+	}()
+	_mask = uint64(18446744073709551615) >> uint(int32((uint64(_rn)*uint64(64))-_bit_index))
+	if _rn <= _un {
+		goto _6
+	}
+	if _mode != func() int32 {
+		if _us > (0) {
+			return int32(1)
+		}
+		return int32(0)
+	}() {
+		goto _9
+	}
+	_4___cy = uint64(bool2int(Xmpn_neg(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un) == 0))
+
+	_3_i = _un
+_11:
+	if _3_i >= (_rn - int64(1)) {
+		goto _14
+	}
+	*elem0(_rp, uintptr(_3_i)) = uint64(18446744073709551615)
+	_3_i += 1
+	goto _11
+_14:
+	*elem0(_rp, uintptr(_rn-int64(1))) = _mask
+	_us = -_us
+	goto _15
+_9:
+	if (*Xmpz_srcptr)(unsafe.Pointer(_r)) != (*Xmpz_srcptr)(unsafe.Pointer(_u)) {
+		Xmpn_copyi(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un)
+	}
+	_rn = _un
+_15:
+	goto _17
+_6:
+	if (*Xmpz_srcptr)(unsafe.Pointer(_r)) != (*Xmpz_srcptr)(unsafe.Pointer(_u)) {
+		Xmpn_copyi(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _rn-int64(1))
+	}
+	*elem0(_rp, uintptr(_rn-int64(1))) = (*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, uintptr(_rn-int64(1)))) & _mask
+	if _mode == func() int32 {
+		if _us > (0) {
+			return int32(1)
+		}
+		return int32(0)
+	}() {
+		Xmpn_neg(tls, _rp, _rp, _rn)
+		*elem0(_rp, uintptr(_rn-int64(1))) &= _mask
+		_us = -_us
+	}
+_17:
+	_rn = _mpn_normalized_size(tls, _rp, _rn)
+	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(func() int64 {
+		if _us < (0) {
+			return (-_rn)
+		}
+		return _rn
+	}())
+	_ = _4___cy
+}
+
+func Xmpz_fdiv_r_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _cnt uint64) {
+	_mpz_div_r_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _cnt, int32(0))
+}
+
+func Xmpz_tdiv_r_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _cnt uint64) {
+	_mpz_div_r_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _cnt, int32(2))
+}
+
+func Xmpz_mod(tls *crt.TLS, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
+	_mpz_div_qr(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), func() int32 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size) >= int32(0) {
+			return int32(0)
+		}
+		return int32(1)
+	}())
+}
+
+func Xmpz_divexact(tls *crt.TLS, _q *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
+	var _1___cy uint64
+	_1___cy = uint64(_mpz_div_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(2)))
+
+	_ = _1___cy
+}
+
+func Xmpz_divisible_p(tls *crt.TLS, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) (r0 int32) {
+	return bool2int(_mpz_div_qr(tls, nil, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(2)) == int32(0))
+}
+
+func Xmpz_congruent_p(tls *crt.TLS, _a *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr, _m *[1]Xmpz_srcptr) (r0 int32) {
+	var _res int32
+	var _t [1]Xmpz_srcptr
+	if Xmpz_sgn(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_m))))) == int32(0) {
+		return bool2int(Xmpz_cmp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b))))) == int32(0))
+	}
+	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	Xmpz_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))))
+	_res = Xmpz_divisible_p(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_m)))))
+	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	return _res
+
+	_ = _t
+	panic(0)
+}
+
+func Xmpz_cdiv_qr_ui(tls *crt.TLS, _q *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d uint64) (r0 uint64) {
+	return _mpz_div_qr_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), _d, int32(1))
+}
+
 func Xmpz_fdiv_qr_ui(tls *crt.TLS, _q *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d uint64) (r0 uint64) {
 	return _mpz_div_qr_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), _d, int32(0))
 }
@@ -3113,10 +3167,6 @@ func Xmpz_cdiv_q_ui(tls *crt.TLS, _q *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d uin
 
 func Xmpz_fdiv_q_ui(tls *crt.TLS, _q *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d uint64) (r0 uint64) {
 	return _mpz_div_qr_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), _d, int32(0))
-}
-
-func Xmpz_tdiv_q_ui(tls *crt.TLS, _q *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d uint64) (r0 uint64) {
-	return _mpz_div_qr_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), _d, int32(2))
 }
 
 func Xmpz_cdiv_r_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d uint64) (r0 uint64) {
@@ -3481,135 +3531,14 @@ _20:
 	_ = _4_ghi
 }
 
-func Xmpz_setbit(tls *crt.TLS, _d *[1]Xmpz_srcptr, _bit_index uint64) {
-	if Xmpz_tstbit(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), _bit_index) != 0 {
-		goto _0
+func Xmpz_lcm_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v uint64) {
+	if (_v == (0)) || (((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) == int32(0)) {
+		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+		return
 	}
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size) >= int32(0) {
-		_mpz_abs_add_bit(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), _bit_index)
-		goto _2
-	}
-	_mpz_abs_sub_bit(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), _bit_index)
-_2:
-_0:
-}
-
-func Xmpz_tstbit(tls *crt.TLS, _d *[1]Xmpz_srcptr, _bit_index uint64) (r0 int32) {
-	var _bit int32
-	var _limb_index, _ds, _dn int64
-	var _shift uint32
-	var _w uint64
-	_ds = int64((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size)
-	_dn = func() int64 {
-		if _ds >= (0) {
-			return _ds
-		}
-		return (-_ds)
-	}()
-	_limb_index = int64(_bit_index / uint64(64))
-	if _limb_index >= _dn {
-		return bool2int(_ds < (0))
-	}
-	_shift = uint32(_bit_index % uint64(64))
-	_w = *elem0((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_d, uintptr(_limb_index))
-	_bit = int32((_w >> uint(int32(_shift))) & uint64(1))
-	if _ds >= (0) {
-		goto _3
-	}
-	if (_shift > (0)) && ((_w << uint(int32(uint64(64)-uint64(_shift)))) > (0)) {
-		return _bit ^ int32(1)
-	}
-_5:
-	if preInc1(&_limb_index, -1) < (0) {
-		goto _7
-	}
-	if (*elem0((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_d, uintptr(_limb_index))) > (0) {
-		return _bit ^ int32(1)
-	}
-	goto _5
-_7:
-_3:
-	return _bit
-}
-
-func _mpz_abs_add_bit(tls *crt.TLS, _d *[1]Xmpz_srcptr, _bit_index uint64) {
-	var _dn, _limb_index, _1_i int64
-	var _bit, _2_cy uint64
-	var _dp *uint64
-	_dn = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size)
-		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size))
-	}())
-	_limb_index = int64(_bit_index / uint64(64))
-	_bit = uint64(1) << uint(int32(_bit_index%uint64(64)))
-	if _limb_index < _dn {
-		goto _2
-	}
-	_dp = func() *uint64 {
-		if (_limb_index + int64(1)) > int64((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), _limb_index+int64(1))
-		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_d)
-	}()
-	*elem0(_dp, uintptr(_limb_index)) = _bit
-	_1_i = _dn
-_5:
-	if _1_i >= _limb_index {
-		goto _8
-	}
-	*elem0(_dp, uintptr(_1_i)) = 0
-	_1_i += 1
-	goto _5
-_8:
-	_dn = _limb_index + int64(1)
-	goto _9
-_2:
-	_dp = (*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_d
-	_2_cy = Xmpn_add_1(tls, (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_dp))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limb_index)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_dp))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limb_index)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), _dn-_limb_index, _bit)
-	if _2_cy > (0) {
-		_dp = func() *uint64 {
-			if (_dn + int64(1)) > int64((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_alloc) {
-				return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), _dn+int64(1))
-			}
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_d)
-		}()
-		*elem0(_dp, uintptr(postInc1(&_dn, 1))) = _2_cy
-	}
-_9:
-	(*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size = int32(func() int64 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size) < int32(0) {
-			return (-_dn)
-		}
-		return _dn
-	}())
-}
-
-func _mpz_abs_sub_bit(tls *crt.TLS, _d *[1]Xmpz_srcptr, _bit_index uint64) {
-	var _dn, _limb_index int64
-	var _bit, _1___cy uint64
-	var _dp *uint64
-	_dn = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size)
-		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size))
-	}())
-	_dp = (*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_d
-	_limb_index = int64(_bit_index / uint64(64))
-	_bit = uint64(1) << uint(int32(_bit_index%uint64(64)))
-
-	_1___cy = Xmpn_sub_1(tls, (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_dp))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limb_index)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_dp))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limb_index)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), _dn-_limb_index, _bit)
-
-	_dn = _mpn_normalized_size(tls, _dp, _dn)
-	(*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size = int32(func() int64 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size) < int32(0) {
-			return (-_dn)
-		}
-		return _dn
-	}())
-	_ = _1___cy
+	_v /= Xmpz_gcd_ui(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _v)
+	Xmpz_mul_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _v)
+	Xmpz_abs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
 }
 
 func Xmpz_lcm(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) {
@@ -3625,16 +3554,6 @@ func Xmpz_lcm(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_
 	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_g)))))
 	Xmpz_abs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
 	_ = _g
-}
-
-func Xmpz_lcm_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v uint64) {
-	if (_v == (0)) || (((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) == int32(0)) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
-		return
-	}
-	_v /= Xmpz_gcd_ui(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _v)
-	Xmpz_mul_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _v)
-	Xmpz_abs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
 }
 
 func Xmpz_invert(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _m *[1]Xmpz_srcptr) (r0 int32) {
@@ -3671,23 +3590,21 @@ _2:
 	panic(0)
 }
 
-func Xmpz_pow_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr, _e uint64) {
-	var _bit uint64
-	var _tr [1]Xmpz_srcptr
-	Xmpz_init_set_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), uint64(1))
-	_bit = uint64(9223372036854775808)
-_0:
-	Xmpz_mul(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))))
-	if (_e & _bit) != 0 {
-		Xmpz_mul(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))))
+// C comment
+//  /* Compute s = floor(sqrt(u)) and r = u - s^2. Allows r == NULL */
+func Xmpz_sqrtrem(tls *crt.TLS, _s *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr) {
+	Xmpz_rootrem(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_s)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), uint64(2))
+}
+
+func Xmpz_sqrt(tls *crt.TLS, _s *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr) {
+	Xmpz_rootrem(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_s)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), uint64(2))
+}
+
+func Xmpz_perfect_square_p(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 int32) {
+	if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) <= int32(0) {
+		return bool2int(((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) == int32(0))
 	}
-	_bit >>= 1
-	if _bit > (0) {
-		goto _0
-	}
-	Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))))
-	_ = _tr
+	return Xmpz_root(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), uint64(2))
 }
 
 func Xmpz_ui_pow_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _blimb uint64, _e uint64) {
@@ -3717,7 +3634,7 @@ func Xmpz_powm(tls *crt.TLS, _r *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr, _e *[1]Xmpz
 		return (-((*Xmpz_srcptr)(unsafe.Pointer(_m)).X_mp_size))
 	}())
 	if _mn == (0) {
-		_gmp_die(tls, str(124))
+		_gmp_die(tls, str(198))
 	}
 	if _en == (0) {
 		Xmpz_set_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), uint64(1))
@@ -3740,7 +3657,7 @@ _6:
 		goto _8
 	}
 	if Xmpz_invert(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_base)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_m))))) == 0 {
-		_gmp_die(tls, str(147))
+		_gmp_die(tls, str(221))
 	}
 	goto _10
 _8:
@@ -3808,199 +3725,6 @@ func Xmpz_powm_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr, _elimb u
 	var _e [1]Xmpz_srcptr
 	Xmpz_powm(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))), (*[1]Xmpz_srcptr)(unsafe.Pointer(Xmpz_roinit_n(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_e)))), &_elimb, int64(1)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_m)))))
 	_ = _e
-}
-
-// C comment
-//  /* x=trunc(y^(1/z)), r=y-x^z */
-func Xmpz_rootrem(tls *crt.TLS, _x *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _y *[1]Xmpz_srcptr, _z uint64) {
-	var _sgn int32
-	var _t, _u, _3_v [1]Xmpz_srcptr
-	_sgn = bool2int(((*Xmpz_srcptr)(unsafe.Pointer(_y)).X_mp_size) < int32(0))
-	if ((^_z) & uint64(_sgn)) != (0) {
-		_gmp_die(tls, str(200))
-	}
-	if _z == (0) {
-		_gmp_die(tls, str(248))
-	}
-	if Xmpz_cmpabs_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), uint64(1)) > int32(0) {
-		goto _2
-	}
-	if _x != nil {
-		Xmpz_set(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))))
-	}
-	if _r != nil {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
-	}
-	return
-_2:
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))))
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_setbit(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (Xmpz_sizeinbase(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), int32(2))/_z)+uint64(1))
-	if _z != uint64(2) {
-		goto _5
-	}
-_6:
-	Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_tdiv_q(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))))
-	Xmpz_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))))
-	Xmpz_tdiv_q_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), uint64(1))
-	if Xmpz_cmpabs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u))))) < int32(0) {
-		goto _6
-	}
-	goto _7
-_5:
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_3_v)))))
-	if _sgn != 0 {
-		Xmpz_neg(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	}
-_8:
-	Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_pow_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))), _z-uint64(1))
-	Xmpz_tdiv_q(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_mul_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_3_v)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))), _z-uint64(1))
-	Xmpz_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_3_v)))))
-	Xmpz_tdiv_q_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), _z)
-	if Xmpz_cmpabs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u))))) < int32(0) {
-		goto _8
-	}
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_3_v)))))
-_7:
-	if _r != nil {
-		Xmpz_pow_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))), _z)
-		Xmpz_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	}
-	if _x != nil {
-		Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))))
-	}
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	_ = _t
-	_ = _u
-	_ = _3_v
-}
-
-func Xmpz_sizeinbase(tls *crt.TLS, _u *[1]Xmpz_srcptr, _base int32) (r0 uint64) {
-	var _un int64
-	var _bits, _ndigits uint64
-	var _up, _tp *uint64
-	var _bi Tgmp_div_inverse
-
-	_un = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
-	}())
-	if _un == (0) {
-		return uint64(1)
-	}
-	_up = (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d
-	_bits = (uint64(_un-int64(1)) * uint64(64)) + _mpn_limb_size_in_base_2(tls, *elem0(_up, uintptr(_un-int64(1))))
-	switch _base {
-	case int32(2):
-		goto _4
-	case int32(4):
-		goto _5
-	case int32(8):
-		goto _6
-	case int32(16):
-		goto _7
-	case int32(32):
-		goto _8
-	default:
-		goto _9
-	}
-
-_4:
-	return _bits
-
-_5:
-	return (_bits + uint64(1)) / uint64(2)
-
-_6:
-	return (_bits + uint64(2)) / uint64(3)
-
-_7:
-	return (_bits + uint64(3)) / uint64(4)
-
-_8:
-	return (_bits + uint64(4)) / uint64(5)
-
-_9:
-	_tp = _gmp_xalloc_limbs(tls, _un)
-	Xmpn_copyi(tls, _tp, _up, _un)
-	_mpn_div_qr_1_invert(tls, &_bi, uint64(_base))
-	_ndigits = 0
-_10:
-	_ndigits += 1
-	_mpn_div_qr_1_preinv(tls, _tp, _tp, _un, &_bi)
-	_un -= int64(bool2int((*elem0(_tp, uintptr(_un-int64(1)))) == (0)))
-	if _un > (0) {
-		goto _10
-	}
-	_gmp_free_func(tls, unsafe.Pointer(_tp), 0)
-	return _ndigits
-}
-
-func Xmpz_root(tls *crt.TLS, _x *[1]Xmpz_srcptr, _y *[1]Xmpz_srcptr, _z uint64) (r0 int32) {
-	var _res int32
-	var _r [1]Xmpz_srcptr
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_r)))))
-	Xmpz_rootrem(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), _z)
-	_res = bool2int(((*Xmpz_srcptr)(unsafe.Pointer(&_r)).X_mp_size) == int32(0))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_r)))))
-	return _res
-
-	_ = _r
-	panic(0)
-}
-
-// C comment
-//  /* Compute s = floor(sqrt(u)) and r = u - s^2. Allows r == NULL */
-func Xmpz_sqrtrem(tls *crt.TLS, _s *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr) {
-	Xmpz_rootrem(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_s)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), uint64(2))
-}
-
-func Xmpz_sqrt(tls *crt.TLS, _s *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr) {
-	Xmpz_rootrem(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_s)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), uint64(2))
-}
-
-func Xmpz_perfect_square_p(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 int32) {
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) <= int32(0) {
-		return bool2int(((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) == int32(0))
-	}
-	return Xmpz_root(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), uint64(2))
-}
-
-func Xmpn_perfect_square_p(tls *crt.TLS, _p *uint64, _n int64) (r0 int32) {
-	var _t [1]Xmpz_srcptr
-	return Xmpz_root(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer(Xmpz_roinit_n(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), _p, _n))), uint64(2))
-
-	_ = _t
-	panic(0)
-}
-
-func Xmpn_sqrtrem(tls *crt.TLS, _sp *uint64, _rp *uint64, _p *uint64, _n int64) (r0 int64) {
-	var _res int64
-	var _s, _r, _u [1]Xmpz_srcptr
-
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_r)))))
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s)))))
-	Xmpz_rootrem(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer(Xmpz_roinit_n(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))), _p, _n))), uint64(2))
-
-	Xmpn_copyd(tls, _sp, (*Xmpz_srcptr)(unsafe.Pointer(&_s)).X_mp_d, int64((*Xmpz_srcptr)(unsafe.Pointer(&_s)).X_mp_size))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s)))))
-	_res = int64((*Xmpz_srcptr)(unsafe.Pointer(&_r)).X_mp_size)
-	if _rp != nil {
-		Xmpn_copyd(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(&_r)).X_mp_d, _res)
-	}
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_r)))))
-	return _res
-
-	_ = _s
-	_ = _r
-	_ = _u
-	panic(0)
 }
 
 func Xmpz_fac_ui(tls *crt.TLS, _x *[1]Xmpz_srcptr, _n uint64) {
@@ -4461,39 +4185,6 @@ _16:
 	_ = _2_ghi
 }
 
-func Xmpn_popcount(tls *crt.TLS, _p *uint64, _n int64) (r0 uint64) {
-	var _i int64
-	var _c uint64
-	*func() *int64 { _c = 0; return &_i }() = 0
-_0:
-	if _i >= _n {
-		goto _3
-	}
-	_c += uint64(_gmp_popcount_limb(tls, *elem0(_p, uintptr(_i))))
-	_i += 1
-	goto _0
-_3:
-	return _c
-}
-
-func _gmp_popcount_limb(tls *crt.TLS, _x uint64) (r0 uint32) {
-	var _c, _1_w uint32
-	_c = 0
-_0:
-	if _x <= (0) {
-		goto _3
-	}
-	_1_w = uint32(((_x >> 1) & uint64(21845)) + (_x & uint64(21845)))
-	_1_w = ((_1_w >> 2) & uint32(13107)) + (_1_w & uint32(13107))
-	_1_w = ((_1_w >> 4) & uint32(3855)) + (_1_w & uint32(3855))
-	_1_w = (_1_w >> 8) + (_1_w & uint32(255))
-	_c += _1_w
-	_x >>= 16
-	goto _0
-_3:
-	return _c
-}
-
 func Xmpz_popcount(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 uint64) {
 	var _un int64
 	_un = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
@@ -4584,6 +4275,167 @@ func Xmpz_scan0(tls *crt.TLS, _u *[1]Xmpz_srcptr, _starting_bit uint64) (r0 uint
 	}
 	_limb &= uint64(18446744073709551615) << uint(int32(_starting_bit%uint64(64)))
 	return _mpn_common_scan(tls, _limb, _i, _up, _un, _ux)
+}
+
+func Xmpz_fits_slong_p(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 int32) {
+	var _us int64
+	_us = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+	if _us == int64(1) {
+		return bool2int((*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, 0)) < uint64(9223372036854775808))
+	}
+	if _us == int64(-1) {
+		return bool2int((*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, 0)) <= uint64(9223372036854775808))
+	}
+	return bool2int(_us == (0))
+}
+
+func Xmpz_fits_ulong_p(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 int32) {
+	var _us int64
+	_us = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+	return bool2int(_us == int64(bool2int(_us > (0))))
+}
+
+func Xmpz_get_si(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 int64) {
+	if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) < int32(0) {
+		return int64(-1) - int64(((*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, 0))-uint64(1))&uint64(9223372036854775807))
+	}
+	return int64(Xmpz_get_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u))))) & uint64(9223372036854775807))
+}
+
+func Xmpz_get_d(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 float64) {
+	var _un int64
+	var _x, _B float64
+	_B = 1.8446744073709552e+19
+	_un = int64(func() int32 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+		}
+		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
+	}())
+	if _un == (0) {
+		return float64(0)
+	}
+	_x = float64(*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, uintptr(preInc1(&_un, -1))))
+_3:
+	if _un > (0) {
+		_x = (_B * _x) + float64(*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, uintptr(preInc1(&_un, -1))))
+		goto _3
+	}
+	if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) < int32(0) {
+		_x = -_x
+	}
+	return _x
+}
+
+func Xmpz_size(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 uint64) {
+	return uint64(func() int32 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+		}
+		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
+	}())
+}
+
+func Xmpz_getlimbn(tls *crt.TLS, _u *[1]Xmpz_srcptr, _n int64) (r0 uint64) {
+	if (_n >= (0)) && (_n < int64(func() int32 {
+		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
+			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+		}
+		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
+	}())) {
+		return *elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, uintptr(_n))
+	}
+	return 0
+}
+
+func Xmpz_realloc2(tls *crt.TLS, _x *[1]Xmpz_srcptr, _n uint64) {
+	_mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), int64(uint64(1)+((_n-uint64(bool2int(_n != (0))))/uint64(64))))
+}
+
+func Xmpz_limbs_read(tls *crt.TLS, _x *Xmpz_srcptr) (r0 *uint64) {
+	return _x.X_mp_d
+}
+
+func Xmpz_limbs_modify(tls *crt.TLS, _x *[1]Xmpz_srcptr, _n int64) (r0 *uint64) {
+	return func() *uint64 {
+		if _n > int64((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_alloc) {
+			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), _n)
+		}
+		return ((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_d)
+	}()
+}
+
+func Xmpz_limbs_write(tls *crt.TLS, _x *[1]Xmpz_srcptr, _n int64) (r0 *uint64) {
+	return Xmpz_limbs_modify(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), _n)
+}
+
+// C comment
+//  /* Conversions and comparison to double. */
+func Xmpz_set_d(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x float64) {
+	var _sign int32
+	var _rn, _i int64
+	var _f uint64
+	var _B, _Bi float64
+	var _rp *uint64
+	if (_x != _x) || (_x == (_x * (0.5))) {
+		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+		return
+	}
+	_sign = bool2int(_x < float64(0))
+	if _sign != 0 {
+		_x = -_x
+	}
+	if _x < float64(1) {
+		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+		return
+	}
+	_B = 1.8446744073709552e+19
+	_Bi = float64(1) / _B
+	_rn = int64(1)
+_4:
+	if _x < _B {
+		goto _7
+	}
+	_x *= _Bi
+	_rn += 1
+	goto _4
+_7:
+	_rp = func() *uint64 {
+		if _rn > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
+			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _rn)
+		}
+		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+	}()
+	_f = uint64(_x)
+	_x -= float64(_f)
+
+	_i = _rn - int64(1)
+	*elem0(_rp, uintptr(_i)) = _f
+_10:
+	if preInc1(&_i, -1) >= (0) {
+		_x = _B * _x
+		_f = uint64(_x)
+		_x -= float64(_f)
+
+		*elem0(_rp, uintptr(_i)) = _f
+		goto _10
+	}
+	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(func() int64 {
+		if _sign != 0 {
+			return (-_rn)
+		}
+		return _rn
+	}())
+}
+
+func Xmpz_init_set_si(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x int64) {
+	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
+	Xmpz_set_si(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _x)
+}
+
+func Xmpz_init_set_d(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x float64) {
+	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
+	Xmpz_set_d(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _x)
 }
 
 func Xmpz_get_str(tls *crt.TLS, _sp *int8, _base int32, _u *[1]Xmpz_srcptr) (r0 *int8) {
@@ -4768,8 +4620,6 @@ func Xmpz_init_set_str(tls *crt.TLS, _r *[1]Xmpz_srcptr, _sp *int8, _base int32)
 	return Xmpz_set_str(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _sp, _base)
 }
 
-// C comment
-//  /* VMS */
 func Xmpz_out_str(tls *crt.TLS, _stream *crt.XFILE, _base int32, _x *[1]Xmpz_srcptr) (r0 uint64) {
 	var _len uint64
 	var _str *int8
@@ -5006,4 +4856,4 @@ type Xmpz_srcptr struct {
 func str(n int) *int8   { return (*int8)(unsafe.Pointer(&strTab[n])) }
 func wstr(n int) *int32 { return (*int32)(unsafe.Pointer(&strTab[n])) }
 
-var strTab = []byte("gmp_default_alloc: Virtual memory exhausted.\x00%s\x0a\x00gmp_default_realloc: Virtual memory exhausted.\x00mpz_div_qr: Divide by zero.\x00mpz_powm: Zero modulo.\x00mpz_powm: Negative exponent and non-invertible base.\x00mpz_rootrem: Negative argument, with even root.\x00mpz_rootrem: Zeroth root.\x000123456789abcdefghijklmnopqrstuvwxyz\x000123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ\x00mpz_import: Nails not supported.\x00")
+var strTab = []byte("gmp_default_alloc: Virtual memory exhausted.\x00%s\x0a\x00gmp_default_realloc: Virtual memory exhausted.\x00mpz_rootrem: Negative argument, with even root.\x00mpz_rootrem: Zeroth root.\x00mpz_div_qr: Divide by zero.\x00mpz_powm: Zero modulo.\x00mpz_powm: Negative exponent and non-invertible base.\x000123456789abcdefghijklmnopqrstuvwxyz\x000123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ\x00mpz_import: Nails not supported.\x00")

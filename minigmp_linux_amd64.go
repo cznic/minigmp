@@ -340,7 +340,7 @@ _3:
 
 func Xmpn_copyd(tls *crt.TLS, _d *uint64, _s *uint64, _n int64) {
 _0:
-	if preInc1(&_n, -1) >= (0) {
+	if preInc1(&_n, -1) >= 0 {
 		*elem0(_d, uintptr(_n)) = *elem0(_s, uintptr(_n))
 		goto _0
 	}
@@ -348,7 +348,7 @@ _0:
 
 func Xmpn_zero(tls *crt.TLS, _rp *uint64, _n int64) {
 _0:
-	if preInc1(&_n, -1) >= (0) {
+	if preInc1(&_n, -1) >= 0 {
 		*elem0(_rp, uintptr(_n)) = 0
 		goto _0
 	}
@@ -356,7 +356,7 @@ _0:
 
 func Xmpn_cmp(tls *crt.TLS, _ap *uint64, _bp *uint64, _n int64) (r0 int32) {
 _0:
-	if preInc1(&_n, -1) < (0) {
+	if preInc1(&_n, -1) < 0 {
 		goto _1
 	}
 	if (*elem0(_ap, uintptr(_n))) != (*elem0(_bp, uintptr(_n))) {
@@ -373,12 +373,12 @@ _1:
 }
 
 func Xmpn_zero_p(tls *crt.TLS, _rp *uint64, _n int64) (r0 int32) {
-	return bool2int(_mpn_normalized_size(tls, _rp, _n) == (0))
+	return bool2int(_mpn_normalized_size(tls, _rp, _n) == 0)
 }
 
 func _mpn_normalized_size(tls *crt.TLS, _xp *uint64, _n int64) (r0 int64) {
 _0:
-	if (_n > (0)) && ((*elem0(_xp, uintptr(_n-int64(1)))) == (0)) {
+	if (_n > 0) && ((*elem0(_xp, uintptr(_n-int64(1)))) == 0) {
 		_n -= 1
 		goto _0
 	}
@@ -504,7 +504,7 @@ _0:
 	_lpl += _cl
 	_cl = uint64(bool2int(_lpl < _cl)) + _hpl
 	*postInc0(&_rp, 8) = _lpl
-	if preInc1(&_n, -1) != (0) {
+	if preInc1(&_n, -1) != 0 {
 		goto _0
 	}
 	return _cl
@@ -540,7 +540,7 @@ _0:
 	_lpl = _rl + _lpl
 	_cl += uint64(bool2int(_lpl < _rl))
 	*postInc0(&_rp, 8) = _lpl
-	if preInc1(&_n, -1) != (0) {
+	if preInc1(&_n, -1) != 0 {
 		goto _0
 	}
 	return _cl
@@ -576,7 +576,7 @@ _0:
 	_lpl = _rl - _lpl
 	_cl += uint64(bool2int(_lpl > _rl))
 	*postInc0(&_rp, 8) = _lpl
-	if preInc1(&_n, -1) != (0) {
+	if preInc1(&_n, -1) != 0 {
 		goto _0
 	}
 	return _cl
@@ -606,31 +606,25 @@ func Xmpn_sqr(tls *crt.TLS, _rp *uint64, _ap *uint64, _n int64) {
 
 func Xmpn_perfect_square_p(tls *crt.TLS, _p *uint64, _n int64) (r0 int32) {
 	var _t [1]Xmpz_srcptr
-	return Xmpz_root(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer(Xmpz_roinit_n(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), _p, _n))), uint64(2))
-
-	_ = _t
-	panic(0)
+	return Xmpz_root(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer(Xmpz_roinit_n(tls, &_t, _p, _n))), uint64(2))
 }
 
 func Xmpz_root(tls *crt.TLS, _x *[1]Xmpz_srcptr, _y *[1]Xmpz_srcptr, _z uint64) (r0 int32) {
 	var _res int32
 	var _r [1]Xmpz_srcptr
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_r)))))
-	Xmpz_rootrem(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), _z)
-	_res = bool2int(((*Xmpz_srcptr)(unsafe.Pointer(&_r)).X_mp_size) == int32(0))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_r)))))
+	Xmpz_init(tls, &_r)
+	Xmpz_rootrem(tls, _x, &_r, _y, _z)
+	_res = bool2int(((&_r)[0].X_mp_size) == int32(0))
+	Xmpz_clear(tls, &_r)
 	return _res
-
-	_ = _r
-	panic(0)
 }
 
 // C comment
 //  /* MPZ interface */
 func Xmpz_init(tls *crt.TLS, _r *[1]Xmpz_srcptr) {
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc = int32(0)
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d = &_mpz_initØ00dummy_limbØ001
+	_r[0].X_mp_alloc = int32(0)
+	_r[0].X_mp_size = int32(0)
+	_r[0].X_mp_d = &_mpz_initØ00dummy_limbØ001
 }
 
 var _mpz_initØ00dummy_limbØ001 uint64
@@ -644,109 +638,106 @@ func init() {
 func Xmpz_rootrem(tls *crt.TLS, _x *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _y *[1]Xmpz_srcptr, _z uint64) {
 	var _sgn int32
 	var _t, _u, _3_v [1]Xmpz_srcptr
-	_sgn = bool2int(((*Xmpz_srcptr)(unsafe.Pointer(_y)).X_mp_size) < int32(0))
-	if ((^_z) & uint64(_sgn)) != (0) {
+	_sgn = bool2int((_y[0].X_mp_size) < int32(0))
+	if ((^_z) & uint64(_sgn)) != 0 {
 		_gmp_die(tls, str(96))
 	}
-	if _z == (0) {
+	if _z == 0 {
 		_gmp_die(tls, str(144))
 	}
-	if Xmpz_cmpabs_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), uint64(1)) > int32(0) {
+	if Xmpz_cmpabs_ui(tls, _y, uint64(1)) > int32(0) {
 		goto _2
 	}
 	if _x != nil {
-		Xmpz_set(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))))
+		Xmpz_set(tls, _x, _y)
 	}
 	if _r != nil {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+		_r[0].X_mp_size = int32(0)
 	}
 	return
 _2:
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))))
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_setbit(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (Xmpz_sizeinbase(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), int32(2))/_z)+uint64(1))
+	Xmpz_init(tls, &_u)
+	Xmpz_init(tls, &_t)
+	Xmpz_setbit(tls, &_t, (Xmpz_sizeinbase(tls, _y, int32(2))/_z)+uint64(1))
 	if _z != uint64(2) {
 		goto _5
 	}
 _6:
-	Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_tdiv_q(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))))
-	Xmpz_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))))
-	Xmpz_tdiv_q_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), uint64(1))
-	if Xmpz_cmpabs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u))))) < int32(0) {
+	Xmpz_swap(tls, &_u, &_t)
+	Xmpz_tdiv_q(tls, &_t, _y, &_u)
+	Xmpz_add(tls, &_t, &_t, &_u)
+	Xmpz_tdiv_q_2exp(tls, &_t, &_t, uint64(1))
+	if Xmpz_cmpabs(tls, &_t, &_u) < int32(0) {
 		goto _6
 	}
 	goto _7
 _5:
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_3_v)))))
+	Xmpz_init(tls, &_3_v)
 	if _sgn != 0 {
-		Xmpz_neg(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+		Xmpz_neg(tls, &_t, &_t)
 	}
 _8:
-	Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_pow_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))), _z-uint64(1))
-	Xmpz_tdiv_q(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_mul_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_3_v)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))), _z-uint64(1))
-	Xmpz_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_3_v)))))
-	Xmpz_tdiv_q_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), _z)
-	if Xmpz_cmpabs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u))))) < int32(0) {
+	Xmpz_swap(tls, &_u, &_t)
+	Xmpz_pow_ui(tls, &_t, &_u, _z-uint64(1))
+	Xmpz_tdiv_q(tls, &_t, _y, &_t)
+	Xmpz_mul_ui(tls, &_3_v, &_u, _z-uint64(1))
+	Xmpz_add(tls, &_t, &_t, &_3_v)
+	Xmpz_tdiv_q_ui(tls, &_t, &_t, _z)
+	if Xmpz_cmpabs(tls, &_t, &_u) < int32(0) {
 		goto _8
 	}
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_3_v)))))
+	Xmpz_clear(tls, &_3_v)
 _7:
 	if _r != nil {
-		Xmpz_pow_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))), _z)
-		Xmpz_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+		Xmpz_pow_ui(tls, &_t, &_u, _z)
+		Xmpz_sub(tls, _r, _y, &_t)
 	}
 	if _x != nil {
-		Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))))
+		Xmpz_swap(tls, _x, &_u)
 	}
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	_ = _t
-	_ = _u
-	_ = _3_v
+	Xmpz_clear(tls, &_u)
+	Xmpz_clear(tls, &_t)
 }
 
 func Xmpz_cmpabs_ui(tls *crt.TLS, _u *[1]Xmpz_srcptr, _v uint64) (r0 int32) {
 	if func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+		if (_u[0].X_mp_size) >= int32(0) {
+			return (_u[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
+		return (-(_u[0].X_mp_size))
 	}() > int32(1) {
 		return int32(1)
 	}
-	return bool2int(Xmpz_get_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u))))) > _v) - bool2int(Xmpz_get_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u))))) < _v)
+	return bool2int(Xmpz_get_ui(tls, _u) > _v) - bool2int(Xmpz_get_ui(tls, _u) < _v)
 }
 
 func Xmpz_get_ui(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 uint64) {
 	return func() uint64 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) == int32(0) {
-			return (0)
+		if (_u[0].X_mp_size) == int32(0) {
+			return 0
 		}
-		return (*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, 0))
+		return (*elem0(_u[0].X_mp_d, 0))
 	}()
 }
 
 func Xmpz_set(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x *[1]Xmpz_srcptr) {
 	var _1_n int64
 	var _1_rp *uint64
-	if (*Xmpz_srcptr)(unsafe.Pointer(_r)) != (*Xmpz_srcptr)(unsafe.Pointer(_x)) {
+	if &_r[0] != &_x[0] {
 		_1_n = int64(func() int32 {
-			if ((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_size) >= int32(0) {
-				return ((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_size)
+			if (_x[0].X_mp_size) >= int32(0) {
+				return (_x[0].X_mp_size)
 			}
-			return (-((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_size))
+			return (-(_x[0].X_mp_size))
 		}())
 		_1_rp = func() *uint64 {
-			if _1_n > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-				return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _1_n)
+			if _1_n > int64(_r[0].X_mp_alloc) {
+				return _mpz_realloc(tls, _r, _1_n)
 			}
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+			return (_r[0].X_mp_d)
 		}()
-		Xmpn_copyi(tls, _1_rp, (*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_d, _1_n)
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = (*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_size
+		Xmpn_copyi(tls, _1_rp, _x[0].X_mp_d, _1_n)
+		_r[0].X_mp_size = _x[0].X_mp_size
 	}
 }
 
@@ -757,22 +748,22 @@ func _mpz_realloc(tls *crt.TLS, _r *[1]Xmpz_srcptr, _size int64) (r0 *uint64) {
 		}
 		return int64(1)
 	}()
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) != 0 {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d = _gmp_xrealloc_limbs(tls, (*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d, _size)
+	if (_r[0].X_mp_alloc) != 0 {
+		_r[0].X_mp_d = _gmp_xrealloc_limbs(tls, _r[0].X_mp_d, _size)
 		goto _3
 	}
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d = _gmp_xalloc_limbs(tls, _size)
+	_r[0].X_mp_d = _gmp_xalloc_limbs(tls, _size)
 _3:
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc = int32(_size)
+	_r[0].X_mp_alloc = int32(_size)
 	if int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size)
+		if (_r[0].X_mp_size) >= int32(0) {
+			return (_r[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size))
+		return (-(_r[0].X_mp_size))
 	}()) > _size {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+		_r[0].X_mp_size = int32(0)
 	}
-	return (*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d
+	return _r[0].X_mp_d
 }
 
 func _gmp_xrealloc_limbs(tls *crt.TLS, _old *uint64, _size int64) (r0 *uint64) {
@@ -784,14 +775,14 @@ func _gmp_xalloc_limbs(tls *crt.TLS, _size int64) (r0 *uint64) {
 }
 
 func Xmpz_setbit(tls *crt.TLS, _d *[1]Xmpz_srcptr, _bit_index uint64) {
-	if Xmpz_tstbit(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), _bit_index) != 0 {
+	if Xmpz_tstbit(tls, _d, _bit_index) != 0 {
 		goto _0
 	}
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size) >= int32(0) {
-		_mpz_abs_add_bit(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), _bit_index)
+	if (_d[0].X_mp_size) >= int32(0) {
+		_mpz_abs_add_bit(tls, _d, _bit_index)
 		goto _2
 	}
-	_mpz_abs_sub_bit(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), _bit_index)
+	_mpz_abs_sub_bit(tls, _d, _bit_index)
 _2:
 _0:
 }
@@ -801,31 +792,31 @@ func Xmpz_tstbit(tls *crt.TLS, _d *[1]Xmpz_srcptr, _bit_index uint64) (r0 int32)
 	var _limb_index, _ds, _dn int64
 	var _shift uint32
 	var _w uint64
-	_ds = int64((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size)
+	_ds = int64(_d[0].X_mp_size)
 	_dn = func() int64 {
-		if _ds >= (0) {
+		if _ds >= 0 {
 			return _ds
 		}
 		return (-_ds)
 	}()
 	_limb_index = int64(_bit_index / uint64(64))
 	if _limb_index >= _dn {
-		return bool2int(_ds < (0))
+		return bool2int(_ds < 0)
 	}
 	_shift = uint32(_bit_index % uint64(64))
-	_w = *elem0((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_d, uintptr(_limb_index))
+	_w = *elem0(_d[0].X_mp_d, uintptr(_limb_index))
 	_bit = int32((_w >> uint(int32(_shift))) & uint64(1))
-	if _ds >= (0) {
+	if _ds >= 0 {
 		goto _3
 	}
-	if (_shift > (0)) && ((_w << uint(int32(uint64(64)-uint64(_shift)))) > (0)) {
+	if (_shift > 0) && ((_w << uint(int32(uint64(64)-uint64(_shift)))) > 0) {
 		return _bit ^ int32(1)
 	}
 _5:
-	if preInc1(&_limb_index, -1) < (0) {
+	if preInc1(&_limb_index, -1) < 0 {
 		goto _7
 	}
-	if (*elem0((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_d, uintptr(_limb_index))) > (0) {
+	if (*elem0(_d[0].X_mp_d, uintptr(_limb_index))) > 0 {
 		return _bit ^ int32(1)
 	}
 	goto _5
@@ -839,10 +830,10 @@ func _mpz_abs_add_bit(tls *crt.TLS, _d *[1]Xmpz_srcptr, _bit_index uint64) {
 	var _bit, _2_cy uint64
 	var _dp *uint64
 	_dn = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size)
+		if (_d[0].X_mp_size) >= int32(0) {
+			return (_d[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size))
+		return (-(_d[0].X_mp_size))
 	}())
 	_limb_index = int64(_bit_index / uint64(64))
 	_bit = uint64(1) << uint(int32(_bit_index%uint64(64)))
@@ -850,10 +841,10 @@ func _mpz_abs_add_bit(tls *crt.TLS, _d *[1]Xmpz_srcptr, _bit_index uint64) {
 		goto _2
 	}
 	_dp = func() *uint64 {
-		if (_limb_index + int64(1)) > int64((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), _limb_index+int64(1))
+		if (_limb_index + int64(1)) > int64(_d[0].X_mp_alloc) {
+			return _mpz_realloc(tls, _d, _limb_index+int64(1))
 		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_d)
+		return (_d[0].X_mp_d)
 	}()
 	*elem0(_dp, uintptr(_limb_index)) = _bit
 	_1_i = _dn
@@ -868,20 +859,20 @@ _8:
 	_dn = _limb_index + int64(1)
 	goto _9
 _2:
-	_dp = (*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_d
+	_dp = _d[0].X_mp_d
 	_2_cy = Xmpn_add_1(tls, (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_dp))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limb_index)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_dp))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limb_index)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), _dn-_limb_index, _bit)
-	if _2_cy > (0) {
+	if _2_cy > 0 {
 		_dp = func() *uint64 {
-			if (_dn + int64(1)) > int64((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_alloc) {
-				return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), _dn+int64(1))
+			if (_dn + int64(1)) > int64(_d[0].X_mp_alloc) {
+				return _mpz_realloc(tls, _d, _dn+int64(1))
 			}
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_d)
+			return (_d[0].X_mp_d)
 		}()
 		*elem0(_dp, uintptr(postInc1(&_dn, 1))) = _2_cy
 	}
 _9:
-	(*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size = int32(func() int64 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size) < int32(0) {
+	_d[0].X_mp_size = int32(func() int64 {
+		if (_d[0].X_mp_size) < int32(0) {
 			return (-_dn)
 		}
 		return _dn
@@ -893,20 +884,20 @@ func _mpz_abs_sub_bit(tls *crt.TLS, _d *[1]Xmpz_srcptr, _bit_index uint64) {
 	var _bit, _1___cy uint64
 	var _dp *uint64
 	_dn = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size)
+		if (_d[0].X_mp_size) >= int32(0) {
+			return (_d[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size))
+		return (-(_d[0].X_mp_size))
 	}())
-	_dp = (*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_d
+	_dp = _d[0].X_mp_d
 	_limb_index = int64(_bit_index / uint64(64))
 	_bit = uint64(1) << uint(int32(_bit_index%uint64(64)))
 
 	_1___cy = Xmpn_sub_1(tls, (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_dp))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limb_index)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_dp))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limb_index)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), _dn-_limb_index, _bit)
 
 	_dn = _mpn_normalized_size(tls, _dp, _dn)
-	(*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size = int32(func() int64 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size) < int32(0) {
+	_d[0].X_mp_size = int32(func() int64 {
+		if (_d[0].X_mp_size) < int32(0) {
 			return (-_dn)
 		}
 		return _dn
@@ -921,15 +912,15 @@ func Xmpz_sizeinbase(tls *crt.TLS, _u *[1]Xmpz_srcptr, _base int32) (r0 uint64) 
 	var _bi Tgmp_div_inverse
 
 	_un = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+		if (_u[0].X_mp_size) >= int32(0) {
+			return (_u[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
+		return (-(_u[0].X_mp_size))
 	}())
-	if _un == (0) {
+	if _un == 0 {
 		return uint64(1)
 	}
-	_up = (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d
+	_up = _u[0].X_mp_d
 	_bits = (uint64(_un-int64(1)) * uint64(64)) + _mpn_limb_size_in_base_2(tls, *elem0(_up, uintptr(_un-int64(1))))
 	switch _base {
 	case int32(2):
@@ -969,8 +960,8 @@ _9:
 _10:
 	_ndigits += 1
 	_mpn_div_qr_1_preinv(tls, _tp, _tp, _un, &_bi)
-	_un -= int64(bool2int((*elem0(_tp, uintptr(_un-int64(1)))) == (0)))
-	if _un > (0) {
+	_un -= int64(bool2int((*elem0(_tp, uintptr(_un-int64(1)))) == 0))
+	if _un > 0 {
 		goto _10
 	}
 	_gmp_free_func(tls, unsafe.Pointer(_tp), 0)
@@ -984,14 +975,14 @@ func _mpn_limb_size_in_base_2(tls *crt.TLS, _u uint64) (r0 uint64) {
 	_1___clz_x = _u
 	_1___clz_c = 0
 _1:
-	if (_1___clz_x & uint64(18374686479671623680)) != (0) {
+	if (_1___clz_x & uint64(18374686479671623680)) != 0 {
 		goto _4
 	}
 	_1___clz_x <<= 8
 	_1___clz_c += uint32(8)
 	goto _1
 _4:
-	if (_1___clz_x & uint64(9223372036854775808)) != (0) {
+	if (_1___clz_x & uint64(9223372036854775808)) != 0 {
 		goto _8
 	}
 	_1___clz_x <<= 1
@@ -1009,14 +1000,14 @@ func _mpn_div_qr_1_invert(tls *crt.TLS, _inv *Tgmp_div_inverse, _d uint64) {
 	_1___clz_x = _d
 	_1___clz_c = 0
 _1:
-	if (_1___clz_x & uint64(18374686479671623680)) != (0) {
+	if (_1___clz_x & uint64(18374686479671623680)) != 0 {
 		goto _4
 	}
 	_1___clz_x <<= 8
 	_1___clz_c += uint32(8)
 	goto _1
 _4:
-	if (_1___clz_x & uint64(9223372036854775808)) != (0) {
+	if (_1___clz_x & uint64(9223372036854775808)) != 0 {
 		goto _8
 	}
 	_1___clz_x <<= 1
@@ -1070,7 +1061,7 @@ _0:
 		_m += 1
 		_r -= _u1
 	}
-	if _u0 <= (0) {
+	if _u0 <= 0 {
 		goto _5
 	}
 	_r = ^_r
@@ -1119,7 +1110,7 @@ func _mpn_div_qr_1_preinv(tls *crt.TLS, _qp *uint64, _np *uint64, _nn int64, _in
 	var _d, _di, _r, _2_q, _3__qh, _3__ql, _3__r, _3__mask, _4___x0, _4___x1, _4___x2, _4___x3, _4___u, _4___v, _5___x uint64
 	var _tp *uint64
 	_tp = nil
-	if _inv.Xshift > (0) {
+	if _inv.Xshift > 0 {
 		_tp = _gmp_xalloc_limbs(tls, _nn)
 		_r = Xmpn_lshift(tls, _tp, _np, _nn, _inv.Xshift)
 		_np = _tp
@@ -1130,7 +1121,7 @@ _1:
 	_d = _inv.Xd1
 	_di = _inv.Xdi
 _2:
-	if preInc1(&_nn, -1) < (0) {
+	if preInc1(&_nn, -1) < 0 {
 		goto _3
 	}
 	_4___u = _r
@@ -1168,7 +1159,7 @@ _2:
 	}
 	goto _2
 _3:
-	if _inv.Xshift > (0) {
+	if _inv.Xshift > 0 {
 		_gmp_free_func(tls, unsafe.Pointer(_tp), 0)
 	}
 	return _r >> uint(int32(_inv.Xshift))
@@ -1185,7 +1176,7 @@ func Xmpn_lshift(tls *crt.TLS, _rp *uint64, _up *uint64, _n int64, _cnt uint32) 
 	_retval = _low_limb >> uint(int32(_tnc))
 	_high_limb = _low_limb << uint(int32(_cnt))
 _0:
-	if preInc1(&_n, -1) != (0) {
+	if preInc1(&_n, -1) != 0 {
 		_low_limb = *preInc0(&_up, -8)
 		*preInc0(&_rp, -8) = _high_limb | (_low_limb >> uint(int32(_tnc)))
 		_high_limb = _low_limb << uint(int32(_cnt))
@@ -1198,19 +1189,19 @@ _0:
 func Xmpz_swap(tls *crt.TLS, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) {
 	var _1___mp_size_t_swap__tmp, _2___mp_size_t_swap__tmp int64
 	var _3___mp_ptr_swap__tmp *uint64
-	_1___mp_size_t_swap__tmp = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-	(*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size = (*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size
-	(*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size = int32(_1___mp_size_t_swap__tmp)
-	_2___mp_size_t_swap__tmp = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_alloc)
-	(*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_alloc = (*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_alloc
-	(*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_alloc = int32(_2___mp_size_t_swap__tmp)
-	_3___mp_ptr_swap__tmp = (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d
-	(*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d = (*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_d
-	(*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_d = _3___mp_ptr_swap__tmp
+	_1___mp_size_t_swap__tmp = int64(_u[0].X_mp_size)
+	_u[0].X_mp_size = _v[0].X_mp_size
+	_v[0].X_mp_size = int32(_1___mp_size_t_swap__tmp)
+	_2___mp_size_t_swap__tmp = int64(_u[0].X_mp_alloc)
+	_u[0].X_mp_alloc = _v[0].X_mp_alloc
+	_v[0].X_mp_alloc = int32(_2___mp_size_t_swap__tmp)
+	_3___mp_ptr_swap__tmp = _u[0].X_mp_d
+	_u[0].X_mp_d = _v[0].X_mp_d
+	_v[0].X_mp_d = _3___mp_ptr_swap__tmp
 }
 
 func Xmpz_tdiv_q(tls *crt.TLS, _q *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
-	_mpz_div_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(2))
+	_mpz_div_qr(tls, _q, nil, _n, _d, int32(2))
 }
 
 // C comment
@@ -1219,31 +1210,31 @@ func _mpz_div_qr(tls *crt.TLS, _q *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _n *[1]Xm
 	var _ns, _ds, _nn, _dn, _qs, _6_qn, _6_rn int64
 	var _6_np, _6_qp *uint64
 	var _6_tq, _6_tr [1]Xmpz_srcptr
-	_ns = int64((*Xmpz_srcptr)(unsafe.Pointer(_n)).X_mp_size)
-	_ds = int64((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size)
-	if _ds == (0) {
+	_ns = int64(_n[0].X_mp_size)
+	_ds = int64(_d[0].X_mp_size)
+	if _ds == 0 {
 		_gmp_die(tls, str(170))
 	}
-	if _ns != (0) {
+	if _ns != 0 {
 		goto _1
 	}
 	if _q != nil {
-		(*Xmpz_srcptr)(unsafe.Pointer(_q)).X_mp_size = int32(0)
+		_q[0].X_mp_size = int32(0)
 	}
 	if _r != nil {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+		_r[0].X_mp_size = int32(0)
 	}
 	return int32(0)
 
 _1:
 	_nn = func() int64 {
-		if _ns >= (0) {
+		if _ns >= 0 {
 			return _ns
 		}
 		return (-_ns)
 	}()
 	_dn = func() int64 {
-		if _ds >= (0) {
+		if _ds >= 0 {
 			return _ds
 		}
 		return (-_ds)
@@ -1252,111 +1243,107 @@ _1:
 	if _nn >= _dn {
 		goto _8
 	}
-	if _mode != int32(1) || _qs < (0) {
+	if _mode != int32(1) || _qs < 0 {
 		goto _10
 	}
 	if _r != nil {
-		Xmpz_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))))
+		Xmpz_sub(tls, _r, _n, _d)
 	}
 	if _q != nil {
-		Xmpz_set_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), uint64(1))
+		Xmpz_set_ui(tls, _q, uint64(1))
 	}
 	goto _18
 _10:
-	if _mode != int32(0) || _qs >= (0) {
+	if _mode != int32(0) || _qs >= 0 {
 		goto _15
 	}
 	if _r != nil {
-		Xmpz_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))))
+		Xmpz_add(tls, _r, _n, _d)
 	}
 	if _q != nil {
-		Xmpz_set_si(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), int64(-1))
+		Xmpz_set_si(tls, _q, int64(-1))
 	}
 	goto _18
 _15:
 	if _r != nil {
-		Xmpz_set(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))))
+		Xmpz_set(tls, _r, _n)
 	}
 	if _q != nil {
-		(*Xmpz_srcptr)(unsafe.Pointer(_q)).X_mp_size = int32(0)
+		_q[0].X_mp_size = int32(0)
 	}
 _18:
 	return int32(1)
 
 _8:
-	Xmpz_init_set(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_6_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))))
-	_6_np = (*Xmpz_srcptr)(unsafe.Pointer(&_6_tr)).X_mp_d
+	Xmpz_init_set(tls, &_6_tr, _n)
+	_6_np = (&_6_tr)[0].X_mp_d
 	_6_qn = (_nn - _dn) + int64(1)
 	if _q != nil {
-		Xmpz_init2(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_6_tq)))), uint64(_6_qn)*uint64(64))
-		_6_qp = (*Xmpz_srcptr)(unsafe.Pointer(&_6_tq)).X_mp_d
+		Xmpz_init2(tls, &_6_tq, uint64(_6_qn)*uint64(64))
+		_6_qp = (&_6_tq)[0].X_mp_d
 		goto _23
 	}
 	_6_qp = nil
 _23:
-	_mpn_div_qr(tls, _6_qp, _6_np, _nn, (*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_d, _dn)
+	_mpn_div_qr(tls, _6_qp, _6_np, _nn, _d[0].X_mp_d, _dn)
 	if _6_qp != nil {
-		_6_qn -= int64(bool2int((*elem0(_6_qp, uintptr(_6_qn-int64(1)))) == (0)))
-		(*Xmpz_srcptr)(unsafe.Pointer(&_6_tq)).X_mp_size = int32(func() int64 {
-			if _qs < (0) {
+		_6_qn -= int64(bool2int((*elem0(_6_qp, uintptr(_6_qn-int64(1)))) == 0))
+		(&_6_tq)[0].X_mp_size = int32(func() int64 {
+			if _qs < 0 {
 				return (-_6_qn)
 			}
 			return _6_qn
 		}())
 	}
 	_6_rn = _mpn_normalized_size(tls, _6_np, _dn)
-	(*Xmpz_srcptr)(unsafe.Pointer(&_6_tr)).X_mp_size = int32(func() int64 {
-		if _ns < (0) {
+	(&_6_tr)[0].X_mp_size = int32(func() int64 {
+		if _ns < 0 {
 			return (-_6_rn)
 		}
 		return _6_rn
 	}())
-	if _mode != int32(0) || _qs >= (0) || _6_rn == (0) {
+	if _mode != int32(0) || _qs >= 0 || _6_rn == 0 {
 		goto _31
 	}
 	if _q != nil {
-		Xmpz_sub_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_6_tq)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_6_tq)))), uint64(1))
+		Xmpz_sub_ui(tls, &_6_tq, &_6_tq, uint64(1))
 	}
 	if _r != nil {
-		Xmpz_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_6_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_6_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))))
+		Xmpz_add(tls, &_6_tr, &_6_tr, _d)
 	}
 	goto _37
 _31:
-	if _mode != int32(1) || _qs < (0) || _6_rn == (0) {
+	if _mode != int32(1) || _qs < 0 || _6_rn == 0 {
 		goto _37
 	}
 	if _q != nil {
-		Xmpz_add_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_6_tq)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_6_tq)))), uint64(1))
+		Xmpz_add_ui(tls, &_6_tq, &_6_tq, uint64(1))
 	}
 	if _r != nil {
-		Xmpz_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_6_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_6_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))))
+		Xmpz_sub(tls, &_6_tr, &_6_tr, _d)
 	}
 _37:
 	if _q != nil {
-		Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_6_tq)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))))
-		Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_6_tq)))))
+		Xmpz_swap(tls, &_6_tq, _q)
+		Xmpz_clear(tls, &_6_tq)
 	}
 	if _r != nil {
-		Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_6_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
+		Xmpz_swap(tls, &_6_tr, _r)
 	}
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_6_tr)))))
-	return bool2int(_6_rn != (0))
-
-	_ = _6_tq
-	_ = _6_tr
-	panic(0)
+	Xmpz_clear(tls, &_6_tr)
+	return bool2int(_6_rn != 0)
 }
 
 func Xmpz_sub(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr) {
 	var _rn int64
-	if (((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) ^ ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size)) >= int32(0) {
-		_rn = _mpz_abs_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))))
+	if ((_a[0].X_mp_size) ^ (_b[0].X_mp_size)) >= int32(0) {
+		_rn = _mpz_abs_sub(tls, _r, _a, _b)
 		goto _1
 	}
-	_rn = _mpz_abs_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))))
+	_rn = _mpz_abs_add(tls, _r, _a, _b)
 _1:
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(func() int64 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) >= int32(0) {
+	_r[0].X_mp_size = int32(func() int64 {
+		if (_a[0].X_mp_size) >= int32(0) {
 			return _rn
 		}
 		return (-_rn)
@@ -1369,28 +1356,28 @@ func _mpz_abs_sub(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b *[1]X
 	var _2___cy, _4___cy uint64
 	var _rp *uint64
 	_an = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size)
+		if (_a[0].X_mp_size) >= int32(0) {
+			return (_a[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size))
+		return (-(_a[0].X_mp_size))
 	}())
 	_bn = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size)
+		if (_b[0].X_mp_size) >= int32(0) {
+			return (_b[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size))
+		return (-(_b[0].X_mp_size))
 	}())
-	_cmp = _mpn_cmp4(tls, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, _an, (*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_d, _bn)
+	_cmp = _mpn_cmp4(tls, _a[0].X_mp_d, _an, _b[0].X_mp_d, _bn)
 	if _cmp <= int32(0) {
 		goto _4
 	}
 	_rp = func() *uint64 {
-		if _an > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _an)
+		if _an > int64(_r[0].X_mp_alloc) {
+			return _mpz_realloc(tls, _r, _an)
 		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+		return (_r[0].X_mp_d)
 	}()
-	_2___cy = Xmpn_sub(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, _an, (*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_d, _bn)
+	_2___cy = Xmpn_sub(tls, _rp, _a[0].X_mp_d, _an, _b[0].X_mp_d, _bn)
 	return _mpn_normalized_size(tls, _rp, _an)
 
 _4:
@@ -1398,12 +1385,12 @@ _4:
 		goto _9
 	}
 	_rp = func() *uint64 {
-		if _bn > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _bn)
+		if _bn > int64(_r[0].X_mp_alloc) {
+			return _mpz_realloc(tls, _r, _bn)
 		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+		return (_r[0].X_mp_d)
 	}()
-	_4___cy = Xmpn_sub(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_d, _bn, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, _an)
+	_4___cy = Xmpn_sub(tls, _rp, _b[0].X_mp_d, _bn, _a[0].X_mp_d, _an)
 	return -_mpn_normalized_size(tls, _rp, _bn)
 
 _9:
@@ -1432,63 +1419,63 @@ func _mpz_abs_add(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b *[1]X
 	var _rp *uint64
 	var _2___mpz_srcptr_swap__tmp *Xmpz_srcptr
 	_an = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size)
+		if (_a[0].X_mp_size) >= int32(0) {
+			return (_a[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size))
+		return (-(_a[0].X_mp_size))
 	}())
 	_bn = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size)
+		if (_b[0].X_mp_size) >= int32(0) {
+			return (_b[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size))
+		return (-(_b[0].X_mp_size))
 	}())
 	if _an >= _bn {
 		goto _4
 	}
-	_2___mpz_srcptr_swap__tmp = (*Xmpz_srcptr)(unsafe.Pointer(_a))
-	_a = (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b))))
+	_2___mpz_srcptr_swap__tmp = &_a[0]
+	_a = _b
 	_b = (*[1]Xmpz_srcptr)(unsafe.Pointer(_2___mpz_srcptr_swap__tmp))
 	_3___mp_size_t_swap__tmp = _an
 	_an = _bn
 	_bn = _3___mp_size_t_swap__tmp
 _4:
 	_rp = func() *uint64 {
-		if (_an + int64(1)) > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _an+int64(1))
+		if (_an + int64(1)) > int64(_r[0].X_mp_alloc) {
+			return _mpz_realloc(tls, _r, _an+int64(1))
 		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+		return (_r[0].X_mp_d)
 	}()
-	_cy = Xmpn_add(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, _an, (*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_d, _bn)
+	_cy = Xmpn_add(tls, _rp, _a[0].X_mp_d, _an, _b[0].X_mp_d, _bn)
 	*elem0(_rp, uintptr(_an)) = _cy
 	return int64(uint64(_an) + _cy)
 }
 
 func Xmpz_set_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x uint64) {
-	if _x > (0) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(1)
+	if _x > 0 {
+		_r[0].X_mp_size = int32(1)
 		*elem0(func() *uint64 {
-			if int32(1) > ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-				return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), int64(1))
+			if int32(1) > (_r[0].X_mp_alloc) {
+				return _mpz_realloc(tls, _r, int64(1))
 			}
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+			return (_r[0].X_mp_d)
 		}(), 0) = _x
 		goto _3
 	}
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+	_r[0].X_mp_size = int32(0)
 _3:
 }
 
 func Xmpz_add(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr) {
 	var _rn int64
-	if (((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) ^ ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size)) >= int32(0) {
-		_rn = _mpz_abs_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))))
+	if ((_a[0].X_mp_size) ^ (_b[0].X_mp_size)) >= int32(0) {
+		_rn = _mpz_abs_add(tls, _r, _a, _b)
 		goto _1
 	}
-	_rn = _mpz_abs_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))))
+	_rn = _mpz_abs_sub(tls, _r, _a, _b)
 _1:
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(func() int64 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) >= int32(0) {
+	_r[0].X_mp_size = int32(func() int64 {
+		if (_a[0].X_mp_size) >= int32(0) {
 			return _rn
 		}
 		return (-_rn)
@@ -1498,23 +1485,23 @@ _1:
 // C comment
 //  /* MPZ assignment and basic conversions. */
 func Xmpz_set_si(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x int64) {
-	if _x >= (0) {
-		Xmpz_set_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), uint64(_x))
+	if _x >= 0 {
+		Xmpz_set_ui(tls, _r, uint64(_x))
 		goto _1
 	}
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(-1)
+	_r[0].X_mp_size = int32(-1)
 	*elem0(func() *uint64 {
-		if int32(1) > ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), int64(1))
+		if int32(1) > (_r[0].X_mp_alloc) {
+			return _mpz_realloc(tls, _r, int64(1))
 		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+		return (_r[0].X_mp_d)
 	}(), 0) = -(uint64(_x+int64(1)) - uint64(1))
 _1:
 }
 
 func Xmpz_init_set(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x *[1]Xmpz_srcptr) {
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
-	Xmpz_set(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))))
+	Xmpz_init(tls, _r)
+	Xmpz_set(tls, _r, _x)
 }
 
 // C comment
@@ -1522,11 +1509,11 @@ func Xmpz_init_set(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x *[1]Xmpz_srcptr) {
 //     assigns the result variable using mpz_swap. */
 func Xmpz_init2(tls *crt.TLS, _r *[1]Xmpz_srcptr, _bits uint64) {
 	var _rn int64
-	_bits -= uint64(bool2int(_bits != (0)))
+	_bits -= uint64(bool2int(_bits != 0))
 	_rn = int64(uint64(1) + (_bits / uint64(64)))
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc = int32(_rn)
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d = _gmp_xalloc_limbs(tls, _rn)
+	_r[0].X_mp_alloc = int32(_rn)
+	_r[0].X_mp_size = int32(0)
+	_r[0].X_mp_d = _gmp_xalloc_limbs(tls, _rn)
 }
 
 func _mpn_div_qr(tls *crt.TLS, _qp *uint64, _np *uint64, _nn int64, _dp *uint64, _dn int64) {
@@ -1536,7 +1523,7 @@ func _mpn_div_qr(tls *crt.TLS, _qp *uint64, _np *uint64, _nn int64, _dp *uint64,
 	_tp = nil
 
 	_mpn_div_qr_invert(tls, &_inv, _dp, _dn)
-	if _dn <= int64(2) || _inv.Xshift <= (0) {
+	if _dn <= int64(2) || _inv.Xshift <= 0 {
 		goto _1
 	}
 	_tp = _gmp_xalloc_limbs(tls, _dn)
@@ -1569,14 +1556,14 @@ func _mpn_div_qr_invert(tls *crt.TLS, _inv *Tgmp_div_inverse, _dp *uint64, _dn i
 	_2___clz_x = _1_d1
 	_2___clz_c = 0
 _5:
-	if (_2___clz_x & uint64(18374686479671623680)) != (0) {
+	if (_2___clz_x & uint64(18374686479671623680)) != 0 {
 		goto _8
 	}
 	_2___clz_x <<= 8
 	_2___clz_c += uint32(8)
 	goto _5
 _8:
-	if (_2___clz_x & uint64(9223372036854775808)) != (0) {
+	if (_2___clz_x & uint64(9223372036854775808)) != 0 {
 		goto _12
 	}
 	_2___clz_x <<= 1
@@ -1585,7 +1572,7 @@ _8:
 _12:
 	_1_shift = _2___clz_c
 	_inv.Xshift = _1_shift
-	if _1_shift > (0) {
+	if _1_shift > 0 {
 		_1_d1 = (_1_d1 << uint(int32(_1_shift))) | (_1_d0 >> uint(int32(uint64(64)-uint64(_1_shift))))
 		_1_d0 = (_1_d0 << uint(int32(_1_shift))) | ((*elem0(_dp, uintptr(_dn-int64(3)))) >> uint(int32(uint64(64)-uint64(_1_shift))))
 	}
@@ -1602,14 +1589,14 @@ func _mpn_div_qr_2_invert(tls *crt.TLS, _inv *Tgmp_div_inverse, _d1 uint64, _d0 
 	_1___clz_x = _d1
 	_1___clz_c = 0
 _1:
-	if (_1___clz_x & uint64(18374686479671623680)) != (0) {
+	if (_1___clz_x & uint64(18374686479671623680)) != 0 {
 		goto _4
 	}
 	_1___clz_x <<= 8
 	_1___clz_c += uint32(8)
 	goto _1
 _4:
-	if (_1___clz_x & uint64(9223372036854775808)) != (0) {
+	if (_1___clz_x & uint64(9223372036854775808)) != 0 {
 		goto _8
 	}
 	_1___clz_x <<= 1
@@ -1618,7 +1605,7 @@ _4:
 _8:
 	_shift = _1___clz_c
 	_inv.Xshift = _shift
-	if _shift > (0) {
+	if _shift > 0 {
 		_d1 = (_d1 << uint(int32(_shift))) | (_d0 >> uint(int32(uint64(64)-uint64(_shift))))
 		_d0 <<= uint(int32(_shift))
 	}
@@ -1641,14 +1628,14 @@ func _mpn_div_qr_preinv(tls *crt.TLS, _qp *uint64, _np *uint64, _nn int64, _dp *
 	}
 
 	_1_shift = _inv.Xshift
-	if _1_shift > (0) {
+	if _1_shift > 0 {
 		_1_nh = Xmpn_lshift(tls, _np, _np, _nn, _1_shift)
 		goto _5
 	}
 	_1_nh = 0
 _5:
 	_mpn_div_qr_pi1(tls, _qp, _np, _nn, _1_nh, _dp, _dn, _inv.Xdi)
-	if _1_shift <= (0) {
+	if _1_shift <= 0 {
 		goto _6
 	}
 	_2___cy = Xmpn_rshift(tls, _np, _np, _dn, _1_shift)
@@ -1668,7 +1655,7 @@ func _mpn_div_qr_2_preinv(tls *crt.TLS, _qp *uint64, _rp *uint64, _np *uint64, _
 	_d1 = _inv.Xd1
 	_d0 = _inv.Xd0
 	_di = _inv.Xdi
-	if _shift > (0) {
+	if _shift > 0 {
 		_tp = _gmp_xalloc_limbs(tls, _nn)
 		_r1 = Xmpn_lshift(tls, _tp, _np, _nn, _shift)
 		_np = _tp
@@ -1745,10 +1732,10 @@ _12:
 	if _qp != nil {
 		*elem0(_qp, uintptr(_i)) = _2_q
 	}
-	if preInc1(&_i, -1) >= (0) {
+	if preInc1(&_i, -1) >= 0 {
 		goto _2
 	}
-	if _shift > (0) {
+	if _shift > 0 {
 		_r0 = (_r0 >> uint(int32(_shift))) | (_r1 << uint(int32(uint64(64)-uint64(_shift))))
 		_r1 >>= uint(int32(_shift))
 		_gmp_free_func(tls, unsafe.Pointer(_tp), 0)
@@ -1842,7 +1829,7 @@ _13:
 	_cy = uint64(bool2int(_n1 < _cy1))
 	_n1 = _n1 - _cy1
 	*elem0(_np, uintptr((_dn-int64(2))+_i)) = _1_n0
-	if _cy != (0) {
+	if _cy != 0 {
 		_n1 += _d1 + Xmpn_add_n(tls, (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_np))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_i)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_np))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_i)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), _dp, _dn-int64(1))
 		_q -= 1
 	}
@@ -1850,7 +1837,7 @@ _3:
 	if _qp != nil {
 		*elem0(_qp, uintptr(_i)) = _q
 	}
-	if preInc1(&_i, -1) >= (0) {
+	if preInc1(&_i, -1) >= 0 {
 		goto _0
 	}
 	*elem0(_np, uintptr(_dn-int64(1))) = _n1
@@ -1865,7 +1852,7 @@ func Xmpn_rshift(tls *crt.TLS, _rp *uint64, _up *uint64, _n int64, _cnt uint32) 
 	_retval = _high_limb << uint(int32(_tnc))
 	_low_limb = _high_limb >> uint(int32(_cnt))
 _0:
-	if preInc1(&_n, -1) != (0) {
+	if preInc1(&_n, -1) != 0 {
 		_high_limb = *postInc0(&_up, 8)
 		*postInc0(&_rp, 8) = _low_limb | (_high_limb << uint(int32(_tnc)))
 		_low_limb = _high_limb >> uint(int32(_cnt))
@@ -1876,11 +1863,11 @@ _0:
 }
 
 func Xmpz_sub_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b uint64) {
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) < int32(0) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(-_mpz_abs_add_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), _b))
+	if (_a[0].X_mp_size) < int32(0) {
+		_r[0].X_mp_size = int32(-_mpz_abs_add_ui(tls, _r, _a, _b))
 		goto _1
 	}
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(_mpz_abs_sub_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), _b))
+	_r[0].X_mp_size = int32(_mpz_abs_sub_ui(tls, _r, _a, _b))
 _1:
 }
 
@@ -1891,27 +1878,27 @@ func _mpz_abs_add_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b ui
 	var _cy uint64
 	var _rp *uint64
 	_an = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size)
+		if (_a[0].X_mp_size) >= int32(0) {
+			return (_a[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size))
+		return (-(_a[0].X_mp_size))
 	}())
-	if _an == (0) {
+	if _an == 0 {
 		*elem0(func() *uint64 {
-			if int32(1) > ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-				return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), int64(1))
+			if int32(1) > (_r[0].X_mp_alloc) {
+				return _mpz_realloc(tls, _r, int64(1))
 			}
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+			return (_r[0].X_mp_d)
 		}(), 0) = _b
-		return int64(bool2int(_b > (0)))
+		return int64(bool2int(_b > 0))
 	}
 	_rp = func() *uint64 {
-		if (_an + int64(1)) > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _an+int64(1))
+		if (_an + int64(1)) > int64(_r[0].X_mp_alloc) {
+			return _mpz_realloc(tls, _r, _an+int64(1))
 		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+		return (_r[0].X_mp_d)
 	}()
-	_cy = Xmpn_add_1(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, _an, _b)
+	_cy = Xmpn_add_1(tls, _rp, _a[0].X_mp_d, _an, _b)
 	*elem0(_rp, uintptr(_an)) = _cy
 	{
 		p := &_an
@@ -1928,31 +1915,31 @@ func _mpz_abs_sub_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b ui
 	var _4___cy uint64
 	var _rp *uint64
 	_an = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size)
+		if (_a[0].X_mp_size) >= int32(0) {
+			return (_a[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size))
+		return (-(_a[0].X_mp_size))
 	}())
-	if _an == (0) {
+	if _an == 0 {
 		*elem0(func() *uint64 {
-			if int32(1) > ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-				return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), int64(1))
+			if int32(1) > (_r[0].X_mp_alloc) {
+				return _mpz_realloc(tls, _r, int64(1))
 			}
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+			return (_r[0].X_mp_d)
 		}(), 0) = _b
-		return int64(-bool2int(_b > (0)))
+		return int64(-bool2int(_b > 0))
 	}
 	_rp = func() *uint64 {
-		if _an > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _an)
+		if _an > int64(_r[0].X_mp_alloc) {
+			return _mpz_realloc(tls, _r, _an)
 		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+		return (_r[0].X_mp_d)
 	}()
-	if (_an == int64(1)) && ((*elem0((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, 0)) < _b) {
-		*elem0(_rp, 0) = _b - (*elem0((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, 0))
+	if (_an == int64(1)) && ((*elem0(_a[0].X_mp_d, 0)) < _b) {
+		*elem0(_rp, 0) = _b - (*elem0(_a[0].X_mp_d, 0))
 		return int64(-1)
 	}
-	_4___cy = Xmpn_sub_1(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, _an, _b)
+	_4___cy = Xmpn_sub_1(tls, _rp, _a[0].X_mp_d, _an, _b)
 	return _mpn_normalized_size(tls, _rp, _an)
 
 	_ = _4___cy
@@ -1960,120 +1947,119 @@ func _mpz_abs_sub_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b ui
 }
 
 func Xmpz_add_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b uint64) {
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size) >= int32(0) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(_mpz_abs_add_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), _b))
+	if (_a[0].X_mp_size) >= int32(0) {
+		_r[0].X_mp_size = int32(_mpz_abs_add_ui(tls, _r, _a, _b))
 		goto _1
 	}
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(-_mpz_abs_sub_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), _b))
+	_r[0].X_mp_size = int32(-_mpz_abs_sub_ui(tls, _r, _a, _b))
 _1:
 }
 
 func Xmpz_clear(tls *crt.TLS, _r *[1]Xmpz_srcptr) {
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) != 0 {
-		_gmp_free_func(tls, unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d), 0)
+	if (_r[0].X_mp_alloc) != 0 {
+		_gmp_free_func(tls, unsafe.Pointer(_r[0].X_mp_d), 0)
 	}
 }
 
 func Xmpz_tdiv_q_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _cnt uint64) {
-	_mpz_div_q_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _cnt, int32(2))
+	_mpz_div_q_2exp(tls, _r, _u, _cnt, int32(2))
 }
 
 func _mpz_div_q_2exp(tls *crt.TLS, _q *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _bit_index uint64, _mode int32) {
 	var _adjust int32
 	var _un, _qn, _limb_cnt int64
 	var _qp *uint64
-	_un = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-	if _un == (0) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_q)).X_mp_size = int32(0)
+	_un = int64(_u[0].X_mp_size)
+	if _un == 0 {
+		_q[0].X_mp_size = int32(0)
 		return
 	}
 	_limb_cnt = int64(_bit_index / uint64(64))
 	_qn = func() int64 {
-		if _un >= (0) {
+		if _un >= 0 {
 			return _un
 		}
 		return (-_un)
 	}() - _limb_cnt
 	_bit_index %= uint64(64)
 	if _mode == func() int32 {
-		if _un > (0) {
+		if _un > 0 {
 			return int32(1)
 		}
 		return int32(0)
 	}() {
-		_adjust = bool2int(((_qn <= (0)) || (Xmpn_zero_p(tls, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _limb_cnt) == 0)) || (((*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, uintptr(_limb_cnt))) & ((uint64(1) << uint(int32(_bit_index))) - uint64(1))) != 0))
+		_adjust = bool2int(((_qn <= 0) || (Xmpn_zero_p(tls, _u[0].X_mp_d, _limb_cnt) == 0)) || (((*elem0(_u[0].X_mp_d, uintptr(_limb_cnt))) & ((uint64(1) << uint(int32(_bit_index))) - uint64(1))) != 0))
 		goto _8
 	}
 	_adjust = int32(0)
 _8:
-	if _qn <= (0) {
+	if _qn <= 0 {
 		_qn = 0
 		goto _10
 	}
 	_qp = func() *uint64 {
-		if _qn > int64((*Xmpz_srcptr)(unsafe.Pointer(_q)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), _qn)
+		if _qn > int64(_q[0].X_mp_alloc) {
+			return _mpz_realloc(tls, _q, _qn)
 		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_q)).X_mp_d)
+		return (_q[0].X_mp_d)
 	}()
-	if _bit_index != (0) {
-		Xmpn_rshift(tls, _qp, (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limb_cnt)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), _qn, uint32(_bit_index))
-		_qn -= int64(bool2int((*elem0(_qp, uintptr(_qn-int64(1)))) == (0)))
+	if _bit_index != 0 {
+		Xmpn_rshift(tls, _qp, (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_u[0].X_mp_d))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limb_cnt)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), _qn, uint32(_bit_index))
+		_qn -= int64(bool2int((*elem0(_qp, uintptr(_qn-int64(1)))) == 0))
 		goto _14
 	}
-	Xmpn_copyi(tls, _qp, (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limb_cnt)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), _qn)
+	Xmpn_copyi(tls, _qp, (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_u[0].X_mp_d))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limb_cnt)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), _qn)
 _14:
 _10:
-	(*Xmpz_srcptr)(unsafe.Pointer(_q)).X_mp_size = int32(_qn)
+	_q[0].X_mp_size = int32(_qn)
 	if _adjust != 0 {
-		Xmpz_add_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), uint64(1))
+		Xmpz_add_ui(tls, _q, _q, uint64(1))
 	}
-	if _un < (0) {
-		Xmpz_neg(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))))
+	if _un < 0 {
+		Xmpz_neg(tls, _q, _q)
 	}
 }
 
 func Xmpz_neg(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr) {
-	Xmpz_set(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))))
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = -((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size)
+	Xmpz_set(tls, _r, _u)
+	_r[0].X_mp_size = -(_r[0].X_mp_size)
 }
 
 func Xmpz_cmpabs(tls *crt.TLS, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) (r0 int32) {
-	return _mpn_cmp4(tls, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+	return _mpn_cmp4(tls, _u[0].X_mp_d, int64(func() int32 {
+		if (_u[0].X_mp_size) >= int32(0) {
+			return (_u[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
-	}()), (*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_d, int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size)
+		return (-(_u[0].X_mp_size))
+	}()), _v[0].X_mp_d, int64(func() int32 {
+		if (_v[0].X_mp_size) >= int32(0) {
+			return (_v[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size))
+		return (-(_v[0].X_mp_size))
 	}()))
 }
 
 func Xmpz_pow_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr, _e uint64) {
 	var _bit uint64
 	var _tr [1]Xmpz_srcptr
-	Xmpz_init_set_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), uint64(1))
+	Xmpz_init_set_ui(tls, &_tr, uint64(1))
 	_bit = uint64(9223372036854775808)
 _0:
-	Xmpz_mul(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))))
+	Xmpz_mul(tls, &_tr, &_tr, &_tr)
 	if (_e & _bit) != 0 {
-		Xmpz_mul(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))))
+		Xmpz_mul(tls, &_tr, &_tr, _b)
 	}
 	_bit >>= 1
-	if _bit > (0) {
+	if _bit > 0 {
 		goto _0
 	}
-	Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))))
-	_ = _tr
+	Xmpz_swap(tls, _r, &_tr)
+	Xmpz_clear(tls, &_tr)
 }
 
 func Xmpz_init_set_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x uint64) {
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
-	Xmpz_set_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _x)
+	Xmpz_init(tls, _r)
+	Xmpz_set_ui(tls, _r, _x)
 }
 
 func Xmpz_mul(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) {
@@ -2081,72 +2067,71 @@ func Xmpz_mul(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_
 	var _un, _vn, _rn int64
 	var _tp *uint64
 	var _t [1]Xmpz_srcptr
-	_un = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-	_vn = int64((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size)
-	if (_un == (0)) || (_vn == (0)) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+	_un = int64(_u[0].X_mp_size)
+	_vn = int64(_v[0].X_mp_size)
+	if (_un == 0) || (_vn == 0) {
+		_r[0].X_mp_size = int32(0)
 		return
 	}
-	_sign = bool2int((_un ^ _vn) < (0))
+	_sign = bool2int((_un ^ _vn) < 0)
 	_un = func() int64 {
-		if _un >= (0) {
+		if _un >= 0 {
 			return _un
 		}
 		return (-_un)
 	}()
 	_vn = func() int64 {
-		if _vn >= (0) {
+		if _vn >= 0 {
 			return _vn
 		}
 		return (-_vn)
 	}()
-	Xmpz_init2(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), uint64(_un+_vn)*uint64(64))
-	_tp = (*Xmpz_srcptr)(unsafe.Pointer(&_t)).X_mp_d
+	Xmpz_init2(tls, &_t, uint64(_un+_vn)*uint64(64))
+	_tp = (&_t)[0].X_mp_d
 	if _un >= _vn {
-		Xmpn_mul(tls, _tp, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un, (*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_d, _vn)
+		Xmpn_mul(tls, _tp, _u[0].X_mp_d, _un, _v[0].X_mp_d, _vn)
 		goto _7
 	}
-	Xmpn_mul(tls, _tp, (*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_d, _vn, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un)
+	Xmpn_mul(tls, _tp, _v[0].X_mp_d, _vn, _u[0].X_mp_d, _un)
 _7:
 	_rn = _un + _vn
-	_rn -= int64(bool2int((*elem0(_tp, uintptr(_rn-int64(1)))) == (0)))
-	(*Xmpz_srcptr)(unsafe.Pointer(&_t)).X_mp_size = int32(func() int64 {
+	_rn -= int64(bool2int((*elem0(_tp, uintptr(_rn-int64(1)))) == 0))
+	(&_t)[0].X_mp_size = int32(func() int64 {
 		if _sign != 0 {
 			return (-_rn)
 		}
 		return _rn
 	}())
-	Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	_ = _t
+	Xmpz_swap(tls, _r, &_t)
+	Xmpz_clear(tls, &_t)
 }
 
 func Xmpz_mul_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v uint64) {
 	var _un, _us int64
 	var _cy uint64
 	var _tp *uint64
-	_us = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-	if (_us == (0)) || (_v == (0)) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+	_us = int64(_u[0].X_mp_size)
+	if (_us == 0) || (_v == 0) {
+		_r[0].X_mp_size = int32(0)
 		return
 	}
 	_un = func() int64 {
-		if _us >= (0) {
+		if _us >= 0 {
 			return _us
 		}
 		return (-_us)
 	}()
 	_tp = func() *uint64 {
-		if (_un + int64(1)) > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _un+int64(1))
+		if (_un + int64(1)) > int64(_r[0].X_mp_alloc) {
+			return _mpz_realloc(tls, _r, _un+int64(1))
 		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+		return (_r[0].X_mp_d)
 	}()
-	_cy = Xmpn_mul_1(tls, _tp, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un, _v)
+	_cy = Xmpn_mul_1(tls, _tp, _u[0].X_mp_d, _un, _v)
 	*elem0(_tp, uintptr(_un)) = _cy
-	_un += int64(bool2int(_cy > (0)))
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(func() int64 {
-		if _us < (0) {
+	_un += int64(bool2int(_cy > 0))
+	_r[0].X_mp_size = int32(func() int64 {
+		if _us < 0 {
 			return (-_un)
 		}
 		return _un
@@ -2154,53 +2139,53 @@ func Xmpz_mul_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v uint64
 }
 
 func Xmpz_tdiv_q_ui(tls *crt.TLS, _q *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d uint64) (r0 uint64) {
-	return _mpz_div_qr_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), _d, int32(2))
+	return _mpz_div_qr_ui(tls, _q, nil, _n, _d, int32(2))
 }
 
 func _mpz_div_qr_ui(tls *crt.TLS, _q *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d uint64, _mode int32) (r0 uint64) {
 	var _ns, _qn, _rs int64
 	var _rl, _3___cy uint64
 	var _qp *uint64
-	_ns = int64((*Xmpz_srcptr)(unsafe.Pointer(_n)).X_mp_size)
-	if _ns != (0) {
+	_ns = int64(_n[0].X_mp_size)
+	if _ns != 0 {
 		goto _0
 	}
 	if _q != nil {
-		(*Xmpz_srcptr)(unsafe.Pointer(_q)).X_mp_size = int32(0)
+		_q[0].X_mp_size = int32(0)
 	}
 	if _r != nil {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+		_r[0].X_mp_size = int32(0)
 	}
 	return 0
 
 _0:
 	_qn = func() int64 {
-		if _ns >= (0) {
+		if _ns >= 0 {
 			return _ns
 		}
 		return (-_ns)
 	}()
 	if _q != nil {
 		_qp = func() *uint64 {
-			if _qn > int64((*Xmpz_srcptr)(unsafe.Pointer(_q)).X_mp_alloc) {
-				return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), _qn)
+			if _qn > int64(_q[0].X_mp_alloc) {
+				return _mpz_realloc(tls, _q, _qn)
 			}
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_q)).X_mp_d)
+			return (_q[0].X_mp_d)
 		}()
 		goto _8
 	}
 	_qp = nil
 _8:
-	_rl = _mpn_div_qr_1(tls, _qp, (*Xmpz_srcptr)(unsafe.Pointer(_n)).X_mp_d, _qn, _d)
+	_rl = _mpn_div_qr_1(tls, _qp, _n[0].X_mp_d, _qn, _d)
 
-	_rs = int64(bool2int(_rl > (0)))
+	_rs = int64(bool2int(_rl > 0))
 	_rs = func() int64 {
-		if _ns < (0) {
+		if _ns < 0 {
 			return (-_rs)
 		}
 		return _rs
 	}()
-	if _rl <= (0) || (_mode != int32(0) || _ns >= (0)) && (_mode != int32(1) || _ns < (0)) {
+	if _rl <= 0 || (_mode != int32(0) || _ns >= 0) && (_mode != int32(1) || _ns < 0) {
 		goto _15
 	}
 	if _q == nil {
@@ -2214,18 +2199,18 @@ _16:
 _15:
 	if _r != nil {
 		*elem0(func() *uint64 {
-			if int32(1) > ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-				return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), int64(1))
+			if int32(1) > (_r[0].X_mp_alloc) {
+				return _mpz_realloc(tls, _r, int64(1))
 			}
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+			return (_r[0].X_mp_d)
 		}(), 0) = _rl
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(_rs)
+		_r[0].X_mp_size = int32(_rs)
 	}
 	if _q != nil {
-		_qn -= int64(bool2int((*elem0(_qp, uintptr(_qn-int64(1)))) == (0)))
+		_qn -= int64(bool2int((*elem0(_qp, uintptr(_qn-int64(1)))) == 0))
 
-		(*Xmpz_srcptr)(unsafe.Pointer(_q)).X_mp_size = int32(func() int64 {
-			if _ns < (0) {
+		_q[0].X_mp_size = int32(func() int64 {
+			if _ns < 0 {
 				return (-_qn)
 			}
 			return _qn
@@ -2242,7 +2227,7 @@ func _mpn_div_qr_1(tls *crt.TLS, _qp *uint64, _np *uint64, _nn int64, _d uint64)
 	var _1_r, _4___ctz_x, _5___clz_x uint64
 	var _6_inv Tgmp_div_inverse
 
-	if (_d & (_d - uint64(1))) != (0) {
+	if (_d & (_d - uint64(1))) != 0 {
 		goto _0
 	}
 	_1_r = (*elem0(_np, 0)) & (_d - uint64(1))
@@ -2258,14 +2243,14 @@ func _mpn_div_qr_1(tls *crt.TLS, _qp *uint64, _np *uint64, _nn int64, _d uint64)
 	_5___clz_x = _4___ctz_x & (-_4___ctz_x)
 	_5___clz_c = 0
 _6:
-	if (_5___clz_x & uint64(18374686479671623680)) != (0) {
+	if (_5___clz_x & uint64(18374686479671623680)) != 0 {
 		goto _9
 	}
 	_5___clz_x <<= 8
 	_5___clz_c += uint32(8)
 	goto _6
 _9:
-	if (_5___clz_x & uint64(9223372036854775808)) != (0) {
+	if (_5___clz_x & uint64(9223372036854775808)) != 0 {
 		goto _13
 	}
 	_5___clz_x <<= 1
@@ -2285,22 +2270,22 @@ _0:
 }
 
 func Xmpz_roinit_n(tls *crt.TLS, _x *[1]Xmpz_srcptr, _xp *uint64, _xs int64) (r0 *Xmpz_srcptr) {
-	(*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_alloc = int32(0)
-	(*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_d = _xp
-	Xmpz_limbs_finish(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), _xs)
-	return (*Xmpz_srcptr)(unsafe.Pointer(_x))
+	_x[0].X_mp_alloc = int32(0)
+	_x[0].X_mp_d = _xp
+	Xmpz_limbs_finish(tls, _x, _xs)
+	return &_x[0]
 }
 
 func Xmpz_limbs_finish(tls *crt.TLS, _x *[1]Xmpz_srcptr, _xs int64) {
 	var _xn int64
-	_xn = _mpn_normalized_size(tls, (*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_d, func() int64 {
-		if _xs >= (0) {
+	_xn = _mpn_normalized_size(tls, _x[0].X_mp_d, func() int64 {
+		if _xs >= 0 {
 			return _xs
 		}
 		return (-_xs)
 	}())
-	(*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_size = int32(func() int64 {
-		if _xs < (0) {
+	_x[0].X_mp_size = int32(func() int64 {
+		if _xs < 0 {
 			return (-_xn)
 		}
 		return _xn
@@ -2311,23 +2296,18 @@ func Xmpn_sqrtrem(tls *crt.TLS, _sp *uint64, _rp *uint64, _p *uint64, _n int64) 
 	var _res int64
 	var _s, _r, _u [1]Xmpz_srcptr
 
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_r)))))
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s)))))
-	Xmpz_rootrem(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer(Xmpz_roinit_n(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_u)))), _p, _n))), uint64(2))
+	Xmpz_init(tls, &_r)
+	Xmpz_init(tls, &_s)
+	Xmpz_rootrem(tls, &_s, &_r, (*[1]Xmpz_srcptr)(unsafe.Pointer(Xmpz_roinit_n(tls, &_u, _p, _n))), uint64(2))
 
-	Xmpn_copyd(tls, _sp, (*Xmpz_srcptr)(unsafe.Pointer(&_s)).X_mp_d, int64((*Xmpz_srcptr)(unsafe.Pointer(&_s)).X_mp_size))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s)))))
-	_res = int64((*Xmpz_srcptr)(unsafe.Pointer(&_r)).X_mp_size)
+	Xmpn_copyd(tls, _sp, (&_s)[0].X_mp_d, int64((&_s)[0].X_mp_size))
+	Xmpz_clear(tls, &_s)
+	_res = int64((&_r)[0].X_mp_size)
 	if _rp != nil {
-		Xmpn_copyd(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(&_r)).X_mp_d, _res)
+		Xmpn_copyd(tls, _rp, (&_r)[0].X_mp_d, _res)
 	}
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_r)))))
+	Xmpz_clear(tls, &_r)
 	return _res
-
-	_ = _s
-	_ = _r
-	_ = _u
-	panic(0)
 }
 
 func Xmpn_scan0(tls *crt.TLS, _ptr *uint64, _bit uint64) (r0 uint64) {
@@ -2341,13 +2321,13 @@ func _mpn_common_scan(tls *crt.TLS, _limb uint64, _i int64, _up *uint64, _un int
 	var _2___ctz_x, _3___clz_x uint64
 
 _0:
-	if _limb != (0) {
+	if _limb != 0 {
 		goto _1
 	}
 	_i += 1
 	if _i == _un {
 		return func() uint64 {
-			if _ux == (0) {
+			if _ux == 0 {
 				return uint64(18446744073709551615)
 			}
 			return (uint64(_un) * uint64(64))
@@ -2361,14 +2341,14 @@ _1:
 	_3___clz_x = _2___ctz_x & (-_2___ctz_x)
 	_3___clz_c = 0
 _7:
-	if (_3___clz_x & uint64(18374686479671623680)) != (0) {
+	if (_3___clz_x & uint64(18374686479671623680)) != 0 {
 		goto _10
 	}
 	_3___clz_x <<= 8
 	_3___clz_c += uint32(8)
 	goto _7
 _10:
-	if (_3___clz_x & uint64(9223372036854775808)) != (0) {
+	if (_3___clz_x & uint64(9223372036854775808)) != 0 {
 		goto _14
 	}
 	_3___clz_x <<= 1
@@ -2388,7 +2368,7 @@ func Xmpn_scan1(tls *crt.TLS, _ptr *uint64, _bit uint64) (r0 uint64) {
 
 func Xmpn_com(tls *crt.TLS, _rp *uint64, _up *uint64, _n int64) {
 _0:
-	if preInc1(&_n, -1) >= (0) {
+	if preInc1(&_n, -1) >= 0 {
 		*postInc0(&_rp, 8) = ^(*postInc0(&_up, 8))
 		goto _0
 	}
@@ -2396,7 +2376,7 @@ _0:
 
 func Xmpn_neg(tls *crt.TLS, _rp *uint64, _up *uint64, _n int64) (r0 uint64) {
 _0:
-	if (*_up) != (0) {
+	if (*_up) != 0 {
 		goto _1
 	}
 	*_rp = 0
@@ -2431,7 +2411,7 @@ func _gmp_popcount_limb(tls *crt.TLS, _x uint64) (r0 uint32) {
 	var _c, _1_w uint32
 	_c = 0
 _0:
-	if _x <= (0) {
+	if _x <= 0 {
 		goto _3
 	}
 	_1_w = uint32(((_x >> 1) & uint64(21845)) + (_x & uint64(21845)))
@@ -2518,7 +2498,7 @@ func _mpn_get_str_bits(tls *crt.TLS, _sp *uint8, _bits uint32, _up *uint64, _un 
 	_mask = uint8((uint32(1) << uint(int32(_bits))) - uint32(1))
 	*func() *uint32 { *func() *uint64 { _i = 0; return &_j }() = _sn; return &_shift }() = 0
 _0:
-	if postInc2(&_j, uint64(18446744073709551615)) <= (0) {
+	if postInc2(&_j, uint64(18446744073709551615)) <= 0 {
 		goto _3
 	}
 	_1_digit = uint8((*elem0(_up, uintptr(_i))) >> uint(int32(_shift)))
@@ -2568,7 +2548,7 @@ func _mpn_get_str_other(tls *crt.TLS, _sp *uint8, _base int32, _info *Tmpn_base_
 	_mpn_div_qr_1_invert(tls, &_1_bbinv, _info.Xbb)
 _1:
 	_2_w = _mpn_div_qr_1_preinv(tls, _up, _up, _un, &_1_bbinv)
-	_un -= int64(bool2int((*elem0(_up, uintptr(_un-int64(1)))) == (0)))
+	_un -= int64(bool2int((*elem0(_up, uintptr(_un-int64(1)))) == 0))
 	_2_done = _mpn_limb_get_str(tls, (*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(_sp))+uintptr(_sn))), _2_w, &_binv)
 	_sn += _2_done
 _2:
@@ -2607,7 +2587,7 @@ func _mpn_limb_get_str(tls *crt.TLS, _sp *uint8, _w uint64, _binv *Tgmp_div_inve
 	var _1_h, _1_l, _1_r, _2__qh, _2__ql, _2__r, _2__mask, _3___x0, _3___x1, _3___x2, _3___x3, _3___u, _3___v, _4___x uint64
 	_i = 0
 _0:
-	if _w <= (0) {
+	if _w <= 0 {
 		goto _3
 	}
 	_1_h = _w >> uint(int32(uint64(64)-uint64(_binv.Xshift)))
@@ -2654,7 +2634,7 @@ _3:
 func Xmpn_set_str(tls *crt.TLS, _rp *uint64, _sp *uint8, _sn uint64, _base int32) (r0 int64) {
 	var _bits uint32
 	var _1_info Tmpn_base_info
-	if _sn == (0) {
+	if _sn == 0 {
 		return 0
 	}
 	_bits = _mpn_base_power_of_two_p(tls, uint32(_base))
@@ -2671,10 +2651,10 @@ func _mpn_set_str_bits(tls *crt.TLS, _rp *uint64, _sp *uint8, _sn uint64, _bits 
 	var _j uint64
 	*func() *uint32 { *func() *int64 { _j = _sn; return &_rn }() = 0; return &_shift }() = 0
 _0:
-	if postInc2(&_j, uint64(18446744073709551615)) <= (0) {
+	if postInc2(&_j, uint64(18446744073709551615)) <= 0 {
 		goto _3
 	}
-	if _shift == (0) {
+	if _shift == 0 {
 		*elem0(_rp, uintptr(postInc1(&_rn, 1))) = uint64(*elem3(_sp, uintptr(_j)))
 		_shift += _bits
 		goto _5
@@ -2688,7 +2668,7 @@ _0:
 		p := &_shift
 		*p = uint32(uint64(*p) - uint64(64))
 	}
-	if _shift > (0) {
+	if _shift > 0 {
 		*elem0(_rp, uintptr(postInc1(&_rn, 1))) = uint64(*elem3(_sp, uintptr(_j))) >> uint(int32(_bits-_shift))
 	}
 _6:
@@ -2711,7 +2691,7 @@ func _mpn_set_str_other(tls *crt.TLS, _rp *uint64, _sp *uint8, _sn uint64, _b ui
 	_j = 0
 	_w = uint64(*elem3(_sp, uintptr(postInc2(&_j, uint64(1)))))
 _0:
-	if preInc4(&_k, uint32(4294967295)) != (0) {
+	if preInc4(&_k, uint32(4294967295)) != 0 {
 		_w = (_w * _b) + uint64(*elem3(_sp, uintptr(postInc2(&_j, uint64(1)))))
 		goto _0
 	}
@@ -2733,7 +2713,7 @@ _6:
 _9:
 	_1_cy = Xmpn_mul_1(tls, _rp, _rp, _rn, _info.Xbb)
 	_1_cy += Xmpn_add_1(tls, _rp, _rp, _rn, _w)
-	if _1_cy > (0) {
+	if _1_cy > 0 {
 		*elem0(_rp, uintptr(postInc1(&_rn, 1))) = _1_cy
 	}
 	goto _2
@@ -2744,40 +2724,40 @@ _5:
 // C comment
 //  /* MPZ comparisons and the like. */
 func Xmpz_sgn(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 int32) {
-	return bool2int(((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) > int32(0)) - bool2int(((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) < int32(0))
+	return bool2int((_u[0].X_mp_size) > int32(0)) - bool2int((_u[0].X_mp_size) < int32(0))
 }
 
 func Xmpz_cmp_si(tls *crt.TLS, _u *[1]Xmpz_srcptr, _v int64) (r0 int32) {
 	var _usize int64
-	_usize = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+	_usize = int64(_u[0].X_mp_size)
 	if _usize < int64(-1) {
 		return int32(-1)
 	}
-	if _v >= (0) {
-		return Xmpz_cmp_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), uint64(_v))
+	if _v >= 0 {
+		return Xmpz_cmp_ui(tls, _u, uint64(_v))
 	}
-	if _usize >= (0) {
+	if _usize >= 0 {
 		return int32(1)
 	}
-	return bool2int((-(uint64(_v+int64(1)) - uint64(1))) > (*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, 0))) - bool2int((-(uint64(_v+int64(1)) - uint64(1))) < (*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, 0)))
+	return bool2int((-(uint64(_v+int64(1)) - uint64(1))) > (*elem0(_u[0].X_mp_d, 0))) - bool2int((-(uint64(_v+int64(1)) - uint64(1))) < (*elem0(_u[0].X_mp_d, 0)))
 }
 
 func Xmpz_cmp_ui(tls *crt.TLS, _u *[1]Xmpz_srcptr, _v uint64) (r0 int32) {
 	var _usize int64
-	_usize = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+	_usize = int64(_u[0].X_mp_size)
 	if _usize > int64(1) {
 		return int32(1)
 	}
-	if _usize < (0) {
+	if _usize < 0 {
 		return int32(-1)
 	}
-	return bool2int(Xmpz_get_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u))))) > _v) - bool2int(Xmpz_get_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u))))) < _v)
+	return bool2int(Xmpz_get_ui(tls, _u) > _v) - bool2int(Xmpz_get_ui(tls, _u) < _v)
 }
 
 func Xmpz_cmp(tls *crt.TLS, _a *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr) (r0 int32) {
 	var _asize, _bsize int64
-	_asize = int64((*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_size)
-	_bsize = int64((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size)
+	_asize = int64(_a[0].X_mp_size)
+	_bsize = int64(_b[0].X_mp_size)
 	if _asize != _bsize {
 		return func() int32 {
 			if _asize < _bsize {
@@ -2786,44 +2766,44 @@ func Xmpz_cmp(tls *crt.TLS, _a *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr) (r0 int32) {
 			return int32(1)
 		}()
 	}
-	if _asize >= (0) {
-		return Xmpn_cmp(tls, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, (*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_d, _asize)
+	if _asize >= 0 {
+		return Xmpn_cmp(tls, _a[0].X_mp_d, _b[0].X_mp_d, _asize)
 	}
-	return Xmpn_cmp(tls, (*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_d, (*Xmpz_srcptr)(unsafe.Pointer(_a)).X_mp_d, -_asize)
+	return Xmpn_cmp(tls, _b[0].X_mp_d, _a[0].X_mp_d, -_asize)
 }
 
 func Xmpz_cmp_d(tls *crt.TLS, _x *[1]Xmpz_srcptr, _d float64) (r0 int32) {
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_size) >= int32(0) {
+	if (_x[0].X_mp_size) >= int32(0) {
 		goto _0
 	}
 	if _d >= float64(0) {
 		return int32(-1)
 	}
-	return -Xmpz_cmpabs_d(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), _d)
+	return -Xmpz_cmpabs_d(tls, _x, _d)
 
 _0:
 	if _d < float64(0) {
 		return int32(1)
 	}
-	return Xmpz_cmpabs_d(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), _d)
+	return Xmpz_cmpabs_d(tls, _x, _d)
 }
 
 func Xmpz_cmpabs_d(tls *crt.TLS, _x *[1]Xmpz_srcptr, _d float64) (r0 int32) {
 	var _xn, _i int64
 	var _2_f, _2_xl uint64
 	var _B, _Bi float64
-	_xn = int64((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_size)
+	_xn = int64(_x[0].X_mp_size)
 	_d = func() float64 {
-		if _d >= (0) {
+		if _d >= 0 {
 			return _d
 		}
 		return (-_d)
 	}()
-	if _xn == (0) {
+	if _xn == 0 {
 		goto _2
 	}
 	_xn = func() int64 {
-		if _xn >= (0) {
+		if _xn >= 0 {
 			return _xn
 		}
 		return (-_xn)
@@ -2844,11 +2824,11 @@ _8:
 	}
 	_i = _xn
 _10:
-	if postInc1(&_i, -1) <= (0) {
+	if postInc1(&_i, -1) <= 0 {
 		goto _13
 	}
 	_2_f = uint64(_d)
-	_2_xl = *elem0((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_d, uintptr(_i))
+	_2_xl = *elem0(_x[0].X_mp_d, uintptr(_i))
 	if _2_xl > _2_f {
 		return int32(1)
 	}
@@ -2863,33 +2843,33 @@ _2:
 }
 
 func Xmpz_abs(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr) {
-	Xmpz_set(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))))
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size)
+	Xmpz_set(tls, _r, _u)
+	_r[0].X_mp_size = func() int32 {
+		if (_r[0].X_mp_size) >= int32(0) {
+			return (_r[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size))
+		return (-(_r[0].X_mp_size))
 	}()
 }
 
 func Xmpz_ui_sub(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a uint64, _b *[1]Xmpz_srcptr) {
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size) < int32(0) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(_mpz_abs_add_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))), _a))
+	if (_b[0].X_mp_size) < int32(0) {
+		_r[0].X_mp_size = int32(_mpz_abs_add_ui(tls, _r, _b, _a))
 		goto _1
 	}
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(-_mpz_abs_sub_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))), _a))
+	_r[0].X_mp_size = int32(-_mpz_abs_sub_ui(tls, _r, _b, _a))
 _1:
 }
 
 // C comment
 //  /* MPZ multiplication */
 func Xmpz_mul_si(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v int64) {
-	if _v < (0) {
-		Xmpz_mul_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), -(uint64(_v+int64(1)) - uint64(1)))
-		Xmpz_neg(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
+	if _v < 0 {
+		Xmpz_mul_ui(tls, _r, _u, -(uint64(_v+int64(1)) - uint64(1)))
+		Xmpz_neg(tls, _r, _r)
 		goto _1
 	}
-	Xmpz_mul_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), uint64(_v))
+	Xmpz_mul_ui(tls, _r, _u, uint64(_v))
 _1:
 }
 
@@ -2899,35 +2879,35 @@ func Xmpz_mul_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _bits u
 	var _2_cy uint64
 	var _rp *uint64
 	_un = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+		if (_u[0].X_mp_size) >= int32(0) {
+			return (_u[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
+		return (-(_u[0].X_mp_size))
 	}())
-	if _un == (0) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+	if _un == 0 {
+		_r[0].X_mp_size = int32(0)
 		return
 	}
 	_limbs = int64(_bits / uint64(64))
 	_shift = uint32(_bits % uint64(64))
-	_rn = (_un + _limbs) + int64(bool2int(_shift > (0)))
+	_rn = (_un + _limbs) + int64(bool2int(_shift > 0))
 	_rp = func() *uint64 {
-		if _rn > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _rn)
+		if _rn > int64(_r[0].X_mp_alloc) {
+			return _mpz_realloc(tls, _r, _rn)
 		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+		return (_r[0].X_mp_d)
 	}()
-	if _shift > (0) {
-		_2_cy = Xmpn_lshift(tls, (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_rp))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limbs)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un, _shift)
+	if _shift > 0 {
+		_2_cy = Xmpn_lshift(tls, (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_rp))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limbs)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), _u[0].X_mp_d, _un, _shift)
 		*elem0(_rp, uintptr(_rn-int64(1))) = _2_cy
-		_rn -= int64(bool2int(_2_cy == (0)))
+		_rn -= int64(bool2int(_2_cy == 0))
 		goto _6
 	}
-	Xmpn_copyd(tls, (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_rp))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limbs)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un)
+	Xmpn_copyd(tls, (*uint64)(unsafe.Pointer(uintptr(unsafe.Pointer(_rp))+uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(_limbs)*uintptr(unsafe.Pointer((*uint64)(unsafe.Pointer(uintptr(8))))))))))), _u[0].X_mp_d, _un)
 _6:
 	Xmpn_zero(tls, _rp, _limbs)
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(func() int64 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) < int32(0) {
+	_r[0].X_mp_size = int32(func() int64 {
+		if (_u[0].X_mp_size) < int32(0) {
 			return (-_rn)
 		}
 		return _rn
@@ -2936,103 +2916,99 @@ _6:
 
 func Xmpz_addmul_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v uint64) {
 	var _t [1]Xmpz_srcptr
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_mul_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _v)
-	Xmpz_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	_ = _t
+	Xmpz_init(tls, &_t)
+	Xmpz_mul_ui(tls, &_t, _u, _v)
+	Xmpz_add(tls, _r, _r, &_t)
+	Xmpz_clear(tls, &_t)
 }
 
 func Xmpz_addmul(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) {
 	var _t [1]Xmpz_srcptr
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_mul(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_v)))))
-	Xmpz_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	_ = _t
+	Xmpz_init(tls, &_t)
+	Xmpz_mul(tls, &_t, _u, _v)
+	Xmpz_add(tls, _r, _r, &_t)
+	Xmpz_clear(tls, &_t)
 }
 
 func Xmpz_submul_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v uint64) {
 	var _t [1]Xmpz_srcptr
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_mul_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _v)
-	Xmpz_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	_ = _t
+	Xmpz_init(tls, &_t)
+	Xmpz_mul_ui(tls, &_t, _u, _v)
+	Xmpz_sub(tls, _r, _r, &_t)
+	Xmpz_clear(tls, &_t)
 }
 
 func Xmpz_submul(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) {
 	var _t [1]Xmpz_srcptr
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_mul(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_v)))))
-	Xmpz_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	_ = _t
+	Xmpz_init(tls, &_t)
+	Xmpz_mul(tls, &_t, _u, _v)
+	Xmpz_sub(tls, _r, _r, &_t)
+	Xmpz_clear(tls, &_t)
 }
 
 func Xmpz_cdiv_qr(tls *crt.TLS, _q *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
-	_mpz_div_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(1))
+	_mpz_div_qr(tls, _q, _r, _n, _d, int32(1))
 }
 
 func Xmpz_fdiv_qr(tls *crt.TLS, _q *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
-	_mpz_div_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(0))
+	_mpz_div_qr(tls, _q, _r, _n, _d, int32(0))
 }
 
 func Xmpz_tdiv_qr(tls *crt.TLS, _q *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
-	_mpz_div_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(2))
+	_mpz_div_qr(tls, _q, _r, _n, _d, int32(2))
 }
 
 func Xmpz_cdiv_q(tls *crt.TLS, _q *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
-	_mpz_div_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(1))
+	_mpz_div_qr(tls, _q, nil, _n, _d, int32(1))
 }
 
 func Xmpz_fdiv_q(tls *crt.TLS, _q *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
-	_mpz_div_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(0))
+	_mpz_div_qr(tls, _q, nil, _n, _d, int32(0))
 }
 
 func Xmpz_cdiv_r(tls *crt.TLS, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
-	_mpz_div_qr(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(1))
+	_mpz_div_qr(tls, nil, _r, _n, _d, int32(1))
 }
 
 func Xmpz_fdiv_r(tls *crt.TLS, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
-	_mpz_div_qr(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(0))
+	_mpz_div_qr(tls, nil, _r, _n, _d, int32(0))
 }
 
 func Xmpz_tdiv_r(tls *crt.TLS, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
-	_mpz_div_qr(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(2))
+	_mpz_div_qr(tls, nil, _r, _n, _d, int32(2))
 }
 
 func Xmpz_cdiv_q_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _cnt uint64) {
-	_mpz_div_q_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _cnt, int32(1))
+	_mpz_div_q_2exp(tls, _r, _u, _cnt, int32(1))
 }
 
 func Xmpz_fdiv_q_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _cnt uint64) {
-	_mpz_div_q_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _cnt, int32(0))
+	_mpz_div_q_2exp(tls, _r, _u, _cnt, int32(0))
 }
 
 func Xmpz_cdiv_r_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _cnt uint64) {
-	_mpz_div_r_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _cnt, int32(1))
+	_mpz_div_r_2exp(tls, _r, _u, _cnt, int32(1))
 }
 
 func _mpz_div_r_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _bit_index uint64, _mode int32) {
 	var _us, _un, _rn, _3_i int64
 	var _mask, _4___cy uint64
 	var _rp *uint64
-	_us = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-	if (_us == (0)) || (_bit_index == (0)) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+	_us = int64(_u[0].X_mp_size)
+	if (_us == 0) || (_bit_index == 0) {
+		_r[0].X_mp_size = int32(0)
 		return
 	}
 	_rn = int64(((_bit_index + uint64(64)) - uint64(1)) / uint64(64))
 
 	_rp = func() *uint64 {
-		if _rn > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _rn)
+		if _rn > int64(_r[0].X_mp_alloc) {
+			return _mpz_realloc(tls, _r, _rn)
 		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+		return (_r[0].X_mp_d)
 	}()
 	_un = func() int64 {
-		if _us >= (0) {
+		if _us >= 0 {
 			return _us
 		}
 		return (-_us)
@@ -3042,14 +3018,14 @@ func _mpz_div_r_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _bit_
 		goto _6
 	}
 	if _mode != func() int32 {
-		if _us > (0) {
+		if _us > 0 {
 			return int32(1)
 		}
 		return int32(0)
 	}() {
 		goto _9
 	}
-	_4___cy = uint64(bool2int(Xmpn_neg(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un) == 0))
+	_4___cy = uint64(bool2int(Xmpn_neg(tls, _rp, _u[0].X_mp_d, _un) == 0))
 
 	_3_i = _un
 _11:
@@ -3064,19 +3040,19 @@ _14:
 	_us = -_us
 	goto _15
 _9:
-	if (*Xmpz_srcptr)(unsafe.Pointer(_r)) != (*Xmpz_srcptr)(unsafe.Pointer(_u)) {
-		Xmpn_copyi(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un)
+	if &_r[0] != &_u[0] {
+		Xmpn_copyi(tls, _rp, _u[0].X_mp_d, _un)
 	}
 	_rn = _un
 _15:
 	goto _17
 _6:
-	if (*Xmpz_srcptr)(unsafe.Pointer(_r)) != (*Xmpz_srcptr)(unsafe.Pointer(_u)) {
-		Xmpn_copyi(tls, _rp, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _rn-int64(1))
+	if &_r[0] != &_u[0] {
+		Xmpn_copyi(tls, _rp, _u[0].X_mp_d, _rn-int64(1))
 	}
-	*elem0(_rp, uintptr(_rn-int64(1))) = (*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, uintptr(_rn-int64(1)))) & _mask
+	*elem0(_rp, uintptr(_rn-int64(1))) = (*elem0(_u[0].X_mp_d, uintptr(_rn-int64(1)))) & _mask
 	if _mode == func() int32 {
-		if _us > (0) {
+		if _us > 0 {
 			return int32(1)
 		}
 		return int32(0)
@@ -3087,8 +3063,8 @@ _6:
 	}
 _17:
 	_rn = _mpn_normalized_size(tls, _rp, _rn)
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(func() int64 {
-		if _us < (0) {
+	_r[0].X_mp_size = int32(func() int64 {
+		if _us < 0 {
 			return (-_rn)
 		}
 		return _rn
@@ -3097,16 +3073,16 @@ _17:
 }
 
 func Xmpz_fdiv_r_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _cnt uint64) {
-	_mpz_div_r_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _cnt, int32(0))
+	_mpz_div_r_2exp(tls, _r, _u, _cnt, int32(0))
 }
 
 func Xmpz_tdiv_r_2exp(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _cnt uint64) {
-	_mpz_div_r_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _cnt, int32(2))
+	_mpz_div_r_2exp(tls, _r, _u, _cnt, int32(2))
 }
 
 func Xmpz_mod(tls *crt.TLS, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
-	_mpz_div_qr(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size) >= int32(0) {
+	_mpz_div_qr(tls, nil, _r, _n, _d, func() int32 {
+		if (_d[0].X_mp_size) >= int32(0) {
 			return int32(0)
 		}
 		return int32(1)
@@ -3115,111 +3091,108 @@ func Xmpz_mod(tls *crt.TLS, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_
 
 func Xmpz_divexact(tls *crt.TLS, _q *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) {
 	var _1___cy uint64
-	_1___cy = uint64(_mpz_div_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(2)))
+	_1___cy = uint64(_mpz_div_qr(tls, _q, nil, _n, _d, int32(2)))
 
 	_ = _1___cy
 }
 
 func Xmpz_divisible_p(tls *crt.TLS, _n *[1]Xmpz_srcptr, _d *[1]Xmpz_srcptr) (r0 int32) {
-	return bool2int(_mpz_div_qr(tls, nil, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), int32(2)) == int32(0))
+	return bool2int(_mpz_div_qr(tls, nil, nil, _n, _d, int32(2)) == int32(0))
 }
 
 func Xmpz_congruent_p(tls *crt.TLS, _a *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr, _m *[1]Xmpz_srcptr) (r0 int32) {
 	var _res int32
 	var _t [1]Xmpz_srcptr
-	if Xmpz_sgn(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_m))))) == int32(0) {
-		return bool2int(Xmpz_cmp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b))))) == int32(0))
+	if Xmpz_sgn(tls, _m) == int32(0) {
+		return bool2int(Xmpz_cmp(tls, _a, _b) == int32(0))
 	}
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_a)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))))
-	_res = Xmpz_divisible_p(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_m)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
+	Xmpz_init(tls, &_t)
+	Xmpz_sub(tls, &_t, _a, _b)
+	_res = Xmpz_divisible_p(tls, &_t, _m)
+	Xmpz_clear(tls, &_t)
 	return _res
-
-	_ = _t
-	panic(0)
 }
 
 func Xmpz_cdiv_qr_ui(tls *crt.TLS, _q *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d uint64) (r0 uint64) {
-	return _mpz_div_qr_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), _d, int32(1))
+	return _mpz_div_qr_ui(tls, _q, _r, _n, _d, int32(1))
 }
 
 func Xmpz_fdiv_qr_ui(tls *crt.TLS, _q *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d uint64) (r0 uint64) {
-	return _mpz_div_qr_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), _d, int32(0))
+	return _mpz_div_qr_ui(tls, _q, _r, _n, _d, int32(0))
 }
 
 func Xmpz_tdiv_qr_ui(tls *crt.TLS, _q *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d uint64) (r0 uint64) {
-	return _mpz_div_qr_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), _d, int32(2))
+	return _mpz_div_qr_ui(tls, _q, _r, _n, _d, int32(2))
 }
 
 func Xmpz_cdiv_q_ui(tls *crt.TLS, _q *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d uint64) (r0 uint64) {
-	return _mpz_div_qr_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), _d, int32(1))
+	return _mpz_div_qr_ui(tls, _q, nil, _n, _d, int32(1))
 }
 
 func Xmpz_fdiv_q_ui(tls *crt.TLS, _q *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d uint64) (r0 uint64) {
-	return _mpz_div_qr_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), _d, int32(0))
+	return _mpz_div_qr_ui(tls, _q, nil, _n, _d, int32(0))
 }
 
 func Xmpz_cdiv_r_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d uint64) (r0 uint64) {
-	return _mpz_div_qr_ui(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), _d, int32(1))
+	return _mpz_div_qr_ui(tls, nil, _r, _n, _d, int32(1))
 }
 
 func Xmpz_fdiv_r_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d uint64) (r0 uint64) {
-	return _mpz_div_qr_ui(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), _d, int32(0))
+	return _mpz_div_qr_ui(tls, nil, _r, _n, _d, int32(0))
 }
 
 func Xmpz_tdiv_r_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d uint64) (r0 uint64) {
-	return _mpz_div_qr_ui(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), _d, int32(2))
+	return _mpz_div_qr_ui(tls, nil, _r, _n, _d, int32(2))
 }
 
 func Xmpz_cdiv_ui(tls *crt.TLS, _n *[1]Xmpz_srcptr, _d uint64) (r0 uint64) {
-	return _mpz_div_qr_ui(tls, nil, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), _d, int32(1))
+	return _mpz_div_qr_ui(tls, nil, nil, _n, _d, int32(1))
 }
 
 func Xmpz_fdiv_ui(tls *crt.TLS, _n *[1]Xmpz_srcptr, _d uint64) (r0 uint64) {
-	return _mpz_div_qr_ui(tls, nil, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), _d, int32(0))
+	return _mpz_div_qr_ui(tls, nil, nil, _n, _d, int32(0))
 }
 
 func Xmpz_tdiv_ui(tls *crt.TLS, _n *[1]Xmpz_srcptr, _d uint64) (r0 uint64) {
-	return _mpz_div_qr_ui(tls, nil, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), _d, int32(2))
+	return _mpz_div_qr_ui(tls, nil, nil, _n, _d, int32(2))
 }
 
 func Xmpz_mod_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d uint64) (r0 uint64) {
-	return _mpz_div_qr_ui(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), _d, int32(0))
+	return _mpz_div_qr_ui(tls, nil, _r, _n, _d, int32(0))
 }
 
 func Xmpz_divexact_ui(tls *crt.TLS, _q *[1]Xmpz_srcptr, _n *[1]Xmpz_srcptr, _d uint64) {
 	var _1___cy uint64
-	_1___cy = _mpz_div_qr_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), _d, int32(2))
+	_1___cy = _mpz_div_qr_ui(tls, _q, nil, _n, _d, int32(2))
 
 	_ = _1___cy
 }
 
 func Xmpz_divisible_ui_p(tls *crt.TLS, _n *[1]Xmpz_srcptr, _d uint64) (r0 int32) {
-	return bool2int(_mpz_div_qr_ui(tls, nil, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), _d, int32(2)) == (0))
+	return bool2int(_mpz_div_qr_ui(tls, nil, nil, _n, _d, int32(2)) == 0)
 }
 
 func Xmpz_gcd_ui(tls *crt.TLS, _g *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v uint64) (r0 uint64) {
 	var _un int64
-	if _v != (0) {
+	if _v != 0 {
 		goto _0
 	}
 	if _g != nil {
-		Xmpz_abs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_g)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))))
+		Xmpz_abs(tls, _g, _u)
 	}
 	goto _2
 _0:
 	_un = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+		if (_u[0].X_mp_size) >= int32(0) {
+			return (_u[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
+		return (-(_u[0].X_mp_size))
 	}())
-	if _un != (0) {
-		_v = _mpn_gcd_11(tls, _mpn_div_qr_1(tls, nil, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un, _v), _v)
+	if _un != 0 {
+		_v = _mpn_gcd_11(tls, _mpn_div_qr_1(tls, nil, _u[0].X_mp_d, _un, _v), _v)
 	}
 	if _g != nil {
-		Xmpz_set_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_g)))), _v)
+		Xmpz_set_ui(tls, _g, _v)
 	}
 _2:
 	return _v
@@ -3231,10 +3204,10 @@ func _mpn_gcd_11(tls *crt.TLS, _u uint64, _v uint64) (r0 uint64) {
 	var _shift, _1___ctz_c, _2___clz_c uint32
 	var _1___ctz_x, _2___clz_x, _3___mp_limb_t_swap__tmp uint64
 
-	if _u == (0) {
+	if _u == 0 {
 		return _v
 	}
-	if _v == (0) {
+	if _v == 0 {
 		return _u
 	}
 	_1___ctz_x = _u | _v
@@ -3242,14 +3215,14 @@ func _mpn_gcd_11(tls *crt.TLS, _u uint64, _v uint64) (r0 uint64) {
 	_2___clz_x = _1___ctz_x & (-_1___ctz_x)
 	_2___clz_c = 0
 _5:
-	if (_2___clz_x & uint64(18374686479671623680)) != (0) {
+	if (_2___clz_x & uint64(18374686479671623680)) != 0 {
 		goto _8
 	}
 	_2___clz_x <<= 8
 	_2___clz_c += uint32(8)
 	goto _5
 _8:
-	if (_2___clz_x & uint64(9223372036854775808)) != (0) {
+	if (_2___clz_x & uint64(9223372036854775808)) != 0 {
 		goto _12
 	}
 	_2___clz_x <<= 1
@@ -3260,14 +3233,14 @@ _12:
 	_shift = uint32(uint64(63) - uint64(_1___ctz_c))
 	_u >>= uint(int32(_shift))
 	_v >>= uint(int32(_shift))
-	if (_u & uint64(1)) != (0) {
+	if (_u & uint64(1)) != 0 {
 		goto _13
 	}
 	_3___mp_limb_t_swap__tmp = _u
 	_u = _v
 	_v = _3___mp_limb_t_swap__tmp
 _13:
-	if (_v & uint64(1)) == (0) {
+	if (_v & uint64(1)) == 0 {
 		_v >>= 1
 		goto _13
 	}
@@ -3281,7 +3254,7 @@ _16:
 	_u -= _v
 _20:
 	_u >>= 1
-	if (_u & uint64(1)) == (0) {
+	if (_u & uint64(1)) == 0 {
 		goto _20
 	}
 	goto _21
@@ -3289,7 +3262,7 @@ _19:
 	_v -= _u
 _22:
 	_v >>= 1
-	if (_v & uint64(1)) == (0) {
+	if (_v & uint64(1)) == 0 {
 		goto _22
 	}
 _21:
@@ -3302,65 +3275,63 @@ func Xmpz_gcd(tls *crt.TLS, _g *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_
 	var _4_c int32
 	var _uz, _vz, _gz, _6_vl, _6_ul uint64
 	var _tu, _tv [1]Xmpz_srcptr
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) == int32(0) {
-		Xmpz_abs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_g)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_v)))))
+	if (_u[0].X_mp_size) == int32(0) {
+		Xmpz_abs(tls, _g, _v)
 		return
 	}
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size) == int32(0) {
-		Xmpz_abs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_g)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))))
+	if (_v[0].X_mp_size) == int32(0) {
+		Xmpz_abs(tls, _g, _u)
 		return
 	}
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))))
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))))
-	Xmpz_abs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))))
-	_uz = _mpz_make_odd(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))))
-	Xmpz_abs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_v)))))
-	_vz = _mpz_make_odd(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))))
+	Xmpz_init(tls, &_tu)
+	Xmpz_init(tls, &_tv)
+	Xmpz_abs(tls, &_tu, _u)
+	_uz = _mpz_make_odd(tls, &_tu)
+	Xmpz_abs(tls, &_tv, _v)
+	_vz = _mpz_make_odd(tls, &_tv)
 	_gz = func() uint64 {
 		if _uz < _vz {
 			return _uz
 		}
 		return _vz
 	}()
-	if ((*Xmpz_srcptr)(unsafe.Pointer(&_tu)).X_mp_size) < ((*Xmpz_srcptr)(unsafe.Pointer(&_tv)).X_mp_size) {
-		Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))))
+	if ((&_tu)[0].X_mp_size) < ((&_tv)[0].X_mp_size) {
+		Xmpz_swap(tls, &_tu, &_tv)
 	}
-	Xmpz_tdiv_r(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))))
-	if ((*Xmpz_srcptr)(unsafe.Pointer(&_tu)).X_mp_size) == int32(0) {
-		Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_g)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))))
+	Xmpz_tdiv_r(tls, &_tu, &_tu, &_tv)
+	if ((&_tu)[0].X_mp_size) == int32(0) {
+		Xmpz_swap(tls, _g, &_tv)
 		goto _9
 	}
 _5:
-	_mpz_make_odd(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))))
-	_4_c = Xmpz_cmp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))))
+	_mpz_make_odd(tls, &_tu)
+	_4_c = Xmpz_cmp(tls, &_tu, &_tv)
 	if _4_c == int32(0) {
-		Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_g)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))))
+		Xmpz_swap(tls, _g, &_tu)
 		goto _9
 	}
 	if _4_c < int32(0) {
-		Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))))
+		Xmpz_swap(tls, &_tu, &_tv)
 	}
-	if ((*Xmpz_srcptr)(unsafe.Pointer(&_tv)).X_mp_size) == int32(1) {
-		_6_vl = *elem0((*Xmpz_srcptr)(unsafe.Pointer(&_tv)).X_mp_d, 0)
-		_6_ul = Xmpz_tdiv_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))), _6_vl)
-		Xmpz_set_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_g)))), _mpn_gcd_11(tls, _6_ul, _6_vl))
+	if ((&_tv)[0].X_mp_size) == int32(1) {
+		_6_vl = *elem0((&_tv)[0].X_mp_d, 0)
+		_6_ul = Xmpz_tdiv_ui(tls, &_tu, _6_vl)
+		Xmpz_set_ui(tls, _g, _mpn_gcd_11(tls, _6_ul, _6_vl))
 		goto _9
 	}
-	Xmpz_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))))
+	Xmpz_sub(tls, &_tu, &_tu, &_tv)
 	goto _5
 _9:
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))))
-	Xmpz_mul_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_g)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_g)))), _gz)
-	_ = _tu
-	_ = _tv
+	Xmpz_clear(tls, &_tu)
+	Xmpz_clear(tls, &_tv)
+	Xmpz_mul_2exp(tls, _g, _g, _gz)
 }
 
 func _mpz_make_odd(tls *crt.TLS, _r *[1]Xmpz_srcptr) (r0 uint64) {
 	var _shift uint64
 
-	_shift = _mpn_common_scan(tls, *elem0((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d, 0), 0, (*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d, 0, 0)
-	Xmpz_tdiv_q_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _shift)
+	_shift = _mpn_common_scan(tls, *elem0(_r[0].X_mp_d, 0), 0, _r[0].X_mp_d, 0, 0)
+	Xmpz_tdiv_q_2exp(tls, _r, _r, _shift)
 	return _shift
 }
 
@@ -3370,42 +3341,42 @@ func Xmpz_gcdext(tls *crt.TLS, _g *[1]Xmpz_srcptr, _s *[1]Xmpz_srcptr, _t *[1]Xm
 	var _uz, _vz, _gz, _power, _6___mp_bitcnt_t_swap__tmp, _7_shift uint64
 	var _tu, _tv, _s0, _s1, _t0, _t1 [1]Xmpz_srcptr
 	var _4___mpz_srcptr_swap__tmp, _5___mpz_ptr_swap__tmp *Xmpz_srcptr
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) != int32(0) {
+	if (_u[0].X_mp_size) != int32(0) {
 		goto _0
 	}
-	_1_sign = int64(Xmpz_sgn(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_v))))))
-	Xmpz_abs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_g)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_v)))))
+	_1_sign = int64(Xmpz_sgn(tls, _v))
+	Xmpz_abs(tls, _g, _v)
 	if _s != nil {
-		Xmpz_set_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_s)))), 0)
+		Xmpz_set_ui(tls, _s, 0)
 	}
 	if _t != nil {
-		Xmpz_set_si(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_t)))), _1_sign)
+		Xmpz_set_si(tls, _t, _1_sign)
 	}
 	return
 _0:
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size) != int32(0) {
+	if (_v[0].X_mp_size) != int32(0) {
 		goto _3
 	}
-	_2_sign = int64(Xmpz_sgn(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u))))))
-	Xmpz_abs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_g)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))))
+	_2_sign = int64(Xmpz_sgn(tls, _u))
+	Xmpz_abs(tls, _g, _u)
 	if _s != nil {
-		Xmpz_set_si(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_s)))), _2_sign)
+		Xmpz_set_si(tls, _s, _2_sign)
 	}
 	if _t != nil {
-		Xmpz_set_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_t)))), 0)
+		Xmpz_set_ui(tls, _t, 0)
 	}
 	return
 _3:
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))))
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))))
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s0)))))
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s1)))))
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t0)))))
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t1)))))
-	Xmpz_abs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))))
-	_uz = _mpz_make_odd(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))))
-	Xmpz_abs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_v)))))
-	_vz = _mpz_make_odd(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))))
+	Xmpz_init(tls, &_tu)
+	Xmpz_init(tls, &_tv)
+	Xmpz_init(tls, &_s0)
+	Xmpz_init(tls, &_s1)
+	Xmpz_init(tls, &_t0)
+	Xmpz_init(tls, &_t1)
+	Xmpz_abs(tls, &_tu, _u)
+	_uz = _mpz_make_odd(tls, &_tu)
+	Xmpz_abs(tls, &_tv, _v)
+	_vz = _mpz_make_odd(tls, &_tv)
 	_gz = func() uint64 {
 		if _uz < _vz {
 			return _uz
@@ -3414,188 +3385,176 @@ _3:
 	}()
 	_uz -= _gz
 	_vz -= _gz
-	if ((*Xmpz_srcptr)(unsafe.Pointer(&_tu)).X_mp_size) >= ((*Xmpz_srcptr)(unsafe.Pointer(&_tv)).X_mp_size) {
+	if ((&_tu)[0].X_mp_size) >= ((&_tv)[0].X_mp_size) {
 		goto _8
 	}
-	Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))))
-	_4___mpz_srcptr_swap__tmp = (*Xmpz_srcptr)(unsafe.Pointer(_u))
-	_u = (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_v))))
+	Xmpz_swap(tls, &_tu, &_tv)
+	_4___mpz_srcptr_swap__tmp = &_u[0]
+	_u = _v
 	_v = (*[1]Xmpz_srcptr)(unsafe.Pointer(_4___mpz_srcptr_swap__tmp))
-	_5___mpz_ptr_swap__tmp = (*Xmpz_srcptr)(unsafe.Pointer(_s))
-	_s = (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_t))))
+	_5___mpz_ptr_swap__tmp = &_s[0]
+	_s = _t
 	_t = (*[1]Xmpz_srcptr)(unsafe.Pointer(_5___mpz_ptr_swap__tmp))
 	_6___mp_bitcnt_t_swap__tmp = _uz
 	_uz = _vz
 	_vz = _6___mp_bitcnt_t_swap__tmp
 _8:
-	Xmpz_setbit(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t0)))), _uz)
-	Xmpz_tdiv_qr(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t1)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))))
-	Xmpz_mul_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t1)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t1)))), _uz)
-	Xmpz_setbit(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s1)))), _vz)
+	Xmpz_setbit(tls, &_t0, _uz)
+	Xmpz_tdiv_qr(tls, &_t1, &_tu, &_tu, &_tv)
+	Xmpz_mul_2exp(tls, &_t1, &_t1, _uz)
+	Xmpz_setbit(tls, &_s1, _vz)
 	_power = _uz + _vz
-	if ((*Xmpz_srcptr)(unsafe.Pointer(&_tu)).X_mp_size) <= int32(0) {
+	if ((&_tu)[0].X_mp_size) <= int32(0) {
 		goto _12
 	}
-	_7_shift = _mpz_make_odd(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))))
-	Xmpz_mul_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t0)))), _7_shift)
-	Xmpz_mul_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s0)))), _7_shift)
+	_7_shift = _mpz_make_odd(tls, &_tu)
+	Xmpz_mul_2exp(tls, &_t0, &_t0, _7_shift)
+	Xmpz_mul_2exp(tls, &_s0, &_s0, _7_shift)
 	_power += _7_shift
 _13:
-	_8_c = Xmpz_cmp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))))
+	_8_c = Xmpz_cmp(tls, &_tu, &_tv)
 	if _8_c == int32(0) {
 		goto _15
 	}
 	if _8_c < int32(0) {
-		Xmpz_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))))
-		Xmpz_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t1)))))
-		Xmpz_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s1)))))
-		_7_shift = _mpz_make_odd(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))))
-		Xmpz_mul_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t1)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t1)))), _7_shift)
-		Xmpz_mul_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s1)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s1)))), _7_shift)
+		Xmpz_sub(tls, &_tv, &_tv, &_tu)
+		Xmpz_add(tls, &_t0, &_t0, &_t1)
+		Xmpz_add(tls, &_s0, &_s0, &_s1)
+		_7_shift = _mpz_make_odd(tls, &_tv)
+		Xmpz_mul_2exp(tls, &_t1, &_t1, _7_shift)
+		Xmpz_mul_2exp(tls, &_s1, &_s1, _7_shift)
 		goto _18
 	}
-	Xmpz_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))))
-	Xmpz_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t1)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t1)))))
-	Xmpz_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s1)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s1)))))
-	_7_shift = _mpz_make_odd(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))))
-	Xmpz_mul_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t0)))), _7_shift)
-	Xmpz_mul_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s0)))), _7_shift)
+	Xmpz_sub(tls, &_tu, &_tu, &_tv)
+	Xmpz_add(tls, &_t1, &_t0, &_t1)
+	Xmpz_add(tls, &_s1, &_s0, &_s1)
+	_7_shift = _mpz_make_odd(tls, &_tu)
+	Xmpz_mul_2exp(tls, &_t0, &_t0, _7_shift)
+	Xmpz_mul_2exp(tls, &_s0, &_s0, _7_shift)
 _18:
 	_power += _7_shift
 	goto _13
 _15:
 _12:
-	Xmpz_mul_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))), _gz)
-	Xmpz_neg(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s0)))))
-	Xmpz_divexact(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s1)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_v)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))))
-	Xmpz_abs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s1)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s1)))))
-	Xmpz_divexact(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t1)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))))
-	Xmpz_abs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t1)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t1)))))
+	Xmpz_mul_2exp(tls, &_tv, &_tv, _gz)
+	Xmpz_neg(tls, &_s0, &_s0)
+	Xmpz_divexact(tls, &_s1, _v, &_tv)
+	Xmpz_abs(tls, &_s1, &_s1)
+	Xmpz_divexact(tls, &_t1, _u, &_tv)
+	Xmpz_abs(tls, &_t1, &_t1)
 _19:
-	if postInc2(&_power, uint64(18446744073709551615)) <= (0) {
+	if postInc2(&_power, uint64(18446744073709551615)) <= 0 {
 		goto _20
 	}
-	if (bool2int(((*Xmpz_srcptr)(unsafe.Pointer(&_s0)).X_mp_size) != int32(0))&int32(*elem0((*Xmpz_srcptr)(unsafe.Pointer(&_s0)).X_mp_d, 0))) != 0 || (bool2int(((*Xmpz_srcptr)(unsafe.Pointer(&_t0)).X_mp_size) != int32(0))&int32(*elem0((*Xmpz_srcptr)(unsafe.Pointer(&_t0)).X_mp_d, 0))) != 0 {
-		Xmpz_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s1)))))
-		Xmpz_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t1)))))
+	if (bool2int(((&_s0)[0].X_mp_size) != int32(0))&int32(*elem0((&_s0)[0].X_mp_d, 0))) != 0 || (bool2int(((&_t0)[0].X_mp_size) != int32(0))&int32(*elem0((&_t0)[0].X_mp_d, 0))) != 0 {
+		Xmpz_sub(tls, &_s0, &_s0, &_s1)
+		Xmpz_add(tls, &_t0, &_t0, &_t1)
 	}
-	Xmpz_divexact_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s0)))), uint64(2))
-	Xmpz_divexact_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t0)))), uint64(2))
+	Xmpz_divexact_ui(tls, &_s0, &_s0, uint64(2))
+	Xmpz_divexact_ui(tls, &_t0, &_t0, uint64(2))
 	goto _19
 _20:
-	Xmpz_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s1)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s1)))))
-	if Xmpz_cmpabs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s1))))) > int32(0) {
-		Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s1)))))
-		Xmpz_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t1)))))
+	Xmpz_add(tls, &_s1, &_s0, &_s1)
+	if Xmpz_cmpabs(tls, &_s0, &_s1) > int32(0) {
+		Xmpz_swap(tls, &_s0, &_s1)
+		Xmpz_sub(tls, &_t0, &_t0, &_t1)
 	}
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) < int32(0) {
-		Xmpz_neg(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s0)))))
+	if (_u[0].X_mp_size) < int32(0) {
+		Xmpz_neg(tls, &_s0, &_s0)
 	}
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size) < int32(0) {
-		Xmpz_neg(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t0)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t0)))))
+	if (_v[0].X_mp_size) < int32(0) {
+		Xmpz_neg(tls, &_t0, &_t0)
 	}
-	Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_g)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))))
+	Xmpz_swap(tls, _g, &_tv)
 	if _s != nil {
-		Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_s)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s0)))))
+		Xmpz_swap(tls, _s, &_s0)
 	}
 	if _t != nil {
-		Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_t)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t0)))))
+		Xmpz_swap(tls, _t, &_t0)
 	}
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tu)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tv)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s0)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_s1)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t0)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t1)))))
-	_ = _tu
-	_ = _tv
-	_ = _s0
-	_ = _s1
-	_ = _t0
-	_ = _t1
+	Xmpz_clear(tls, &_tu)
+	Xmpz_clear(tls, &_tv)
+	Xmpz_clear(tls, &_s0)
+	Xmpz_clear(tls, &_s1)
+	Xmpz_clear(tls, &_t0)
+	Xmpz_clear(tls, &_t1)
 	_ = _power
 }
 
 func Xmpz_lcm_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v uint64) {
-	if (_v == (0)) || (((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) == int32(0)) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+	if (_v == 0) || ((_u[0].X_mp_size) == int32(0)) {
+		_r[0].X_mp_size = int32(0)
 		return
 	}
-	_v /= Xmpz_gcd_ui(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _v)
-	Xmpz_mul_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _v)
-	Xmpz_abs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
+	_v /= Xmpz_gcd_ui(tls, nil, _u, _v)
+	Xmpz_mul_ui(tls, _r, _u, _v)
+	Xmpz_abs(tls, _r, _r)
 }
 
 func Xmpz_lcm(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) {
 	var _g [1]Xmpz_srcptr
-	if (((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) == int32(0)) || (((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size) == int32(0)) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+	if ((_u[0].X_mp_size) == int32(0)) || ((_v[0].X_mp_size) == int32(0)) {
+		_r[0].X_mp_size = int32(0)
 		return
 	}
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_g)))))
-	Xmpz_gcd(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_g)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_v)))))
-	Xmpz_divexact(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_g)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_g)))))
-	Xmpz_mul(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_g)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_v)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_g)))))
-	Xmpz_abs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
-	_ = _g
+	Xmpz_init(tls, &_g)
+	Xmpz_gcd(tls, &_g, _u, _v)
+	Xmpz_divexact(tls, &_g, _u, &_g)
+	Xmpz_mul(tls, _r, &_g, _v)
+	Xmpz_clear(tls, &_g)
+	Xmpz_abs(tls, _r, _r)
 }
 
 func Xmpz_invert(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _m *[1]Xmpz_srcptr) (r0 int32) {
 	var _invertible int32
 	var _g, _tr [1]Xmpz_srcptr
-	if (((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) == int32(0)) || (Xmpz_cmpabs_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_m)))), uint64(1)) <= int32(0)) {
+	if ((_u[0].X_mp_size) == int32(0)) || (Xmpz_cmpabs_ui(tls, _m, uint64(1)) <= int32(0)) {
 		return int32(0)
 	}
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_g)))))
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))))
-	Xmpz_gcdext(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_g)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_m)))))
-	_invertible = bool2int(Xmpz_cmp_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_g)))), uint64(1)) == int32(0))
+	Xmpz_init(tls, &_g)
+	Xmpz_init(tls, &_tr)
+	Xmpz_gcdext(tls, &_g, &_tr, nil, _u, _m)
+	_invertible = bool2int(Xmpz_cmp_ui(tls, &_g, uint64(1)) == int32(0))
 	if _invertible == 0 {
 		goto _2
 	}
-	if ((*Xmpz_srcptr)(unsafe.Pointer(&_tr)).X_mp_size) >= int32(0) {
+	if ((&_tr)[0].X_mp_size) >= int32(0) {
 		goto _3
 	}
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_m)).X_mp_size) >= int32(0) {
-		Xmpz_add(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_m)))))
+	if (_m[0].X_mp_size) >= int32(0) {
+		Xmpz_add(tls, &_tr, &_tr, _m)
 		goto _5
 	}
-	Xmpz_sub(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_m)))))
+	Xmpz_sub(tls, &_tr, &_tr, _m)
 _5:
 _3:
-	Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))))
+	Xmpz_swap(tls, _r, &_tr)
 _2:
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_g)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))))
+	Xmpz_clear(tls, &_g)
+	Xmpz_clear(tls, &_tr)
 	return _invertible
-
-	_ = _g
-	_ = _tr
-	panic(0)
 }
 
 // C comment
 //  /* Compute s = floor(sqrt(u)) and r = u - s^2. Allows r == NULL */
 func Xmpz_sqrtrem(tls *crt.TLS, _s *[1]Xmpz_srcptr, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr) {
-	Xmpz_rootrem(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_s)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), uint64(2))
+	Xmpz_rootrem(tls, _s, _r, _u, uint64(2))
 }
 
 func Xmpz_sqrt(tls *crt.TLS, _s *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr) {
-	Xmpz_rootrem(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_s)))), nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), uint64(2))
+	Xmpz_rootrem(tls, _s, nil, _u, uint64(2))
 }
 
 func Xmpz_perfect_square_p(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 int32) {
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) <= int32(0) {
-		return bool2int(((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) == int32(0))
+	if (_u[0].X_mp_size) <= int32(0) {
+		return bool2int((_u[0].X_mp_size) == int32(0))
 	}
-	return Xmpz_root(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), uint64(2))
+	return Xmpz_root(tls, nil, _u, uint64(2))
 }
 
 func Xmpz_ui_pow_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _blimb uint64, _e uint64) {
 	var _b [1]Xmpz_srcptr
-	Xmpz_pow_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer(Xmpz_roinit_n(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_b)))), &_blimb, int64(1)))), _e)
-	_ = _b
+	Xmpz_pow_ui(tls, _r, (*[1]Xmpz_srcptr)(unsafe.Pointer(Xmpz_roinit_n(tls, &_b, &_blimb, int64(1)))), _e)
 }
 
 func Xmpz_powm(tls *crt.TLS, _r *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr, _e *[1]Xmpz_srcptr, _m *[1]Xmpz_srcptr) {
@@ -3607,28 +3566,28 @@ func Xmpz_powm(tls *crt.TLS, _r *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr, _e *[1]Xmpz
 	var _tr, _base [1]Xmpz_srcptr
 	_tp = nil
 	_en = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_e)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_e)).X_mp_size)
+		if (_e[0].X_mp_size) >= int32(0) {
+			return (_e[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_e)).X_mp_size))
+		return (-(_e[0].X_mp_size))
 	}())
 	_mn = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_m)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_m)).X_mp_size)
+		if (_m[0].X_mp_size) >= int32(0) {
+			return (_m[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_m)).X_mp_size))
+		return (-(_m[0].X_mp_size))
 	}())
-	if _mn == (0) {
+	if _mn == 0 {
 		_gmp_die(tls, str(198))
 	}
-	if _en == (0) {
-		Xmpz_set_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), uint64(1))
+	if _en == 0 {
+		Xmpz_set_ui(tls, _r, uint64(1))
 		return
 	}
-	_mp = (*Xmpz_srcptr)(unsafe.Pointer(_m)).X_mp_d
+	_mp = _m[0].X_mp_d
 	_mpn_div_qr_invert(tls, &_minv, _mp, _mn)
 	_shift = _minv.Xshift
-	if _shift <= (0) {
+	if _shift <= 0 {
 		goto _6
 	}
 	_minv.Xshift = 0
@@ -3637,175 +3596,166 @@ func Xmpz_powm(tls *crt.TLS, _r *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr, _e *[1]Xmpz
 
 	_mp = _tp
 _6:
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_base)))))
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_e)).X_mp_size) >= int32(0) {
+	Xmpz_init(tls, &_base)
+	if (_e[0].X_mp_size) >= int32(0) {
 		goto _8
 	}
-	if Xmpz_invert(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_base)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_m))))) == 0 {
+	if Xmpz_invert(tls, &_base, _b, _m) == 0 {
 		_gmp_die(tls, str(221))
 	}
 	goto _10
 _8:
-	Xmpz_abs(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_base)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))))
-	_5_bn = int64((*Xmpz_srcptr)(unsafe.Pointer(&_base)).X_mp_size)
+	Xmpz_abs(tls, &_base, _b)
+	_5_bn = int64((&_base)[0].X_mp_size)
 	if _5_bn >= _mn {
-		_mpn_div_qr_preinv(tls, nil, (*Xmpz_srcptr)(unsafe.Pointer(&_base)).X_mp_d, int64((*Xmpz_srcptr)(unsafe.Pointer(&_base)).X_mp_size), _mp, _mn, &_minv)
+		_mpn_div_qr_preinv(tls, nil, (&_base)[0].X_mp_d, int64((&_base)[0].X_mp_size), _mp, _mn, &_minv)
 		_5_bn = _mn
 	}
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_b)).X_mp_size) >= int32(0) {
+	if (_b[0].X_mp_size) >= int32(0) {
 		goto _12
 	}
 	_7_bp = func() *uint64 {
-		if _mn > int64((*Xmpz_srcptr)(unsafe.Pointer(&_base)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_base)))), _mn)
+		if _mn > int64((&_base)[0].X_mp_alloc) {
+			return _mpz_realloc(tls, &_base, _mn)
 		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(&_base)).X_mp_d)
+		return ((&_base)[0].X_mp_d)
 	}()
 	_8___cy = Xmpn_sub(tls, _7_bp, _mp, _mn, _7_bp, _5_bn)
 
 	_5_bn = _mn
 _12:
-	(*Xmpz_srcptr)(unsafe.Pointer(&_base)).X_mp_size = int32(_mpn_normalized_size(tls, (*Xmpz_srcptr)(unsafe.Pointer(&_base)).X_mp_d, _5_bn))
+	(&_base)[0].X_mp_size = int32(_mpn_normalized_size(tls, (&_base)[0].X_mp_d, _5_bn))
 _10:
-	Xmpz_init_set_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), uint64(1))
+	Xmpz_init_set_ui(tls, &_tr, uint64(1))
 _16:
-	if preInc1(&_en, -1) < (0) {
+	if preInc1(&_en, -1) < 0 {
 		goto _17
 	}
-	_9_w = *elem0((*Xmpz_srcptr)(unsafe.Pointer(_e)).X_mp_d, uintptr(_en))
+	_9_w = *elem0(_e[0].X_mp_d, uintptr(_en))
 	_9_bit = uint64(9223372036854775808)
 _18:
-	Xmpz_mul(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))))
+	Xmpz_mul(tls, &_tr, &_tr, &_tr)
 	if (_9_w & _9_bit) != 0 {
-		Xmpz_mul(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_base)))))
+		Xmpz_mul(tls, &_tr, &_tr, &_base)
 	}
-	if int64((*Xmpz_srcptr)(unsafe.Pointer(&_tr)).X_mp_size) > _mn {
-		_mpn_div_qr_preinv(tls, nil, (*Xmpz_srcptr)(unsafe.Pointer(&_tr)).X_mp_d, int64((*Xmpz_srcptr)(unsafe.Pointer(&_tr)).X_mp_size), _mp, _mn, &_minv)
-		(*Xmpz_srcptr)(unsafe.Pointer(&_tr)).X_mp_size = int32(_mpn_normalized_size(tls, (*Xmpz_srcptr)(unsafe.Pointer(&_tr)).X_mp_d, _mn))
+	if int64((&_tr)[0].X_mp_size) > _mn {
+		_mpn_div_qr_preinv(tls, nil, (&_tr)[0].X_mp_d, int64((&_tr)[0].X_mp_size), _mp, _mn, &_minv)
+		(&_tr)[0].X_mp_size = int32(_mpn_normalized_size(tls, (&_tr)[0].X_mp_d, _mn))
 	}
 	_9_bit >>= 1
-	if _9_bit > (0) {
+	if _9_bit > 0 {
 		goto _18
 	}
 	goto _16
 _17:
-	if int64((*Xmpz_srcptr)(unsafe.Pointer(&_tr)).X_mp_size) >= _mn {
+	if int64((&_tr)[0].X_mp_size) >= _mn {
 		_minv.Xshift = _shift
-		_mpn_div_qr_preinv(tls, nil, (*Xmpz_srcptr)(unsafe.Pointer(&_tr)).X_mp_d, int64((*Xmpz_srcptr)(unsafe.Pointer(&_tr)).X_mp_size), _mp, _mn, &_minv)
-		(*Xmpz_srcptr)(unsafe.Pointer(&_tr)).X_mp_size = int32(_mpn_normalized_size(tls, (*Xmpz_srcptr)(unsafe.Pointer(&_tr)).X_mp_d, _mn))
+		_mpn_div_qr_preinv(tls, nil, (&_tr)[0].X_mp_d, int64((&_tr)[0].X_mp_size), _mp, _mn, &_minv)
+		(&_tr)[0].X_mp_size = int32(_mpn_normalized_size(tls, (&_tr)[0].X_mp_d, _mn))
 	}
 	if _tp != nil {
 		_gmp_free_func(tls, unsafe.Pointer(_tp), 0)
 	}
-	Xmpz_swap(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_tr)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_base)))))
-	_ = _tr
-	_ = _base
+	Xmpz_swap(tls, _r, &_tr)
+	Xmpz_clear(tls, &_tr)
+	Xmpz_clear(tls, &_base)
 	_ = _3___cy
 	_ = _8___cy
 }
 
 func Xmpz_powm_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr, _elimb uint64, _m *[1]Xmpz_srcptr) {
 	var _e [1]Xmpz_srcptr
-	Xmpz_powm(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_b)))), (*[1]Xmpz_srcptr)(unsafe.Pointer(Xmpz_roinit_n(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_e)))), &_elimb, int64(1)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_m)))))
-	_ = _e
+	Xmpz_powm(tls, _r, _b, (*[1]Xmpz_srcptr)(unsafe.Pointer(Xmpz_roinit_n(tls, &_e, &_elimb, int64(1)))), _m)
 }
 
 func Xmpz_fac_ui(tls *crt.TLS, _x *[1]Xmpz_srcptr, _n uint64) {
-	Xmpz_set_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), _n+uint64(bool2int(_n == (0))))
+	Xmpz_set_ui(tls, _x, _n+uint64(bool2int(_n == 0)))
 _0:
 	if _n > uint64(2) {
-		Xmpz_mul_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), preInc2(&_n, uint64(18446744073709551615)))
+		Xmpz_mul_ui(tls, _x, _x, preInc2(&_n, uint64(18446744073709551615)))
 		goto _0
 	}
 }
 
 func Xmpz_bin_uiui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _n uint64, _k uint64) {
 	var _t [1]Xmpz_srcptr
-	Xmpz_set_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), uint64(bool2int(_k <= _n)))
+	Xmpz_set_ui(tls, _r, uint64(bool2int(_k <= _n)))
 	if _k > (_n >> 1) {
 		_k = func() uint64 {
 			if _k <= _n {
 				return (_n - _k)
 			}
-			return (0)
+			return 0
 		}()
 	}
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_fac_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))), _k)
+	Xmpz_init(tls, &_t)
+	Xmpz_fac_ui(tls, &_t, _k)
 _3:
-	if _k <= (0) {
+	if _k <= 0 {
 		goto _6
 	}
-	Xmpz_mul_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), postInc2(&_n, uint64(18446744073709551615)))
+	Xmpz_mul_ui(tls, _r, _r, postInc2(&_n, uint64(18446744073709551615)))
 	_k -= 1
 	goto _3
 _6:
-	Xmpz_divexact(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_t)))))
-	_ = _t
+	Xmpz_divexact(tls, _r, _r, &_t)
+	Xmpz_clear(tls, &_t)
 }
 
 func Xmpz_probab_prime_p(tls *crt.TLS, _n *[1]Xmpz_srcptr, _reps int32) (r0 int32) {
 	var _is_prime, _j int32
 	var _k uint64
 	var _nm1, _q, _y [1]Xmpz_srcptr
-	if (bool2int(((*Xmpz_srcptr)(unsafe.Pointer(_n)).X_mp_size) != int32(0)) & int32(*elem0((*Xmpz_srcptr)(unsafe.Pointer(_n)).X_mp_d, 0))) == 0 {
+	if (bool2int((_n[0].X_mp_size) != int32(0)) & int32(*elem0(_n[0].X_mp_d, 0))) == 0 {
 		return func() int32 {
-			if Xmpz_cmpabs_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), uint64(2)) == int32(0) {
+			if Xmpz_cmpabs_ui(tls, _n, uint64(2)) == int32(0) {
 				return int32(2)
 			}
 			return int32(0)
 		}()
 	}
 
-	if Xmpz_cmpabs_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), uint64(64)) < int32(0) {
-		return int32((uint64(3379140316) >> uint(int32((*elem0((*Xmpz_srcptr)(unsafe.Pointer(_n)).X_mp_d, 0))>>1))) & uint64(2))
+	if Xmpz_cmpabs_ui(tls, _n, uint64(64)) < int32(0) {
+		return int32((uint64(3379140316) >> uint(int32((*elem0(_n[0].X_mp_d, 0))>>1))) & uint64(2))
 	}
-	if Xmpz_gcd_ui(tls, nil, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), uint64(3234846615)) != uint64(1) {
+	if Xmpz_gcd_ui(tls, nil, _n, uint64(3234846615)) != uint64(1) {
 		return int32(0)
 	}
-	if Xmpz_cmpabs_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), uint64(961)) < int32(0) {
+	if Xmpz_cmpabs_ui(tls, _n, uint64(961)) < int32(0) {
 		return int32(2)
 	}
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_nm1)))))
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_q)))))
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_y)))))
-	(*Xmpz_srcptr)(unsafe.Pointer(&_nm1)).X_mp_size = int32(_mpz_abs_sub_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_nm1)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), uint64(1)))
-	_k = Xmpz_scan1(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_nm1)))), 0)
-	Xmpz_tdiv_q_2exp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_q)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_nm1)))), _k)
+	Xmpz_init(tls, &_nm1)
+	Xmpz_init(tls, &_q)
+	Xmpz_init(tls, &_y)
+	(&_nm1)[0].X_mp_size = int32(_mpz_abs_sub_ui(tls, &_nm1, _n, uint64(1)))
+	_k = Xmpz_scan1(tls, &_nm1, 0)
+	Xmpz_tdiv_q_2exp(tls, &_q, &_nm1, _k)
 	*func() *int32 { _j = int32(0); return &_is_prime }() = int32(1)
 _6:
 	if (_is_prime & bool2int(_j < _reps)) == 0 {
 		goto _9
 	}
-	Xmpz_set_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_y)))), ((uint64(_j)*uint64(_j))+uint64(_j))+uint64(41))
-	if Xmpz_cmp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_y)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_nm1))))) >= int32(0) {
+	Xmpz_set_ui(tls, &_y, ((uint64(_j)*uint64(_j))+uint64(_j))+uint64(41))
+	if Xmpz_cmp(tls, &_y, &_nm1) >= int32(0) {
 		goto _9
 	}
-	_is_prime = _gmp_millerrabin(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_nm1)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_y)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_q)))), _k)
+	_is_prime = _gmp_millerrabin(tls, _n, &_nm1, &_y, &_q, _k)
 	_j += 1
 	goto _6
 _9:
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_nm1)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_q)))))
-	Xmpz_clear(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(&_y)))))
+	Xmpz_clear(tls, &_nm1)
+	Xmpz_clear(tls, &_q)
+	Xmpz_clear(tls, &_y)
 	return _is_prime
-
-	_ = _nm1
-	_ = _q
-	_ = _y
-	panic(0)
 }
 
 func Xmpz_scan1(tls *crt.TLS, _u *[1]Xmpz_srcptr, _starting_bit uint64) (r0 uint64) {
 	var _us, _un, _i int64
 	var _limb, _ux uint64
 	var _up *uint64
-	_us = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+	_us = int64(_u[0].X_mp_size)
 	_un = func() int64 {
-		if _us >= (0) {
+		if _us >= 0 {
 			return _us
 		}
 		return (-_us)
@@ -3813,19 +3763,19 @@ func Xmpz_scan1(tls *crt.TLS, _u *[1]Xmpz_srcptr, _starting_bit uint64) (r0 uint
 	_i = int64(_starting_bit / uint64(64))
 	if _i >= _un {
 		return func() uint64 {
-			if _us >= (0) {
+			if _us >= 0 {
 				return uint64(18446744073709551615)
 			}
 			return _starting_bit
 		}()
 	}
-	_up = (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d
+	_up = _u[0].X_mp_d
 	_ux = 0
 	_limb = *elem0(_up, uintptr(_i))
-	if _starting_bit == (0) {
+	if _starting_bit == 0 {
 		goto _5
 	}
-	if _us < (0) {
+	if _us < 0 {
 		_ux = uint64(Xmpn_zero_p(tls, _up, _i))
 		_limb = (^_limb) + _ux
 		_ux = -uint64(bool2int(_limb >= _ux))
@@ -3838,19 +3788,19 @@ _5:
 // C comment
 //  /* Primality testing */
 func _gmp_millerrabin(tls *crt.TLS, _n *[1]Xmpz_srcptr, _nm1 *[1]Xmpz_srcptr, _y *[1]Xmpz_srcptr, _q *[1]Xmpz_srcptr, _k uint64) (r0 int32) {
-	Xmpz_powm(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_q)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))))
-	if (Xmpz_cmp_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), uint64(1)) == int32(0)) || (Xmpz_cmp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_nm1))))) == int32(0)) {
+	Xmpz_powm(tls, _y, _y, _q, _n)
+	if (Xmpz_cmp_ui(tls, _y, uint64(1)) == int32(0)) || (Xmpz_cmp(tls, _y, _nm1) == int32(0)) {
 		return int32(1)
 	}
 _1:
-	if preInc2(&_k, uint64(18446744073709551615)) <= (0) {
+	if preInc2(&_k, uint64(18446744073709551615)) <= 0 {
 		goto _3
 	}
-	Xmpz_powm_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), uint64(2), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_n)))))
-	if Xmpz_cmp(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_nm1))))) == int32(0) {
+	Xmpz_powm_ui(tls, _y, _y, uint64(2), _n)
+	if Xmpz_cmp(tls, _y, _nm1) == int32(0) {
 		return int32(1)
 	}
-	if Xmpz_cmp_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_y)))), uint64(1)) <= int32(0) {
+	if Xmpz_cmp_ui(tls, _y, uint64(1)) <= int32(0) {
 		return int32(0)
 	}
 	goto _1
@@ -3859,30 +3809,30 @@ _3:
 }
 
 func Xmpz_clrbit(tls *crt.TLS, _d *[1]Xmpz_srcptr, _bit_index uint64) {
-	if Xmpz_tstbit(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), _bit_index) == 0 {
+	if Xmpz_tstbit(tls, _d, _bit_index) == 0 {
 		goto _0
 	}
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size) >= int32(0) {
-		_mpz_abs_sub_bit(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), _bit_index)
+	if (_d[0].X_mp_size) >= int32(0) {
+		_mpz_abs_sub_bit(tls, _d, _bit_index)
 		goto _2
 	}
-	_mpz_abs_add_bit(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), _bit_index)
+	_mpz_abs_add_bit(tls, _d, _bit_index)
 _2:
 _0:
 }
 
 func Xmpz_combit(tls *crt.TLS, _d *[1]Xmpz_srcptr, _bit_index uint64) {
-	if (Xmpz_tstbit(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), _bit_index) ^ bool2int(((*Xmpz_srcptr)(unsafe.Pointer(_d)).X_mp_size) < int32(0))) != 0 {
-		_mpz_abs_sub_bit(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), _bit_index)
+	if (Xmpz_tstbit(tls, _d, _bit_index) ^ bool2int((_d[0].X_mp_size) < int32(0))) != 0 {
+		_mpz_abs_sub_bit(tls, _d, _bit_index)
 		goto _1
 	}
-	_mpz_abs_add_bit(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_d)))), _bit_index)
+	_mpz_abs_add_bit(tls, _d, _bit_index)
 _1:
 }
 
 func Xmpz_com(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr) {
-	Xmpz_neg(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))))
-	Xmpz_sub_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), uint64(1))
+	Xmpz_neg(tls, _r, _u)
+	Xmpz_sub_ui(tls, _r, _r, uint64(1))
 }
 
 func Xmpz_and(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) {
@@ -3891,33 +3841,33 @@ func Xmpz_and(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_
 	var _up, _vp, _rp *uint64
 	var _2___mpz_srcptr_swap__tmp *Xmpz_srcptr
 	_un = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+		if (_u[0].X_mp_size) >= int32(0) {
+			return (_u[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
+		return (-(_u[0].X_mp_size))
 	}())
 	_vn = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size)
+		if (_v[0].X_mp_size) >= int32(0) {
+			return (_v[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size))
+		return (-(_v[0].X_mp_size))
 	}())
 	if _un >= _vn {
 		goto _4
 	}
-	_2___mpz_srcptr_swap__tmp = (*Xmpz_srcptr)(unsafe.Pointer(_u))
-	_u = (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_v))))
+	_2___mpz_srcptr_swap__tmp = &_u[0]
+	_u = _v
 	_v = (*[1]Xmpz_srcptr)(unsafe.Pointer(_2___mpz_srcptr_swap__tmp))
 	_3___mp_size_t_swap__tmp = _un
 	_un = _vn
 	_vn = _3___mp_size_t_swap__tmp
 _4:
-	if _vn == (0) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+	if _vn == 0 {
+		_r[0].X_mp_size = int32(0)
 		return
 	}
-	_uc = uint64(bool2int(((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) < int32(0)))
-	_vc = uint64(bool2int(((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size) < int32(0)))
+	_uc = uint64(bool2int((_u[0].X_mp_size) < int32(0)))
+	_vc = uint64(bool2int((_v[0].X_mp_size) < int32(0)))
 	_rc = _uc & _vc
 	_ux = -_uc
 	_vx = -_vc
@@ -3929,13 +3879,13 @@ _4:
 		return _vn
 	}()
 	_rp = func() *uint64 {
-		if (_rn + int64(_rc)) > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _rn+int64(_rc))
+		if (_rn + int64(_rc)) > int64(_r[0].X_mp_alloc) {
+			return _mpz_realloc(tls, _r, _rn+int64(_rc))
 		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+		return (_r[0].X_mp_d)
 	}()
-	_up = (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d
-	_vp = (*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_d
+	_up = _u[0].X_mp_d
+	_vp = _v[0].X_mp_d
 	_i = 0
 _12:
 	_ul = ((*elem0(_up, uintptr(_i))) ^ _ux) + _uc
@@ -3967,7 +3917,7 @@ _16:
 	}
 	_rn = _mpn_normalized_size(tls, _rp, _rn)
 _18:
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(func() int64 {
+	_r[0].X_mp_size = int32(func() int64 {
 		if _rx != 0 {
 			return (-_rn)
 		}
@@ -3981,33 +3931,33 @@ func Xmpz_ior(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_
 	var _up, _vp, _rp *uint64
 	var _2___mpz_srcptr_swap__tmp *Xmpz_srcptr
 	_un = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+		if (_u[0].X_mp_size) >= int32(0) {
+			return (_u[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
+		return (-(_u[0].X_mp_size))
 	}())
 	_vn = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size)
+		if (_v[0].X_mp_size) >= int32(0) {
+			return (_v[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size))
+		return (-(_v[0].X_mp_size))
 	}())
 	if _un >= _vn {
 		goto _4
 	}
-	_2___mpz_srcptr_swap__tmp = (*Xmpz_srcptr)(unsafe.Pointer(_u))
-	_u = (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_v))))
+	_2___mpz_srcptr_swap__tmp = &_u[0]
+	_u = _v
 	_v = (*[1]Xmpz_srcptr)(unsafe.Pointer(_2___mpz_srcptr_swap__tmp))
 	_3___mp_size_t_swap__tmp = _un
 	_un = _vn
 	_vn = _3___mp_size_t_swap__tmp
 _4:
-	if _vn == (0) {
-		Xmpz_set(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))))
+	if _vn == 0 {
+		Xmpz_set(tls, _r, _u)
 		return
 	}
-	_uc = uint64(bool2int(((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) < int32(0)))
-	_vc = uint64(bool2int(((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size) < int32(0)))
+	_uc = uint64(bool2int((_u[0].X_mp_size) < int32(0)))
+	_vc = uint64(bool2int((_v[0].X_mp_size) < int32(0)))
 	_rc = _uc | _vc
 	_ux = -_uc
 	_vx = -_vc
@@ -4019,13 +3969,13 @@ _4:
 		return _un
 	}()
 	_rp = func() *uint64 {
-		if (_rn + int64(_rc)) > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _rn+int64(_rc))
+		if (_rn + int64(_rc)) > int64(_r[0].X_mp_alloc) {
+			return _mpz_realloc(tls, _r, _rn+int64(_rc))
 		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+		return (_r[0].X_mp_d)
 	}()
-	_up = (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d
-	_vp = (*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_d
+	_up = _u[0].X_mp_d
+	_vp = _v[0].X_mp_d
 	_i = 0
 _12:
 	_ul = ((*elem0(_up, uintptr(_i))) ^ _ux) + _uc
@@ -4057,7 +4007,7 @@ _16:
 	}
 	_rn = _mpn_normalized_size(tls, _rp, _rn)
 _18:
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(func() int64 {
+	_r[0].X_mp_size = int32(func() int64 {
 		if _rx != 0 {
 			return (-_rn)
 		}
@@ -4071,45 +4021,45 @@ func Xmpz_xor(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_
 	var _up, _vp, _rp *uint64
 	var _2___mpz_srcptr_swap__tmp *Xmpz_srcptr
 	_un = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+		if (_u[0].X_mp_size) >= int32(0) {
+			return (_u[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
+		return (-(_u[0].X_mp_size))
 	}())
 	_vn = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size)
+		if (_v[0].X_mp_size) >= int32(0) {
+			return (_v[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size))
+		return (-(_v[0].X_mp_size))
 	}())
 	if _un >= _vn {
 		goto _4
 	}
-	_2___mpz_srcptr_swap__tmp = (*Xmpz_srcptr)(unsafe.Pointer(_u))
-	_u = (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_v))))
+	_2___mpz_srcptr_swap__tmp = &_u[0]
+	_u = _v
 	_v = (*[1]Xmpz_srcptr)(unsafe.Pointer(_2___mpz_srcptr_swap__tmp))
 	_3___mp_size_t_swap__tmp = _un
 	_un = _vn
 	_vn = _3___mp_size_t_swap__tmp
 _4:
-	if _vn == (0) {
-		Xmpz_set(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))))
+	if _vn == 0 {
+		Xmpz_set(tls, _r, _u)
 		return
 	}
-	_uc = uint64(bool2int(((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) < int32(0)))
-	_vc = uint64(bool2int(((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size) < int32(0)))
+	_uc = uint64(bool2int((_u[0].X_mp_size) < int32(0)))
+	_vc = uint64(bool2int((_v[0].X_mp_size) < int32(0)))
 	_rc = _uc ^ _vc
 	_ux = -_uc
 	_vx = -_vc
 	_rx = -_rc
 	_rp = func() *uint64 {
-		if (_un + int64(_rc)) > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _un+int64(_rc))
+		if (_un + int64(_rc)) > int64(_r[0].X_mp_alloc) {
+			return _mpz_realloc(tls, _r, _un+int64(_rc))
 		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+		return (_r[0].X_mp_d)
 	}()
-	_up = (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d
-	_vp = (*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_d
+	_up = _u[0].X_mp_d
+	_vp = _v[0].X_mp_d
 	_i = 0
 _10:
 	_ul = ((*elem0(_up, uintptr(_i))) ^ _ux) + _uc
@@ -4141,7 +4091,7 @@ _14:
 	}
 	_un = _mpn_normalized_size(tls, _rp, _un)
 _16:
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(func() int64 {
+	_r[0].X_mp_size = int32(func() int64 {
 		if _rx != 0 {
 			return (-_un)
 		}
@@ -4151,29 +4101,29 @@ _16:
 
 func Xmpz_popcount(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 uint64) {
 	var _un int64
-	_un = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-	if _un < (0) {
+	_un = int64(_u[0].X_mp_size)
+	if _un < 0 {
 		return uint64(18446744073709551615)
 	}
-	return Xmpn_popcount(tls, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un)
+	return Xmpn_popcount(tls, _u[0].X_mp_d, _un)
 }
 
 func Xmpz_hamdist(tls *crt.TLS, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) (r0 uint64) {
 	var _un, _vn, _i, _4___mp_size_t_swap__tmp int64
 	var _uc, _vc, _ul, _vl, _comp, _c uint64
 	var _up, _vp, _3___mp_srcptr_swap__tmp *uint64
-	_un = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-	_vn = int64((*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_size)
-	if (_un ^ _vn) < (0) {
+	_un = int64(_u[0].X_mp_size)
+	_vn = int64(_v[0].X_mp_size)
+	if (_un ^ _vn) < 0 {
 		return uint64(18446744073709551615)
 	}
-	_comp = -store2(&_uc, store2(&_vc, uint64(bool2int(_un < (0)))))
+	_comp = -store2(&_uc, store2(&_vc, uint64(bool2int(_un < 0))))
 	if _uc != 0 {
 		_un = -_un
 		_vn = -_vn
 	}
-	_up = (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d
-	_vp = (*Xmpz_srcptr)(unsafe.Pointer(_v)).X_mp_d
+	_up = _u[0].X_mp_d
+	_vp = _v[0].X_mp_d
 	if _un >= _vn {
 		goto _2
 	}
@@ -4215,10 +4165,10 @@ func Xmpz_scan0(tls *crt.TLS, _u *[1]Xmpz_srcptr, _starting_bit uint64) (r0 uint
 	var _us, _un, _i int64
 	var _limb, _ux uint64
 	var _up *uint64
-	_us = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-	_ux = -uint64(bool2int(_us >= (0)))
+	_us = int64(_u[0].X_mp_size)
+	_ux = -uint64(bool2int(_us >= 0))
 	_un = func() int64 {
-		if _us >= (0) {
+		if _us >= 0 {
 			return _us
 		}
 		return (-_us)
@@ -4232,9 +4182,9 @@ func Xmpz_scan0(tls *crt.TLS, _u *[1]Xmpz_srcptr, _starting_bit uint64) (r0 uint
 			return uint64(18446744073709551615)
 		}()
 	}
-	_up = (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d
+	_up = _u[0].X_mp_d
 	_limb = (*elem0(_up, uintptr(_i))) ^ _ux
-	if _ux == (0) {
+	if _ux == 0 {
 		_limb -= uint64(Xmpn_zero_p(tls, _up, _i))
 	}
 	_limb &= uint64(18446744073709551615) << uint(int32(_starting_bit%uint64(64)))
@@ -4243,27 +4193,27 @@ func Xmpz_scan0(tls *crt.TLS, _u *[1]Xmpz_srcptr, _starting_bit uint64) (r0 uint
 
 func Xmpz_fits_slong_p(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 int32) {
 	var _us int64
-	_us = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+	_us = int64(_u[0].X_mp_size)
 	if _us == int64(1) {
-		return bool2int((*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, 0)) < uint64(9223372036854775808))
+		return bool2int((*elem0(_u[0].X_mp_d, 0)) < uint64(9223372036854775808))
 	}
 	if _us == int64(-1) {
-		return bool2int((*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, 0)) <= uint64(9223372036854775808))
+		return bool2int((*elem0(_u[0].X_mp_d, 0)) <= uint64(9223372036854775808))
 	}
-	return bool2int(_us == (0))
+	return bool2int(_us == 0)
 }
 
 func Xmpz_fits_ulong_p(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 int32) {
 	var _us int64
-	_us = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
-	return bool2int(_us == int64(bool2int(_us > (0))))
+	_us = int64(_u[0].X_mp_size)
+	return bool2int(_us == int64(bool2int(_us > 0)))
 }
 
 func Xmpz_get_si(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 int64) {
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) < int32(0) {
-		return int64(-1) - int64(((*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, 0))-uint64(1))&uint64(9223372036854775807))
+	if (_u[0].X_mp_size) < int32(0) {
+		return int64(-1) - int64(((*elem0(_u[0].X_mp_d, 0))-uint64(1))&uint64(9223372036854775807))
 	}
-	return int64(Xmpz_get_ui(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u))))) & uint64(9223372036854775807))
+	return int64(Xmpz_get_ui(tls, _u) & uint64(9223372036854775807))
 }
 
 func Xmpz_get_d(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 float64) {
@@ -4271,21 +4221,21 @@ func Xmpz_get_d(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 float64) {
 	var _x, _B float64
 	_B = 1.8446744073709552e+19
 	_un = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+		if (_u[0].X_mp_size) >= int32(0) {
+			return (_u[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
+		return (-(_u[0].X_mp_size))
 	}())
-	if _un == (0) {
+	if _un == 0 {
 		return float64(0)
 	}
-	_x = float64(*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, uintptr(preInc1(&_un, -1))))
+	_x = float64(*elem0(_u[0].X_mp_d, uintptr(preInc1(&_un, -1))))
 _3:
-	if _un > (0) {
-		_x = (_B * _x) + float64(*elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, uintptr(preInc1(&_un, -1))))
+	if _un > 0 {
+		_x = (_B * _x) + float64(*elem0(_u[0].X_mp_d, uintptr(preInc1(&_un, -1))))
 		goto _3
 	}
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) < int32(0) {
+	if (_u[0].X_mp_size) < int32(0) {
 		_x = -_x
 	}
 	return _x
@@ -4293,27 +4243,27 @@ _3:
 
 func Xmpz_size(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 uint64) {
 	return uint64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+		if (_u[0].X_mp_size) >= int32(0) {
+			return (_u[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
+		return (-(_u[0].X_mp_size))
 	}())
 }
 
 func Xmpz_getlimbn(tls *crt.TLS, _u *[1]Xmpz_srcptr, _n int64) (r0 uint64) {
-	if (_n >= (0)) && (_n < int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+	if (_n >= 0) && (_n < int64(func() int32 {
+		if (_u[0].X_mp_size) >= int32(0) {
+			return (_u[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
+		return (-(_u[0].X_mp_size))
 	}())) {
-		return *elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, uintptr(_n))
+		return *elem0(_u[0].X_mp_d, uintptr(_n))
 	}
 	return 0
 }
 
 func Xmpz_realloc2(tls *crt.TLS, _x *[1]Xmpz_srcptr, _n uint64) {
-	_mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), int64(uint64(1)+((_n-uint64(bool2int(_n != (0))))/uint64(64))))
+	_mpz_realloc(tls, _x, int64(uint64(1)+((_n-uint64(bool2int(_n != 0)))/uint64(64))))
 }
 
 func Xmpz_limbs_read(tls *crt.TLS, _x *Xmpz_srcptr) (r0 *uint64) {
@@ -4322,15 +4272,15 @@ func Xmpz_limbs_read(tls *crt.TLS, _x *Xmpz_srcptr) (r0 *uint64) {
 
 func Xmpz_limbs_modify(tls *crt.TLS, _x *[1]Xmpz_srcptr, _n int64) (r0 *uint64) {
 	return func() *uint64 {
-		if _n > int64((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), _n)
+		if _n > int64(_x[0].X_mp_alloc) {
+			return _mpz_realloc(tls, _x, _n)
 		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_x)).X_mp_d)
+		return (_x[0].X_mp_d)
 	}()
 }
 
 func Xmpz_limbs_write(tls *crt.TLS, _x *[1]Xmpz_srcptr, _n int64) (r0 *uint64) {
-	return Xmpz_limbs_modify(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))), _n)
+	return Xmpz_limbs_modify(tls, _x, _n)
 }
 
 // C comment
@@ -4341,8 +4291,8 @@ func Xmpz_set_d(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x float64) {
 	var _f uint64
 	var _B, _Bi float64
 	var _rp *uint64
-	if (_x != _x) || (_x == (_x * (0.5))) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+	if (_x != _x) || (_x == (_x * 0.5)) {
+		_r[0].X_mp_size = int32(0)
 		return
 	}
 	_sign = bool2int(_x < float64(0))
@@ -4350,7 +4300,7 @@ func Xmpz_set_d(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x float64) {
 		_x = -_x
 	}
 	if _x < float64(1) {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+		_r[0].X_mp_size = int32(0)
 		return
 	}
 	_B = 1.8446744073709552e+19
@@ -4365,10 +4315,10 @@ _4:
 	goto _4
 _7:
 	_rp = func() *uint64 {
-		if _rn > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _rn)
+		if _rn > int64(_r[0].X_mp_alloc) {
+			return _mpz_realloc(tls, _r, _rn)
 		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+		return (_r[0].X_mp_d)
 	}()
 	_f = uint64(_x)
 	_x -= float64(_f)
@@ -4376,7 +4326,7 @@ _7:
 	_i = _rn - int64(1)
 	*elem0(_rp, uintptr(_i)) = _f
 _10:
-	if preInc1(&_i, -1) >= (0) {
+	if preInc1(&_i, -1) >= 0 {
 		_x = _B * _x
 		_f = uint64(_x)
 		_x -= float64(_f)
@@ -4384,7 +4334,7 @@ _10:
 		*elem0(_rp, uintptr(_i)) = _f
 		goto _10
 	}
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(func() int64 {
+	_r[0].X_mp_size = int32(func() int64 {
 		if _sign != 0 {
 			return (-_rn)
 		}
@@ -4393,13 +4343,13 @@ _10:
 }
 
 func Xmpz_init_set_si(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x int64) {
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
-	Xmpz_set_si(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _x)
+	Xmpz_init(tls, _r)
+	Xmpz_set_si(tls, _r, _x)
 }
 
 func Xmpz_init_set_d(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x float64) {
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
-	Xmpz_set_d(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _x)
+	Xmpz_init(tls, _r)
+	Xmpz_set_d(tls, _r, _x)
 }
 
 func Xmpz_get_str(tls *crt.TLS, _sp *int8, _base int32, _u *[1]Xmpz_srcptr) (r0 *int8) {
@@ -4422,33 +4372,33 @@ _1:
 	if _base > int32(36) {
 		return nil
 	}
-	_sn = uint64(1) + Xmpz_sizeinbase(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_u)))), _base)
+	_sn = uint64(1) + Xmpz_sizeinbase(tls, _u, _base)
 	if _sp == nil {
 		_sp = (*int8)(_gmp_allocate_func(tls, uint64(1)+_sn))
 	}
 	_un = int64(func() int32 {
-		if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) >= int32(0) {
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+		if (_u[0].X_mp_size) >= int32(0) {
+			return (_u[0].X_mp_size)
 		}
-		return (-((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size))
+		return (-(_u[0].X_mp_size))
 	}())
-	if _un == (0) {
+	if _un == 0 {
 		*elem5(_sp, 0) = int8(48)
 		*elem5(_sp, uintptr(1)) = 0
 		return _sp
 	}
 	_i = 0
-	if ((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size) < int32(0) {
+	if (_u[0].X_mp_size) < int32(0) {
 		*elem5(_sp, uintptr(postInc2(&_i, uint64(1)))) = int8(45)
 	}
 	_bits = _mpn_base_power_of_two_p(tls, uint32(_base))
 	if _bits != 0 {
-		_sn = _i + _mpn_get_str_bits(tls, (*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(_sp))+uintptr(_i))), _bits, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un)
+		_sn = _i + _mpn_get_str_bits(tls, (*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(_sp))+uintptr(_i))), _bits, _u[0].X_mp_d, _un)
 		goto _10
 	}
 	_mpn_get_base_info(tls, &_4_info, uint64(_base))
 	_4_tp = _gmp_xalloc_limbs(tls, _un)
-	Xmpn_copyi(tls, _4_tp, (*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, _un)
+	Xmpn_copyi(tls, _4_tp, _u[0].X_mp_d, _un)
 	_sn = _i + _mpn_get_str_other(tls, (*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(_sp))+uintptr(_i))), _base, &_4_info, _4_tp, _un)
 	_gmp_free_func(tls, unsafe.Pointer(_4_tp), 0)
 _10:
@@ -4503,7 +4453,7 @@ _3:
 _10:
 _2:
 	if (*_sp) == 0 {
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+		_r[0].X_mp_size = int32(0)
 		return int32(-1)
 	}
 	_dp = (*uint8)(_gmp_allocate_func(tls, crt.Xstrlen(tls, _sp)))
@@ -4531,7 +4481,7 @@ _12:
 _26:
 	if _6_digit >= uint32(_base) {
 		_gmp_free_func(tls, unsafe.Pointer(_dp), 0)
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+		_r[0].X_mp_size = int32(0)
 		return int32(-1)
 	}
 	*elem3(_dp, uintptr(postInc2(&_dn, uint64(1)))) = uint8(_6_digit)
@@ -4541,17 +4491,17 @@ _13:
 _15:
 	if _dn == 0 {
 		_gmp_free_func(tls, unsafe.Pointer(_dp), 0)
-		(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(0)
+		_r[0].X_mp_size = int32(0)
 		return int32(-1)
 	}
 	_bits = _mpn_base_power_of_two_p(tls, uint32(_base))
-	if _bits > (0) {
+	if _bits > 0 {
 		_alloc = int64((((_dn * uint64(_bits)) + uint64(64)) - uint64(1)) / uint64(64))
 		_rp = func() *uint64 {
-			if _alloc > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-				return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _alloc)
+			if _alloc > int64(_r[0].X_mp_alloc) {
+				return _mpz_realloc(tls, _r, _alloc)
 			}
-			return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+			return (_r[0].X_mp_d)
 		}()
 		_rn = _mpn_set_str_bits(tls, _rp, _dp, _dn, _bits)
 		goto _32
@@ -4559,18 +4509,18 @@ _15:
 	_mpn_get_base_info(tls, &_10_info, uint64(_base))
 	_alloc = int64(((_dn + uint64(_10_info.Xexp)) - uint64(1)) / uint64(_10_info.Xexp))
 	_rp = func() *uint64 {
-		if _alloc > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _alloc)
+		if _alloc > int64(_r[0].X_mp_alloc) {
+			return _mpz_realloc(tls, _r, _alloc)
 		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+		return (_r[0].X_mp_d)
 	}()
 	_rn = _mpn_set_str_other(tls, _rp, _dp, _dn, uint64(_base), &_10_info)
 
-	_rn -= int64(bool2int((*elem0(_rp, uintptr(_rn-int64(1)))) == (0)))
+	_rn -= int64(bool2int((*elem0(_rp, uintptr(_rn-int64(1)))) == 0))
 _32:
 
 	_gmp_free_func(tls, unsafe.Pointer(_dp), 0)
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(func() int64 {
+	_r[0].X_mp_size = int32(func() int64 {
 		if _sign != 0 {
 			return (-_rn)
 		}
@@ -4580,14 +4530,14 @@ _32:
 }
 
 func Xmpz_init_set_str(tls *crt.TLS, _r *[1]Xmpz_srcptr, _sp *int8, _base int32) (r0 int32) {
-	Xmpz_init(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))))
-	return Xmpz_set_str(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _sp, _base)
+	Xmpz_init(tls, _r)
+	return Xmpz_set_str(tls, _r, _sp, _base)
 }
 
 func Xmpz_out_str(tls *crt.TLS, _stream *crt.XFILE, _base int32, _x *[1]Xmpz_srcptr) (r0 uint64) {
 	var _len uint64
 	var _str *int8
-	_str = Xmpz_get_str(tls, nil, _base, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_x)))))
+	_str = Xmpz_get_str(tls, nil, _base, _x)
 	_len = crt.Xstrlen(tls, _str)
 	_len = crt.Xfwrite(tls, unsafe.Pointer(_str), uint64(1), _len, _stream)
 	_gmp_free_func(tls, unsafe.Pointer(_str), 0)
@@ -4601,7 +4551,7 @@ func Xmpz_import(tls *crt.TLS, _r *[1]Xmpz_srcptr, _count uint64, _order int32, 
 	var _limb, _bytes, _2_j uint64
 	var _p *uint8
 	var _rp *uint64
-	if _nails != (0) {
+	if _nails != 0 {
 		_gmp_die(tls, str(348))
 	}
 
@@ -4613,7 +4563,7 @@ func Xmpz_import(tls *crt.TLS, _r *[1]Xmpz_srcptr, _count uint64, _order int32, 
 		if _order != _endian {
 			return (uint64(2) * _size)
 		}
-		return (0)
+		return 0
 	}())
 	if _order == int32(1) {
 		*(*uintptr)(unsafe.Pointer(&_p)) += uintptr(_size * (_count - uint64(1)))
@@ -4624,14 +4574,14 @@ func Xmpz_import(tls *crt.TLS, _r *[1]Xmpz_srcptr, _count uint64, _order int32, 
 	}
 	_rn = int64((((_size * _count) + uint64(8)) - uint64(1)) / uint64(8))
 	_rp = func() *uint64 {
-		if _rn > int64((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_alloc) {
-			return _mpz_realloc(tls, (*[1]Xmpz_srcptr)(unsafe.Pointer((*Xmpz_srcptr)(unsafe.Pointer(_r)))), _rn)
+		if _rn > int64(_r[0].X_mp_alloc) {
+			return _mpz_realloc(tls, _r, _rn)
 		}
-		return ((*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_d)
+		return (_r[0].X_mp_d)
 	}()
 	*func() *int64 { *func() *uint64 { _limb = 0; return &_bytes }() = 0; return &_i }() = 0
 _8:
-	if _count <= (0) {
+	if _count <= 0 {
 		goto _11
 	}
 	_2_j = 0
@@ -4652,13 +4602,13 @@ _15:
 	goto _8
 _11:
 
-	if _limb != (0) {
+	if _limb != 0 {
 		*elem0(_rp, uintptr(postInc1(&_i, 1))) = _limb
 		goto _18
 	}
 	_i = _mpn_normalized_size(tls, _rp, _i)
 _18:
-	(*Xmpz_srcptr)(unsafe.Pointer(_r)).X_mp_size = int32(_i)
+	_r[0].X_mp_size = int32(_i)
 }
 
 func _gmp_detect_endian(tls *crt.TLS) (r0 int32) {
@@ -4677,28 +4627,28 @@ func Xmpz_export(tls *crt.TLS, _r unsafe.Pointer, _countp *uint64, _order int32,
 	var _un, _1_word_step, _1_i int64
 	var _count, _1_k, _1_limb, _1_bytes, _4_j uint64
 	var _1_p *uint8
-	if _nails != (0) {
+	if _nails != 0 {
 		_gmp_die(tls, str(348))
 	}
 
-	_un = int64((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_size)
+	_un = int64(_u[0].X_mp_size)
 	_count = 0
-	if _un == (0) {
+	if _un == 0 {
 		goto _1
 	}
 	_un = func() int64 {
-		if _un >= (0) {
+		if _un >= 0 {
 			return _un
 		}
 		return (-_un)
 	}()
-	_1_limb = *elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, uintptr(_un-int64(1)))
+	_1_limb = *elem0(_u[0].X_mp_d, uintptr(_un-int64(1)))
 
 	_1_k = 0
 _4:
 	_1_k += 1
 	_1_limb >>= 8
-	if _1_limb != (0) {
+	if _1_limb != 0 {
 		goto _4
 	}
 	_count = (((_1_k + (uint64(_un-int64(1)) * uint64(8))) + _size) - uint64(1)) / _size
@@ -4713,7 +4663,7 @@ _4:
 		if _order != _endian {
 			return (uint64(2) * _size)
 		}
-		return (0)
+		return 0
 	}())
 	if _order == int32(1) {
 		*(*uintptr)(unsafe.Pointer(&_1_p)) += uintptr(_size * (_count - uint64(1)))
@@ -4732,11 +4682,11 @@ _15:
 	if _4_j >= _size {
 		goto _18
 	}
-	if _1_bytes != (0) {
+	if _1_bytes != 0 {
 		goto _19
 	}
 	if _1_i < _un {
-		_1_limb = *elem0((*Xmpz_srcptr)(unsafe.Pointer(_u)).X_mp_d, uintptr(postInc1(&_1_i, 1)))
+		_1_limb = *elem0(_u[0].X_mp_d, uintptr(postInc1(&_1_i, 1)))
 	}
 	_1_bytes = uint64(8)
 _19:

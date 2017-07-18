@@ -80,7 +80,7 @@ func test(t *testing.T, op string) {
 	bb := make([]byte, nDigits+1)
 	for i := 0; i < nTests; i++ {
 		ba = ba[:cap(ba)]
-		bb = bb[:cap(ba)]
+		bb = bb[:cap(bb)]
 		for i := range ba {
 			ba[i] = byte('0' + rand.Intn(10))
 			bb[i] = byte('0' + rand.Intn(10))
@@ -166,3 +166,240 @@ func TestSub(t *testing.T) { test(t, "-") }
 func TestMul(t *testing.T) { test(t, "*") }
 func TestDiv(t *testing.T) { test(t, "/") }
 func TestRem(t *testing.T) { test(t, "%") }
+
+var (
+	sizes = []int{1e3, 1e4, 1e5, 1e6}
+	rnd   = rand.New(rand.NewSource(42))
+)
+
+func bigRnd(size int) string {
+	n := big.NewInt(1)
+	r := big.NewInt(0).Rand(rnd, n.Lsh(n, uint(size)))
+	r.SetBit(r, size-1, 1)
+	return r.String()
+}
+
+func BenchmarkAdd(b *testing.B) {
+	for _, v := range sizes {
+		x := bigRnd(v)
+		y := bigRnd(v)
+		suff := fmt.Sprintf(" %v+%v bits", v, v)
+		if !b.Run("big"+suff, func(b *testing.B) { benchBigAdd(b, x, y) }) ||
+			!b.Run("gmp"+suff, func(b *testing.B) { benchGmpAdd(b, x, y) }) {
+			return
+		}
+	}
+}
+
+func benchBigAdd(b *testing.B, sx, sy string) {
+	x, _ := big.NewInt(0).SetString(sx, 10)
+	y, _ := big.NewInt(0).SetString(sy, 10)
+	z := big.NewInt(0)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		z.Add(x, y)
+	}
+}
+
+func benchGmpAdd(b *testing.B, sx, sy string) {
+	var x, y, z [1]Xmpz_srcptr
+	tls := crt.NewTLS()
+	Xmpz_init(tls, &x)
+	Xmpz_init(tls, &y)
+	Xmpz_init(tls, &z)
+	cx := crt.CString(sx)
+	cy := crt.CString(sy)
+	Xmpz_set_str(tls, &x, (*int8)(cx), 10)
+	Xmpz_set_str(tls, &y, (*int8)(cy), 10)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		Xmpz_add(tls, &z, &x, &y)
+	}
+	b.StopTimer()
+	Xmpz_clear(tls, &x)
+	Xmpz_clear(tls, &y)
+	Xmpz_clear(tls, &z)
+	crt.Free(cx)
+	crt.Free(cy)
+	tls.Close()
+}
+
+func BenchmarkSub(b *testing.B) {
+	for _, v := range sizes {
+		x := bigRnd(v)
+		y := bigRnd(v)
+		suff := fmt.Sprintf(" %v-%v bits", v, v)
+		if !b.Run("big"+suff, func(b *testing.B) { benchBigSub(b, x, y) }) ||
+			!b.Run("gmp"+suff, func(b *testing.B) { benchGmpSub(b, x, y) }) {
+			return
+		}
+	}
+}
+
+func benchBigSub(b *testing.B, sx, sy string) {
+	x, _ := big.NewInt(0).SetString(sx, 10)
+	y, _ := big.NewInt(0).SetString(sy, 10)
+	z := big.NewInt(0)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		z.Sub(x, y)
+	}
+}
+
+func benchGmpSub(b *testing.B, sx, sy string) {
+	var x, y, z [1]Xmpz_srcptr
+	tls := crt.NewTLS()
+	Xmpz_init(tls, &x)
+	Xmpz_init(tls, &y)
+	Xmpz_init(tls, &z)
+	cx := crt.CString(sx)
+	cy := crt.CString(sy)
+	Xmpz_set_str(tls, &x, (*int8)(cx), 10)
+	Xmpz_set_str(tls, &y, (*int8)(cy), 10)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		Xmpz_sub(tls, &z, &x, &y)
+	}
+	b.StopTimer()
+	Xmpz_clear(tls, &x)
+	Xmpz_clear(tls, &y)
+	Xmpz_clear(tls, &z)
+	crt.Free(cx)
+	crt.Free(cy)
+	tls.Close()
+}
+
+func BenchmarkMul(b *testing.B) {
+	for _, v := range sizes {
+		x := bigRnd(v)
+		y := bigRnd(v)
+		suff := fmt.Sprintf(" %v*%v bits", v, v)
+		if !b.Run("big"+suff, func(b *testing.B) { benchBigMul(b, x, y) }) ||
+			!b.Run("gmp"+suff, func(b *testing.B) { benchGmpMul(b, x, y) }) {
+			return
+		}
+	}
+}
+
+func benchBigMul(b *testing.B, sx, sy string) {
+	x, _ := big.NewInt(0).SetString(sx, 10)
+	y, _ := big.NewInt(0).SetString(sy, 10)
+	z := big.NewInt(0)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		z.Mul(x, y)
+	}
+}
+
+func benchGmpMul(b *testing.B, sx, sy string) {
+	var x, y, z [1]Xmpz_srcptr
+	tls := crt.NewTLS()
+	Xmpz_init(tls, &x)
+	Xmpz_init(tls, &y)
+	Xmpz_init(tls, &z)
+	cx := crt.CString(sx)
+	cy := crt.CString(sy)
+	Xmpz_set_str(tls, &x, (*int8)(cx), 10)
+	Xmpz_set_str(tls, &y, (*int8)(cy), 10)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		Xmpz_mul(tls, &z, &x, &y)
+	}
+	b.StopTimer()
+	Xmpz_clear(tls, &x)
+	Xmpz_clear(tls, &y)
+	Xmpz_clear(tls, &z)
+	crt.Free(cx)
+	crt.Free(cy)
+	tls.Close()
+}
+
+func BenchmarkDiv(b *testing.B) {
+	for _, v := range sizes {
+		x := bigRnd(v)
+		y := bigRnd(v / 2)
+		suff := fmt.Sprintf(" %v/%v bits", v, v/2)
+		if !b.Run("big"+suff, func(b *testing.B) { benchBigDiv(b, x, y) }) ||
+			!b.Run("gmp"+suff, func(b *testing.B) { benchGmpDiv(b, x, y) }) {
+			return
+		}
+	}
+}
+
+func benchBigDiv(b *testing.B, sx, sy string) {
+	x, _ := big.NewInt(0).SetString(sx, 10)
+	y, _ := big.NewInt(0).SetString(sy, 10)
+	z := big.NewInt(0)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		z.Quo(x, y)
+	}
+}
+
+func benchGmpDiv(b *testing.B, sx, sy string) {
+	var x, y, z [1]Xmpz_srcptr
+	tls := crt.NewTLS()
+	Xmpz_init(tls, &x)
+	Xmpz_init(tls, &y)
+	Xmpz_init(tls, &z)
+	cx := crt.CString(sx)
+	cy := crt.CString(sy)
+	Xmpz_set_str(tls, &x, (*int8)(cx), 10)
+	Xmpz_set_str(tls, &y, (*int8)(cy), 10)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		Xmpz_tdiv_q(tls, &z, &x, &y)
+	}
+	b.StopTimer()
+	Xmpz_clear(tls, &x)
+	Xmpz_clear(tls, &y)
+	Xmpz_clear(tls, &z)
+	crt.Free(cx)
+	crt.Free(cy)
+	tls.Close()
+}
+
+func BenchmarkRem(b *testing.B) {
+	for _, v := range sizes {
+		x := bigRnd(v)
+		y := bigRnd(v / 2)
+		suff := fmt.Sprintf(" %v%%%v bits", v, v/2)
+		if !b.Run("big"+suff, func(b *testing.B) { benchBigRem(b, x, y) }) ||
+			!b.Run("gmp"+suff, func(b *testing.B) { benchGmpRem(b, x, y) }) {
+			return
+		}
+	}
+}
+
+func benchBigRem(b *testing.B, sx, sy string) {
+	x, _ := big.NewInt(0).SetString(sx, 10)
+	y, _ := big.NewInt(0).SetString(sy, 10)
+	z := big.NewInt(0)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		z.Rem(x, y)
+	}
+}
+
+func benchGmpRem(b *testing.B, sx, sy string) {
+	var x, y, z [1]Xmpz_srcptr
+	tls := crt.NewTLS()
+	Xmpz_init(tls, &x)
+	Xmpz_init(tls, &y)
+	Xmpz_init(tls, &z)
+	cx := crt.CString(sx)
+	cy := crt.CString(sy)
+	Xmpz_set_str(tls, &x, (*int8)(cx), 10)
+	Xmpz_set_str(tls, &y, (*int8)(cy), 10)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		Xmpz_tdiv_r(tls, &z, &x, &y)
+	}
+	b.StopTimer()
+	Xmpz_clear(tls, &x)
+	Xmpz_clear(tls, &y)
+	Xmpz_clear(tls, &z)
+	crt.Free(cx)
+	crt.Free(cy)
+	tls.Close()
+}

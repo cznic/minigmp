@@ -5,17 +5,15 @@
 // Package minigmp is a small implementation of a subset of GMP's mpn and mpz
 // interfaces.
 //
+// Changelog
+//
+// 2017-07-18:
+//
+// - Support for Linux/386 is in.
+//
+// - License is now the original one, choose LGPL or GPL.
+//
 // Caveats
-//
-// - GPL license. May possibly become LGPL depending on the awaited response
-// from licensing@fsf.org ticket #1225637.
-//
-// - The package currently supports only Linux/amd64. To attempt porting to
-// Windows/amd64 try running
-//
-//	$ go generate
-//
-// on Windows/amd64.
 //
 // - ATM there are only a few simple tests covering just the basic arithmetic
 // operations. The plan is to eventually run all translated-to-Go C tests in

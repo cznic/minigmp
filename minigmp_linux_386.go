@@ -567,14 +567,14 @@ _0:
 }
 
 func Xmpn_mul(tls *crt.TLS, _rp *uint32, _up *uint32, _un int32, _vp *uint32, _vn int32) (r0 uint32) {
-	*elem0(_rp, uintptr(_un)) = Xmpn_mul_1(tls, _rp, _up, _un, *elem0(_vp, 0))
+	*elem0(_rp, uintptr(_un)) = Xmpn_mul_1(tls, _rp, _up, _un, *_vp)
 _0:
 	if preInc1(&_vn, -1) >= int32(1) {
 		*(*uintptr)(unsafe.Pointer(func() **uint32 {
 			*(*uintptr)(unsafe.Pointer(&_rp)) += 4 * uintptr(int32(1))
 			return &_vp
 		}())) += 4 * uintptr(int32(1))
-		*elem0(_rp, uintptr(_un)) = Xmpn_addmul_1(tls, _rp, _up, _un, *elem0(_vp, 0))
+		*elem0(_rp, uintptr(_un)) = Xmpn_addmul_1(tls, _rp, _up, _un, *_vp)
 		goto _0
 	}
 	return *elem0(_rp, uintptr(_un))
@@ -700,7 +700,7 @@ func Xmpz_get_ui(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 uint32) {
 		if (_u[0].X_mp_size) == int32(0) {
 			return 0
 		}
-		return (*elem0(_u[0].X_mp_d, 0))
+		return (*(_u[0].X_mp_d))
 	}()
 }
 
@@ -1390,7 +1390,7 @@ func _mpn_cmp4(tls *crt.TLS, _ap *uint32, _an int32, _bp *uint32, _bn int32) (r0
 }
 
 func _mpz_abs_add(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b *[1]Xmpz_srcptr) (r0 int32) {
-	var _an, _bn, _2_abc, _2_def, _2_ghi, _3___mp_size_t_swap__tmp int32
+	var _an, _bn, _3___mp_size_t_swap__tmp int32
 	var _cy uint32
 	var _rp *uint32
 	var _2___mpz_srcptr_swap__tmp *Xmpz_srcptr
@@ -1410,11 +1410,8 @@ func _mpz_abs_add(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b *[1]X
 		goto _4
 	}
 	_2___mpz_srcptr_swap__tmp = &_a[0]
-	_2_abc = int32(111)
 	_a = _b
-	_2_def = int32(222)
 	_b = (*[1]Xmpz_srcptr)(unsafe.Pointer(_2___mpz_srcptr_swap__tmp))
-	_2_ghi = int32(333)
 	_3___mp_size_t_swap__tmp = _an
 	_an = _bn
 	_bn = _3___mp_size_t_swap__tmp
@@ -1428,22 +1425,17 @@ _4:
 	_cy = Xmpn_add(tls, _rp, _a[0].X_mp_d, _an, _b[0].X_mp_d, _bn)
 	*elem0(_rp, uintptr(_an)) = _cy
 	return int32(uint32(_an) + _cy)
-
-	_ = _2_abc
-	_ = _2_def
-	_ = _2_ghi
-	panic(0)
 }
 
 func Xmpz_set_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x uint32) {
 	if _x > 0 {
 		_r[0].X_mp_size = int32(1)
-		*elem0(func() *uint32 {
+		*func() *uint32 {
 			if int32(1) > (_r[0].X_mp_alloc) {
 				return _mpz_realloc(tls, _r, int32(1))
 			}
 			return (_r[0].X_mp_d)
-		}(), 0) = _x
+		}() = _x
 		goto _3
 	}
 	_r[0].X_mp_size = int32(0)
@@ -1474,12 +1466,12 @@ func Xmpz_set_si(tls *crt.TLS, _r *[1]Xmpz_srcptr, _x int32) {
 		goto _1
 	}
 	_r[0].X_mp_size = int32(-1)
-	*elem0(func() *uint32 {
+	*func() *uint32 {
 		if int32(1) > (_r[0].X_mp_alloc) {
 			return _mpz_realloc(tls, _r, int32(1))
 		}
 		return (_r[0].X_mp_d)
-	}(), 0) = -(uint32(_x+int32(1)) - uint32(1))
+	}() = -(uint32(_x+int32(1)) - uint32(1))
 _1:
 }
 
@@ -1526,11 +1518,11 @@ func _mpn_div_qr_invert(tls *crt.TLS, _inv *Tgmp_div_inverse, _dp *uint32, _dn i
 	var _1_shift, _1_d1, _1_d0, _2___clz_x, _2___clz_c uint32
 
 	if _dn == int32(1) {
-		_mpn_div_qr_1_invert(tls, _inv, *elem0(_dp, 0))
+		_mpn_div_qr_1_invert(tls, _inv, *_dp)
 		goto _3
 	}
 	if _dn == int32(2) {
-		_mpn_div_qr_2_invert(tls, _inv, *elem0(_dp, uintptr(1)), *elem0(_dp, 0))
+		_mpn_div_qr_2_invert(tls, _inv, *elem0(_dp, uintptr(1)), *_dp)
 		goto _3
 	}
 	_1_d1 = *elem0(_dp, uintptr(_dn-int32(1)))
@@ -1600,7 +1592,7 @@ func _mpn_div_qr_preinv(tls *crt.TLS, _qp *uint32, _np *uint32, _nn int32, _dp *
 	var _1_nh, _1_shift, _2___cy uint32
 
 	if _dn == int32(1) {
-		*elem0(_np, 0) = _mpn_div_qr_1_preinv(tls, _qp, _np, _nn, _inv)
+		*_np = _mpn_div_qr_1_preinv(tls, _qp, _np, _nn, _inv)
 		goto _3
 	}
 	if _dn == int32(2) {
@@ -1721,7 +1713,7 @@ _12:
 		_gmp_free_func(tls, unsafe.Pointer(_tp), 0)
 	}
 	*elem0(_rp, uintptr(1)) = _r1
-	*elem0(_rp, 0) = _r0
+	*_rp = _r0
 }
 
 func _mpn_div_qr_pi1(tls *crt.TLS, _qp *uint32, _np *uint32, _nn int32, _n1 uint32, _dp *uint32, _dn int32, _dinv uint32) {
@@ -1862,12 +1854,12 @@ func _mpz_abs_add_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b ui
 		return (-(_a[0].X_mp_size))
 	}()
 	if _an == int32(0) {
-		*elem0(func() *uint32 {
+		*func() *uint32 {
 			if int32(1) > (_r[0].X_mp_alloc) {
 				return _mpz_realloc(tls, _r, int32(1))
 			}
 			return (_r[0].X_mp_d)
-		}(), 0) = _b
+		}() = _b
 		return bool2int(_b > 0)
 	}
 	_rp = func() *uint32 {
@@ -1899,12 +1891,12 @@ func _mpz_abs_sub_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b ui
 		return (-(_a[0].X_mp_size))
 	}()
 	if _an == int32(0) {
-		*elem0(func() *uint32 {
+		*func() *uint32 {
 			if int32(1) > (_r[0].X_mp_alloc) {
 				return _mpz_realloc(tls, _r, int32(1))
 			}
 			return (_r[0].X_mp_d)
-		}(), 0) = _b
+		}() = _b
 		return -bool2int(_b > 0)
 	}
 	_rp = func() *uint32 {
@@ -1913,8 +1905,8 @@ func _mpz_abs_sub_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _a *[1]Xmpz_srcptr, _b ui
 		}
 		return (_r[0].X_mp_d)
 	}()
-	if (_an == int32(1)) && ((*elem0(_a[0].X_mp_d, 0)) < _b) {
-		*elem0(_rp, 0) = _b - (*elem0(_a[0].X_mp_d, 0))
+	if (_an == int32(1)) && ((*(_a[0].X_mp_d)) < _b) {
+		*_rp = _b - (*(_a[0].X_mp_d))
 		return int32(-1)
 	}
 	_4___cy = Xmpn_sub_1(tls, _rp, _a[0].X_mp_d, _an, _b)
@@ -2174,12 +2166,12 @@ _16:
 	_rs = -_rs
 _15:
 	if _r != nil {
-		*elem0(func() *uint32 {
+		*func() *uint32 {
 			if int32(1) > (_r[0].X_mp_alloc) {
 				return _mpz_realloc(tls, _r, int32(1))
 			}
 			return (_r[0].X_mp_d)
-		}(), 0) = _rl
+		}() = _rl
 		_r[0].X_mp_size = _rs
 	}
 	if _q != nil {
@@ -2205,7 +2197,7 @@ func _mpn_div_qr_1(tls *crt.TLS, _qp *uint32, _np *uint32, _nn int32, _d uint32)
 	if (_d & (_d - uint32(1))) != 0 {
 		goto _0
 	}
-	_1_r = (*elem0(_np, 0)) & (_d - uint32(1))
+	_1_r = (*_np) & (_d - uint32(1))
 	if _qp == nil {
 		goto _1
 	}
@@ -2532,7 +2524,7 @@ _5:
 		goto _1
 	}
 _0:
-	_sn += _mpn_limb_get_str(tls, elem3(_sp, uintptr(_sn)), *elem0(_up, 0), &_binv)
+	_sn += _mpn_limb_get_str(tls, elem3(_sp, uintptr(_sn)), *_up, &_binv)
 	_i = 0
 _6:
 	if ((uint32(2) * _i) + uint32(1)) >= _sn {
@@ -2658,7 +2650,7 @@ _0:
 		_w = (_w * _b) + uint32(*elem3(_sp, uintptr(postInc2(&_j, uint32(1)))))
 		goto _0
 	}
-	*elem0(_rp, 0) = _w
+	*_rp = _w
 	_rn = int32(1)
 _2:
 	if _j >= _sn {
@@ -2702,7 +2694,7 @@ func Xmpz_cmp_si(tls *crt.TLS, _u *[1]Xmpz_srcptr, _v int32) (r0 int32) {
 	if _usize >= int32(0) {
 		return int32(1)
 	}
-	return bool2int((-(uint32(_v+int32(1)) - uint32(1))) > (*elem0(_u[0].X_mp_d, 0))) - bool2int((-(uint32(_v+int32(1)) - uint32(1))) < (*elem0(_u[0].X_mp_d, 0)))
+	return bool2int((-(uint32(_v+int32(1)) - uint32(1))) > (*(_u[0].X_mp_d))) - bool2int((-(uint32(_v+int32(1)) - uint32(1))) < (*(_u[0].X_mp_d)))
 }
 
 func Xmpz_cmp_ui(tls *crt.TLS, _u *[1]Xmpz_srcptr, _v uint32) (r0 int32) {
@@ -3275,7 +3267,7 @@ _5:
 		Xmpz_swap(tls, &_tu, &_tv)
 	}
 	if (_tv[0].X_mp_size) == int32(1) {
-		_6_vl = *elem0(_tv[0].X_mp_d, 0)
+		_6_vl = *(_tv[0].X_mp_d)
 		_6_ul = Xmpz_tdiv_ui(tls, &_tu, _6_vl)
 		Xmpz_set_ui(tls, _g, _mpn_gcd_11(tls, _6_ul, _6_vl))
 		goto _9
@@ -3291,13 +3283,13 @@ _9:
 func _mpz_make_odd(tls *crt.TLS, _r *[1]Xmpz_srcptr) (r0 uint32) {
 	var _shift uint32
 
-	_shift = _mpn_common_scan(tls, *elem0(_r[0].X_mp_d, 0), int32(0), _r[0].X_mp_d, int32(0), 0)
+	_shift = _mpn_common_scan(tls, *(_r[0].X_mp_d), int32(0), _r[0].X_mp_d, int32(0), 0)
 	Xmpz_tdiv_q_2exp(tls, _r, _r, _shift)
 	return _shift
 }
 
 func Xmpz_gcdext(tls *crt.TLS, _g *[1]Xmpz_srcptr, _s *[1]Xmpz_srcptr, _t *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) {
-	var _1_sign, _2_sign, _4_abc, _4_def, _4_ghi, _8_c int32
+	var _1_sign, _2_sign, _8_c int32
 	var _uz, _vz, _gz, _power, _6___mp_bitcnt_t_swap__tmp, _7_shift uint32
 	var _tu, _tv, _s0, _s1, _t0, _t1 [1]Xmpz_srcptr
 	var _4___mpz_srcptr_swap__tmp, _5___mpz_ptr_swap__tmp *Xmpz_srcptr
@@ -3350,11 +3342,8 @@ _3:
 	}
 	Xmpz_swap(tls, &_tu, &_tv)
 	_4___mpz_srcptr_swap__tmp = &_u[0]
-	_4_abc = int32(111)
 	_u = _v
-	_4_def = int32(222)
 	_v = (*[1]Xmpz_srcptr)(unsafe.Pointer(_4___mpz_srcptr_swap__tmp))
-	_4_ghi = int32(333)
 	_5___mpz_ptr_swap__tmp = &_s[0]
 	_s = _t
 	_t = (*[1]Xmpz_srcptr)(unsafe.Pointer(_5___mpz_ptr_swap__tmp))
@@ -3409,7 +3398,7 @@ _19:
 	if postInc2(&_power, uint32(4294967295)) <= 0 {
 		goto _20
 	}
-	if (bool2int((_s0[0].X_mp_size) != int32(0))&int32(*elem0(_s0[0].X_mp_d, 0))) != 0 || (bool2int((_t0[0].X_mp_size) != int32(0))&int32(*elem0(_t0[0].X_mp_d, 0))) != 0 {
+	if (bool2int((_s0[0].X_mp_size) != int32(0))&int32(*(_s0[0].X_mp_d))) != 0 || (bool2int((_t0[0].X_mp_size) != int32(0))&int32(*(_t0[0].X_mp_d))) != 0 {
 		Xmpz_sub(tls, &_s0, &_s0, &_s1)
 		Xmpz_add(tls, &_t0, &_t0, &_t1)
 	}
@@ -3442,9 +3431,6 @@ _20:
 	Xmpz_clear(tls, &_t0)
 	Xmpz_clear(tls, &_t1)
 	_ = _power
-	_ = _4_abc
-	_ = _4_def
-	_ = _4_ghi
 }
 
 func Xmpz_lcm_ui(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v uint32) {
@@ -3671,7 +3657,7 @@ func Xmpz_probab_prime_p(tls *crt.TLS, _n *[1]Xmpz_srcptr, _reps int32) (r0 int3
 	var _is_prime, _j int32
 	var _k uint32
 	var _nm1, _q, _y [1]Xmpz_srcptr
-	if (bool2int((_n[0].X_mp_size) != int32(0)) & int32(*elem0(_n[0].X_mp_d, 0))) == 0 {
+	if (bool2int((_n[0].X_mp_size) != int32(0)) & int32(*(_n[0].X_mp_d))) == 0 {
 		return func() int32 {
 			if Xmpz_cmpabs_ui(tls, _n, uint32(2)) == int32(0) {
 				return int32(2)
@@ -3681,7 +3667,7 @@ func Xmpz_probab_prime_p(tls *crt.TLS, _n *[1]Xmpz_srcptr, _reps int32) (r0 int3
 	}
 
 	if Xmpz_cmpabs_ui(tls, _n, uint32(64)) < int32(0) {
-		return int32((uint32(3379140316) >> uint(int32((*elem0(_n[0].X_mp_d, 0))>>1))) & uint32(2))
+		return int32((uint32(3379140316) >> uint(int32((*(_n[0].X_mp_d))>>1))) & uint32(2))
 	}
 	if Xmpz_gcd_ui(tls, nil, _n, uint32(3234846615)) != uint32(1) {
 		return int32(0)
@@ -3801,7 +3787,7 @@ func Xmpz_com(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr) {
 }
 
 func Xmpz_and(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) {
-	var _un, _vn, _rn, _i, _2_abc, _2_def, _2_ghi, _3___mp_size_t_swap__tmp int32
+	var _un, _vn, _rn, _i, _3___mp_size_t_swap__tmp int32
 	var _ux, _vx, _rx, _uc, _vc, _rc, _ul, _vl, _rl uint32
 	var _up, _vp, _rp *uint32
 	var _2___mpz_srcptr_swap__tmp *Xmpz_srcptr
@@ -3821,11 +3807,8 @@ func Xmpz_and(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_
 		goto _4
 	}
 	_2___mpz_srcptr_swap__tmp = &_u[0]
-	_2_abc = int32(111)
 	_u = _v
-	_2_def = int32(222)
 	_v = (*[1]Xmpz_srcptr)(unsafe.Pointer(_2___mpz_srcptr_swap__tmp))
-	_2_ghi = int32(333)
 	_3___mp_size_t_swap__tmp = _un
 	_un = _vn
 	_vn = _3___mp_size_t_swap__tmp
@@ -3891,13 +3874,10 @@ _18:
 		}
 		return _rn
 	}()
-	_ = _2_abc
-	_ = _2_def
-	_ = _2_ghi
 }
 
 func Xmpz_ior(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) {
-	var _un, _vn, _rn, _i, _2_abc, _2_def, _2_ghi, _3___mp_size_t_swap__tmp int32
+	var _un, _vn, _rn, _i, _3___mp_size_t_swap__tmp int32
 	var _ux, _vx, _rx, _uc, _vc, _rc, _ul, _vl, _rl uint32
 	var _up, _vp, _rp *uint32
 	var _2___mpz_srcptr_swap__tmp *Xmpz_srcptr
@@ -3917,11 +3897,8 @@ func Xmpz_ior(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_
 		goto _4
 	}
 	_2___mpz_srcptr_swap__tmp = &_u[0]
-	_2_abc = int32(111)
 	_u = _v
-	_2_def = int32(222)
 	_v = (*[1]Xmpz_srcptr)(unsafe.Pointer(_2___mpz_srcptr_swap__tmp))
-	_2_ghi = int32(333)
 	_3___mp_size_t_swap__tmp = _un
 	_un = _vn
 	_vn = _3___mp_size_t_swap__tmp
@@ -3987,13 +3964,10 @@ _18:
 		}
 		return _rn
 	}()
-	_ = _2_abc
-	_ = _2_def
-	_ = _2_ghi
 }
 
 func Xmpz_xor(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_srcptr) {
-	var _un, _vn, _i, _2_abc, _2_def, _2_ghi, _3___mp_size_t_swap__tmp int32
+	var _un, _vn, _i, _3___mp_size_t_swap__tmp int32
 	var _ux, _vx, _rx, _uc, _vc, _rc, _ul, _vl, _rl uint32
 	var _up, _vp, _rp *uint32
 	var _2___mpz_srcptr_swap__tmp *Xmpz_srcptr
@@ -4013,11 +3987,8 @@ func Xmpz_xor(tls *crt.TLS, _r *[1]Xmpz_srcptr, _u *[1]Xmpz_srcptr, _v *[1]Xmpz_
 		goto _4
 	}
 	_2___mpz_srcptr_swap__tmp = &_u[0]
-	_2_abc = int32(111)
 	_u = _v
-	_2_def = int32(222)
 	_v = (*[1]Xmpz_srcptr)(unsafe.Pointer(_2___mpz_srcptr_swap__tmp))
-	_2_ghi = int32(333)
 	_3___mp_size_t_swap__tmp = _un
 	_un = _vn
 	_vn = _3___mp_size_t_swap__tmp
@@ -4077,9 +4048,6 @@ _16:
 		}
 		return _un
 	}()
-	_ = _2_abc
-	_ = _2_def
-	_ = _2_ghi
 }
 
 func Xmpz_popcount(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 uint32) {
@@ -4178,10 +4146,10 @@ func Xmpz_fits_slong_p(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 int32) {
 	var _us int32
 	_us = _u[0].X_mp_size
 	if _us == int32(1) {
-		return bool2int((*elem0(_u[0].X_mp_d, 0)) < uint32(2147483648))
+		return bool2int((*(_u[0].X_mp_d)) < uint32(2147483648))
 	}
 	if _us == int32(-1) {
-		return bool2int((*elem0(_u[0].X_mp_d, 0)) <= uint32(2147483648))
+		return bool2int((*(_u[0].X_mp_d)) <= uint32(2147483648))
 	}
 	return bool2int(_us == int32(0))
 }
@@ -4194,7 +4162,7 @@ func Xmpz_fits_ulong_p(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 int32) {
 
 func Xmpz_get_si(tls *crt.TLS, _u *[1]Xmpz_srcptr) (r0 int32) {
 	if (_u[0].X_mp_size) < int32(0) {
-		return int32(-1) - int32(((*elem0(_u[0].X_mp_d, 0))-uint32(1))&uint32(2147483647))
+		return int32(-1) - int32(((*(_u[0].X_mp_d))-uint32(1))&uint32(2147483647))
 	}
 	return int32(Xmpz_get_ui(tls, _u) & uint32(2147483647))
 }
@@ -4364,7 +4332,7 @@ _1:
 		return (-(_u[0].X_mp_size))
 	}()
 	if _un == int32(0) {
-		*elem4(_sp, 0) = int8(48)
+		*_sp = int8(48)
 		*elem4(_sp, uintptr(1)) = 0
 		return _sp
 	}
@@ -4411,7 +4379,7 @@ _0:
 	if _base != int32(0) {
 		goto _2
 	}
-	if int32(*elem4(_sp, 0)) != int32(48) {
+	if int32(*_sp) != int32(48) {
 		goto _3
 	}
 	if (int32(*elem4(_sp, uintptr(1))) == int32(120)) || (int32(*elem4(_sp, uintptr(1))) == int32(88)) {

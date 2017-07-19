@@ -348,36 +348,36 @@ func lib() {
 	crt\.Xabort\(tls\)
 `
 	re := regexp.MustCompile(tweak)
-	repo := findRepo(repo)
-	if repo == "" {
-		log.Fatalf("repository not found: %v", repo)
+	rp := findRepo(repo)
+	if rp == "" {
+		log.Fatalf("repository not found: %v", rp)
 		return
 	}
 
 	ast, src := build(
 		defines,
 		[][]string{
-			{filepath.Join(repo, "mini-gmp.h")},
+			{filepath.Join(rp, "mini-gmp.h")},
 		},
 		[]ccgo.Option{
 			ccgo.Library(),
 		},
-		cc.IncludePaths([]string{repo}),
+		cc.IncludePaths([]string{rp}),
 	)
 	_, src = build(
 		defines,
 		[][]string{
-			{filepath.Join(repo, "mini-gmp.c")},
+			{filepath.Join(rp, "mini-gmp.c")},
 		},
 		[]ccgo.Option{
 			ccgo.LibcTypes(),
 			ccgo.Library(),
 		},
-		cc.IncludePaths([]string{repo}),
+		cc.IncludePaths([]string{rp}),
 	)
 
 	var b bytes.Buffer
-	fmt.Fprintf(&b, prologue, strings.TrimSpace(tidyComments(header(filepath.Join(repo, "mini-gmp.c")))))
+	fmt.Fprintf(&b, prologue, strings.TrimSpace(tidyComments(header(filepath.Join(rp, "mini-gmp.c")))))
 	macros(&b, ast[0])
 	b.Write(src)
 	b2, err := format.Source(re.ReplaceAll(b.Bytes(), []byte(" panic(crt.GoString(_msg)) ")))

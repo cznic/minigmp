@@ -55,7 +55,7 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/cznic/crt"
+	"github.com/cznic/ccgo/crt"
 )
 
 func ftrace(s string, args ...interface{}) {

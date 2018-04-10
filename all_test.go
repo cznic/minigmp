@@ -15,7 +15,7 @@ import (
 	"testing"
 	"unsafe"
 
-	"github.com/cznic/crt"
+	"github.com/cznic/ccgo/crt"
 )
 
 func caller(s string, va ...interface{}) {

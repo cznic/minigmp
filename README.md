@@ -1,9 +1,5 @@
-# minigmp
+`github.com/cznic/minigmp` has moved to [`modernc.org/minigmp`](https://godoc.org/modernc.org/minigmp) ([vcs](https://gitlab.com/cznic/minigmp)).
 
-Package minigmp is a small implementation of a subset of GMP's mpn and mpz interfaces.
+Please update your import paths to `modernc.org/minigmp`.
 
-Installation
-
-    $ go get github.com/cznic/minigmp
-
-Documentation: [godoc.org/github.com/cznic/minigmp](http://godoc.org/github.com/cznic/minigmp)
+This repo is now archived.
